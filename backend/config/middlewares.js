@@ -17,6 +17,8 @@ module.exports = [
         enabled: true,
         origin: ["http://localhost:3000"],
         headers: ["*"],
+        methods: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
+        credentials: true,
       },
     },
   },
