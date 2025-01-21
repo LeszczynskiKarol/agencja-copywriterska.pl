@@ -1,8 +1,10 @@
 // src/app/kontakt/page.tsx
+// src/app/kontakt/page.tsx
 "use client";
 import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { submitContactForm } from "@/lib/api";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,10 +15,32 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [error, setError] = useState<string>("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Tu później dodamy logikę wysyłania formularza
-    console.log(formData);
+    setStatus("loading");
+    setError("");
+
+    try {
+      await submitContactForm(formData);
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "copywriting",
+        message: "",
+      });
+    } catch (err) {
+      setStatus("error");
+      setError(
+        "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później."
+      );
+    }
   };
 
   return (
@@ -24,6 +48,16 @@ export default function ContactPage() {
       <Header />
       <main className="min-h-screen pt-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 py-12">
+          {status === "success" && (
+            <div className="alert alert-success mb-6">
+              Dziękujemy za wiadomość! Odpowiemy najszybciej jak to możliwe.
+            </div>
+          )}
+
+          {status === "error" && (
+            <div className="alert alert-error mb-6">{error}</div>
+          )}
+
           <div className="grid md:grid-cols-2 gap-12">
             {/* Lewa kolumna - informacje kontaktowe */}
             <div>

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_basic_features",
+  "info": {
+    "displayName": "Feature",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
