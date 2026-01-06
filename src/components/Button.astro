@@ -1,0 +1,59 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  icon?: boolean;
+  fullWidth?: boolean;
+}
+
+const { 
+  variant = 'primary', 
+  size = 'md', 
+  href, 
+  type = 'button',
+  class: className = '',
+  icon = false,
+  fullWidth = false
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const classes = [
+  'btn',
+  `btn-${variant}`,
+  size !== 'md' && `btn-${size}`,
+  fullWidth && 'btn-full',
+  icon && 'btn-icon',
+  className
+].filter(Boolean).join(' ');
+---
+
+<Tag 
+  href={href}
+  type={href ? undefined : type}
+  class={classes}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn-full {
+    width: 100%;
+  }
+  
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .btn-icon svg {
+    transition: transform var(--transition-fast);
+  }
+  
+  .btn-icon:hover svg {
+    transform: translateX(4px);
+  }
+</style>

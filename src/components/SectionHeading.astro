@@ -1,0 +1,69 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  titleTag?: 'h1' | 'h2' | 'h3';
+  class?: string;
+}
+
+const { 
+  label, 
+  title, 
+  subtitle,
+  align = 'left',
+  titleTag = 'h2',
+  class: className = ''
+} = Astro.props;
+
+const TitleTag = titleTag;
+---
+
+<div class:list={['section-heading', `section-heading--${align}`, className]}>
+  {label && (
+    <span class="section-label">{label}</span>
+  )}
+  <TitleTag class="section-heading__title" set:html={title} />
+  {subtitle && (
+    <p class="section-heading__subtitle">{subtitle}</p>
+  )}
+</div>
+
+<style>
+  .section-heading {
+    max-width: 720px;
+    margin-bottom: var(--space-12);
+  }
+
+  .section-heading--center {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .section-heading--center .section-label::before {
+    display: none;
+  }
+
+  .section-heading__title {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-heading__subtitle {
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+    max-width: 600px;
+  }
+
+  .section-heading--center .section-heading__subtitle {
+    margin-inline: auto;
+  }
+
+  /* Highlight text inside title */
+  .section-heading__title :global(span),
+  .section-heading__title :global(em) {
+    color: var(--color-accent);
+    font-style: normal;
+  }
+</style>

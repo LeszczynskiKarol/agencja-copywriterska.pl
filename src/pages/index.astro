@@ -1,0 +1,956 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Stats from '../components/Stats.astro';
+import Testimonial from '../components/Testimonial.astro';
+import Button from '../components/Button.astro';
+
+// Schema.org for HomePage
+const homePageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://agencja-copywriterska.pl/#organization",
+      "name": "Agencja Copywriterska",
+      "url": "https://agencja-copywriterska.pl",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://agencja-copywriterska.pl/logo.png"
+      },
+      "description": "Profesjonalna agencja copywriterska z 15-letnim doświadczeniem. Copywriting, tworzenie treści, ebooki, publikacje.",
+      "telephone": "+48509370772",
+      "email": "kontakt@agencja-copywriterska.pl",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toruń",
+        "addressCountry": "PL"
+      },
+      "areaServed": "PL",
+      "priceRange": "$$"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://agencja-copywriterska.pl/#website",
+      "url": "https://agencja-copywriterska.pl",
+      "name": "Agencja Copywriterska",
+      "publisher": {
+        "@id": "https://agencja-copywriterska.pl/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://agencja-copywriterska.pl/#webpage",
+      "url": "https://agencja-copywriterska.pl",
+      "name": "Agencja Copywriterska - Profesjonalne Teksty, Ebooki, Publikacje",
+      "isPartOf": {
+        "@id": "https://agencja-copywriterska.pl/#website"
+      },
+      "about": {
+        "@id": "https://agencja-copywriterska.pl/#organization"
+      },
+      "description": "Profesjonalna agencja copywriterska. Tworzymy teksty sprzedażowe, artykuły, ebooki i kompleksowe publikacje. 15 lat doświadczenia, 5000+ tekstów."
+    }
+  ]
+};
+
+// Services data
+const services = [
+  {
+    title: 'Copywriting',
+    description: 'Teksty sprzedażowe, które przekonują i konwertują. Od landing page po kampanie reklamowe.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>`,
+    href: '/uslugi/copywriting',
+    features: ['Teksty sprzedażowe', 'Landing pages', 'Mailingi']
+  },
+  {
+    title: 'Pisanie tekstów',
+    description: 'Profesjonalne treści dla Twojej firmy. Unikalne, angażujące i zoptymalizowane pod SEO.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>`,
+    href: '/uslugi/pisanie-tekstow',
+    features: ['Treści na strony', 'Teksty firmowe', 'SEO content']
+  },
+  {
+    title: 'Pisanie artykułów',
+    description: 'Eksperckie artykuły blogowe i branżowe, które budują autorytet i przyciągają klientów.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
+    href: '/uslugi/pisanie-artykulow',
+    features: ['Artykuły blogowe', 'Treści eksperckie', 'Content marketing']
+  },
+  {
+    title: 'Tworzenie ebooków',
+    description: 'Kompleksowe ebooki i lead magnety od A do Z - treść, projekt, skład i gotowy PDF.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>`,
+    href: '/uslugi/tworzenie-ebookow',
+    features: ['Lead magnety', 'Poradniki', 'Publikacje PDF']
+  },
+  {
+    title: 'Skład tekstu LaTeX',
+    description: 'Profesjonalny skład publikacji w LaTeX - podręczniki, zeszyty ćwiczeń, prace naukowe.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>`,
+    href: '/uslugi/sklad-tekstu',
+    features: ['Podręczniki', 'Publikacje naukowe', 'Print-ready PDF']
+  },
+  {
+    title: 'Artykuły sponsorowane',
+    description: 'Skuteczne artykuły sponsorowane i PR, które budują wizerunek i zdobywają linki.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>`,
+    href: '/uslugi/artykuly-sponsorowane',
+    features: ['Link building', 'PR & wizerunkowe', 'Publikacje zewnętrzne']
+  },
+  {
+    title: 'Opisy produktów',
+    description: 'Unikalne opisy produktów dla e-commerce, które sprzedają i pozycjonują.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>`,
+    href: '/uslugi/opisy-produktow',
+    features: ['E-commerce', 'Katalogi', 'SEO-optimized']
+  },
+  {
+    title: 'Opisy kategorii',
+    description: 'SEO-friendly opisy kategorii dla sklepów internetowych i katalogów.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>`,
+    href: '/uslugi/opisy-kategorii',
+    features: ['Sklepy online', 'Optymalizacja SEO', 'Unikalne treści']
+  },
+  {
+    title: 'Naming',
+    description: 'Kreatywne nazwy dla firm, produktów i marek. Branding, który zostaje w pamięci.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+    href: '/uslugi/naming',
+    features: ['Nazwy firm', 'Nazwy produktów', 'Slogany']
+  }
+];
+
+// Stats data
+const stats = [
+  { value: '15', suffix: '+', label: 'Lat doświadczenia' },
+  { value: '5000', suffix: '+', label: 'Napisanych tekstów' },
+  { value: '11', label: 'Wydanych publikacji' },
+  { value: '98', suffix: '%', label: 'Zadowolonych klientów' }
+];
+
+// Testimonials
+const testimonials = [
+  {
+    quote: 'Współpraca z Agencją Copywriterską to czysta przyjemność. Teksty na stronę były gotowe przed terminem, a jakość przeszła nasze oczekiwania. Polecam każdemu, kto szuka profesjonalnego copywritera.',
+    author: 'Anna Kowalska',
+    role: 'Marketing Manager',
+    company: 'TechStart Sp. z o.o.',
+    rating: 5
+  },
+  {
+    quote: 'Zamówiliśmy ebook jako lead magnet do naszej kampanii. Od pomysłu do gotowego PDF minęły 3 tygodnie. Efekt? Ponad 500 pobrań w pierwszym miesiącu i dziesiątki nowych leadów.',
+    author: 'Michał Nowak',
+    role: 'CEO',
+    company: 'GrowthLab',
+    rating: 5
+  },
+  {
+    quote: 'Profesjonalizm na najwyższym poziomie. Zeszyt ćwiczeń do naszego kursu wygląda jak z wydawnictwa naukowego. Skład w LaTeX robi wrażenie - polecam każdemu, kto potrzebuje publikacji.',
+    author: 'dr Katarzyna Wiśniewska',
+    role: 'Wykładowca',
+    company: 'Akademia Medyczna',
+    rating: 5
+  }
+];
+
+// Process steps
+const processSteps = [
+  {
+    number: '01',
+    title: 'Bezpłatna konsultacja',
+    description: 'Omawiamy Twoje potrzeby, cele i oczekiwania. Bez zobowiązań.'
+  },
+  {
+    number: '02',
+    title: 'Indywidualna wycena',
+    description: 'Otrzymujesz szczegółową ofertę dopasowaną do projektu.'
+  },
+  {
+    number: '03',
+    title: 'Realizacja projektu',
+    description: 'Tworzymy treści zgodnie z ustalonym harmonogramem.'
+  },
+  {
+    number: '04',
+    title: 'Korekta i poprawki',
+    description: 'Wprowadzamy Twoje uwagi - do skutku.'
+  }
+];
+
+// Why us benefits
+const benefits = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
+    title: '15+ lat doświadczenia',
+    description: 'Od 2009 roku tworzę profesjonalne treści. Wiem, co działa i jak pisać, żeby sprzedawać.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>`,
+    title: 'Kompleksowa obsługa',
+    description: 'Od pomysłu, przez pisanie, skład, korektę, aż po gotowy PDF. Wszystko w jednym miejscu.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>`,
+    title: 'Profesjonalny skład LaTeX',
+    description: 'Jako jeden z nielicznych oferuję skład publikacji w LaTeX - standard wydawnictw naukowych.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+    title: 'Terminowość',
+    description: 'Dotrzymuję terminów. Zawsze. Bez wymówek i przesunięć.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+    title: '100% unikalności',
+    description: 'Każdy tekst piszę od zera. Zero plagiatu, zero AI-generated content. Gwarantowane.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`,
+    title: 'Stały kontakt',
+    description: 'Odpowiadam na wiadomości w ciągu kilku godzin. Jesteś na bieżąco z postępem prac.'
+  }
+];
+---
+
+<BaseLayout 
+  title="Agencja Copywriterska - Profesjonalne Teksty, Ebooki, Publikacje | Agencja Copywritingu"
+  description="Profesjonalna agencja copywriterska z 15-letnim doświadczeniem. Tworzymy teksty sprzedażowe, artykuły, ebooki i kompleksowe publikacje od A do Z. Bezpłatna wycena w 24h."
+  keywords="agencja copywriterska, agencja copywritingu, copywriting, pisanie tekstów, tworzenie ebooków, skład tekstu LaTeX, content marketing, teksty SEO"
+  schema={homePageSchema}
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container hero__container">
+      <div class="hero__content">
+        <span class="hero__badge badge badge-accent">
+          <span class="badge-dot"></span>
+          Profesjonalna agencja copywriterska
+        </span>
+        <h1 class="hero__title">
+          Tworzymy <span class="text-gradient">teksty, które sprzedają</span> i publikacje, które zachwycają
+        </h1>
+        <p class="hero__subtitle lead">
+          Od copywritingu po kompleksowe ebooki i podręczniki - wszystko od A do Z. 
+          15 lat doświadczenia, 5000+ tekstów, 11 wydanych publikacji książkowych.
+        </p>
+        <div class="hero__actions">
+          <Button href="/kontakt" variant="primary" size="lg" icon>
+            Darmowa wycena
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Button>
+          <Button href="/uslugi" variant="secondary" size="lg">
+            Zobacz usługi
+          </Button>
+        </div>
+        <div class="hero__trust">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Odpowiedź w 24h</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Wycena bez zobowiązań</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Faktura VAT</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__card hero__card--1">
+          <div class="hero__card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+            </svg>
+          </div>
+          <span class="hero__card-label">Copywriting</span>
+          <span class="hero__card-value">5000+ tekstów</span>
+        </div>
+        <div class="hero__card hero__card--2">
+          <div class="hero__card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <span class="hero__card-label">Publikacje</span>
+          <span class="hero__card-value">11 książek</span>
+        </div>
+        <div class="hero__card hero__card--3">
+          <div class="hero__card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 7 4 4 20 4 20 7"></polyline>
+              <line x1="9" y1="20" x2="15" y2="20"></line>
+              <line x1="12" y1="4" x2="12" y2="20"></line>
+            </svg>
+          </div>
+          <span class="hero__card-label">LaTeX</span>
+          <span class="hero__card-value">1500+ stron</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section stats-section">
+    <div class="container">
+      <Stats items={stats} />
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section section-lg services-section" id="uslugi">
+    <div class="container">
+      <SectionHeading 
+        label="Usługi"
+        title="Kompleksowe usługi <span>copywriterskie</span>"
+        subtitle="Od prostych tekstów po rozbudowane publikacje książkowe. Wszystko, czego potrzebujesz w jednym miejscu."
+        align="center"
+      />
+      
+      <div class="services-grid">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+
+      <div class="services-cta">
+        <Button href="/uslugi" variant="secondary" size="lg">
+          Zobacz wszystkie usługi
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Why Us Section -->
+  <section class="section section-lg about-section" id="o-nas">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <SectionHeading 
+            label="Dlaczego my"
+            title="Agencja copywriterska z <span>15-letnim doświadczeniem</span>"
+            subtitle="Łączę pasję do pisania z techniczną wiedzą o składzie publikacji. To unikalne połączenie, które pozwala mi oferować usługi niedostępne gdzie indziej."
+          />
+          
+          <div class="about-text">
+            <p>
+              Od 2009 roku tworzę treści dla firm z różnych branż. Przez te lata napisałem ponad 
+              5000 tekstów - od krótkich opisów produktów po rozbudowane ebooki i podręczniki.
+            </p>
+            <p>
+              Jako autor 11 publikacji książkowych wiem, czego wymaga profesjonalne wydawnictwo. 
+              Oferuję nie tylko pisanie tekstów, ale też profesjonalny skład w LaTeX - standard 
+              używany przez wydawnictwa naukowe na całym świecie.
+            </p>
+            <p>
+              <strong>Co mnie wyróżnia?</strong> Kompleksowa obsługa. Jeden wykonawca od początku do końca - 
+              od koncepcji, przez pisanie, redakcję, skład, aż po gotowy PDF do druku lub publikacji online.
+            </p>
+          </div>
+
+          <div class="about-actions">
+            <Button href="/kontakt" variant="primary" icon>
+              Porozmawiajmy o Twoim projekcie
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </Button>
+          </div>
+        </div>
+
+        <div class="about-benefits">
+          {benefits.map((benefit) => (
+            <div class="benefit-card">
+              <div class="benefit-card__icon" set:html={benefit.icon} />
+              <div class="benefit-card__content">
+                <h3 class="benefit-card__title">{benefit.title}</h3>
+                <p class="benefit-card__desc">{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section section-lg process-section">
+    <div class="process-bg bg-gradient-accent">
+      <div class="container">
+        <SectionHeading 
+          label="Jak działamy"
+          title="Prosty proces <span>współpracy</span>"
+          subtitle="Od pierwszego kontaktu do gotowego projektu - wszystko przebiega sprawnie i bez niespodzianek."
+          align="center"
+        />
+
+        <div class="process-grid">
+          {processSteps.map((step, index) => (
+            <div class="process-card" style={`--delay: ${index * 0.1}s`}>
+              <span class="process-card__number">{step.number}</span>
+              <h3 class="process-card__title">{step.title}</h3>
+              <p class="process-card__desc">{step.description}</p>
+              {index < processSteps.length - 1 && (
+                <div class="process-card__connector">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div class="process-cta">
+          <Button href="/kontakt" variant="primary" size="lg" icon>
+            Rozpocznij współpracę
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section section-lg testimonials-section">
+    <div class="container">
+      <SectionHeading 
+        label="Opinie klientów"
+        title="Co mówią o <span>współpracy</span>"
+        subtitle="Zaufali mi właściciele firm, marketerzy, wydawcy i naukowcy. Zobacz, co mówią o efektach naszej współpracy."
+        align="center"
+      />
+
+      <div class="testimonials-grid">
+        {testimonials.map((testimonial) => (
+          <Testimonial {...testimonial} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section section-lg seo-section">
+    <div class="container container-narrow">
+      <article class="seo-content">
+        <h2>Agencja copywriterska - profesjonalne teksty dla Twojego biznesu</h2>
+        
+        <p>
+          Szukasz sprawdzonej <strong>agencji copywriterskiej</strong>, która stworzy dla Ciebie teksty sprzedażowe, 
+          artykuły eksperckie lub kompleksowe publikacje? Trafiłeś w odpowiednie miejsce. Jako 
+          <strong>agencja copywritingu</strong> z 15-letnim doświadczeniem oferujemy pełen zakres usług związanych 
+          z tworzeniem treści - od krótkich opisów produktów po rozbudowane ebooki i podręczniki.
+        </p>
+
+        <h3>Co wyróżnia naszą agencję copywriterską?</h3>
+        
+        <p>
+          Na rynku działa wiele agencji copywriterskich, ale tylko nieliczne oferują tak kompleksową obsługę. 
+          Nie tylko piszemy teksty - tworzymy kompletne publikacje od A do Z. Oznacza to, że otrzymujesz 
+          gotowy produkt: od koncepcji i pisania, przez profesjonalny skład (w tym w LaTeX), redakcję i korektę, 
+          aż po PDF gotowy do druku lub publikacji online.
+        </p>
+
+        <p>
+          To podejście pozwala zaoszczędzić czas i pieniądze. Zamiast koordynować pracę kilku wykonawców 
+          (copywriter, redaktor, grafik, składacz), współpracujesz z jedną agencją, która odpowiada za całość projektu.
+        </p>
+
+        <h3>Usługi naszej agencji copywritingu</h3>
+        
+        <p>
+          Jako agencja copywriterska specjalizujemy się w tworzeniu różnorodnych treści tekstowych. 
+          Nasze główne obszary działania to: copywriting sprzedażowy (landing pages, mailingi, reklamy), 
+          content marketing (artykuły blogowe, treści eksperckie), teksty SEO (optymalizowane pod wyszukiwarki), 
+          tworzenie ebooków i lead magnetów, pisanie artykułów sponsorowanych, opisy produktów i kategorii 
+          dla e-commerce, naming i branding oraz profesjonalny skład publikacji w LaTeX.
+        </p>
+
+        <h3>Dlaczego warto wybrać profesjonalną agencję copywriterską?</h3>
+        
+        <p>
+          Profesjonalna agencja copywritingu to gwarancja jakości, terminowości i skuteczności. 
+          Nasze teksty nie tylko dobrze się czytają - one sprzedają, budują wizerunek i pozycjonują 
+          Twoją firmę jako eksperta w branży. Każdy tekst jest pisany od zera, zoptymalizowany pod SEO 
+          i dostosowany do Twojej grupy docelowej.
+        </p>
+
+        <p>
+          Współpracując z nami, otrzymujesz partnera, który rozumie biznes i marketing. 15 lat doświadczenia 
+          w branży digital nauczyło nas, jak pisać treści, które konwertują. Nie oferujemy masowej produkcji 
+          tekstów - każdy projekt traktujemy indywidualnie, dbając o jakość i efekt końcowy.
+        </p>
+
+        <h3>Jak rozpocząć współpracę z agencją copywriterską?</h3>
+        
+        <p>
+          Zacznij od bezpłatnej konsultacji. Opisz swój projekt, a my przygotujemy indywidualną wycenę 
+          i zaproponujemy optymalne rozwiązanie. Odpowiadamy na zapytania w ciągu 24 godzin. Skontaktuj 
+          się telefonicznie pod numerem +48 509 370 772 lub napisz na kontakt@agencja-copywriterska.pl.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-24) 0 var(--space-20);
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.5;
+  }
+
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(252, 187, 66, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(18, 25, 58, 0.1) 0%, transparent 50%),
+      linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  }
+
+  .hero__container {
+    display: grid;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__container {
+      grid-template-columns: 1fr 400px;
+      gap: var(--space-16);
+    }
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    margin-bottom: var(--space-6);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background-color: currentColor;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+
+  .hero__subtitle {
+    max-width: 560px;
+    margin-bottom: var(--space-8);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+
+  .hero__trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-8);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+  }
+
+  .hero__trust-item svg {
+    color: var(--color-accent);
+  }
+
+  /* Hero Visual */
+  .hero__visual {
+    position: relative;
+    display: none;
+    height: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__visual {
+      display: block;
+    }
+  }
+
+  .hero__card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .hero__card--1 {
+    top: 0;
+    right: 20%;
+    animation-delay: 0s;
+  }
+
+  .hero__card--2 {
+    top: 35%;
+    left: 0;
+    animation-delay: 1s;
+  }
+
+  .hero__card--3 {
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 2s;
+  }
+
+  .hero__card-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1a2248 100%);
+    border-radius: var(--radius-md);
+    color: var(--color-accent);
+  }
+
+  .hero__card-label {
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+  }
+
+  .hero__card-value {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    color: var(--text-primary);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    padding-top: 0;
+    margin-top: calc(var(--space-12) * -1);
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Services Section */
+  .services-section {
+    background-color: var(--bg-secondary);
+  }
+
+  .services-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .services-cta {
+    text-align: center;
+  }
+
+  /* About Section */
+  .about-grid {
+    display: grid;
+    gap: var(--space-16);
+  }
+
+  @media (min-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .about-text {
+    margin-bottom: var(--space-8);
+  }
+
+  .about-text p {
+    margin-bottom: var(--space-4);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+  }
+
+  .about-text strong {
+    color: var(--text-primary);
+  }
+
+  .about-benefits {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .about-benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .benefit-card {
+    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+  }
+
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateX(4px);
+  }
+
+  .benefit-card__icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1a2248 100%);
+    border-radius: var(--radius-md);
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .benefit-card__icon :global(svg) {
+    width: 22px;
+    height: 22px;
+  }
+
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .benefit-card__desc {
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+    line-height: var(--lh-relaxed);
+  }
+
+  /* Process Section */
+  .process-section {
+    padding: 0;
+  }
+
+  .process-bg {
+    padding: var(--space-20) 0;
+    color: var(--color-white);
+  }
+
+  .process-bg :global(.section-heading__title),
+  .process-bg :global(.section-label) {
+    color: var(--color-white);
+  }
+
+  .process-bg :global(.section-heading__title span) {
+    color: var(--color-accent);
+  }
+
+  .process-bg :global(.section-heading__subtitle) {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .process-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 768px) {
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .process-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .process-card {
+    position: relative;
+    padding: var(--space-6);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .process-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .process-card__number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .process-card__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    color: var(--color-white);
+    margin-bottom: var(--space-2);
+  }
+
+  .process-card__desc {
+    font-size: var(--fs-sm);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: var(--lh-relaxed);
+  }
+
+  .process-card__connector {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .process-card__connector {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      right: -24px;
+      transform: translateY(-50%);
+      color: var(--color-accent);
+      opacity: 0.5;
+    }
+  }
+
+  .process-cta {
+    text-align: center;
+  }
+
+  /* Testimonials Section */
+  .testimonials-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* SEO Content Section */
+  .seo-section {
+    background-color: var(--bg-secondary);
+  }
+
+  .seo-content {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+  }
+
+  .seo-content h2 {
+    font-size: var(--fs-3xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .seo-content h3 {
+    font-size: var(--fs-xl);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+  }
+
+  .seo-content p {
+    margin-bottom: var(--space-4);
+    color: var(--text-secondary);
+  }
+
+  .seo-content strong {
+    color: var(--text-primary);
+  }
+</style>

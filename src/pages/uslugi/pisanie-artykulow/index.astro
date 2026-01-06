@@ -1,0 +1,1791 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Pisanie Artykułów na Zlecenie + Publikacja w Mediach | Agencja Copywriterska";
+const pageDescription = "Pisanie artykułów na zlecenie ✓ Artykuły blogowe ✓ Artykuły eksperckie ✓ Publikacja w mediach branżowych ✓ 15+ lat doświadczenia ✓ Gwarancja jakości. Zamów artykuł z publikacją!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Pisanie artykułów",
+      "item": "https://agencja-copywriterska.pl/uslugi/pisanie-artykulow"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Pisanie artykułów",
+  "name": "Profesjonalne Pisanie Artykułów na Zlecenie z Publikacją",
+  "description": "Profesjonalne usługi pisania artykułów na zlecenie obejmujące artykuły blogowe, eksperckie, branżowe oraz publikację w wybranych mediach i portalach.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi pisania artykułów",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Artykuły blogowe"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Artykuły eksperckie"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Artykuły z publikacją w mediach"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Content marketing"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje napisanie artykułu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ceny artykułów zależą od długości, tematyki i poziomu specjalizacji. Artykuły blogowe zaczynają się od 200 zł, artykuły eksperckie od 400 zł, a artykuły z publikacją w mediach od 600 zł (w zależności od portalu). Każdy projekt wyceniamy indywidualnie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy możecie opublikować artykuł w wybranym przeze mnie portalu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak! Współpracujemy z wieloma portalami branżowymi i mediami. Możemy opublikować artykuł w portalu, który wskażesz, lub zaproponować odpowiednie medium dopasowane do Twojej branży i grupy docelowej. Mamy dostęp do setek portali o różnej tematyce."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa napisanie artykułu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowy artykuł blogowy przygotowujemy w 3-5 dni roboczych. Artykuły eksperckie wymagające głębszego researchu to 5-7 dni. Publikacja w mediach zewnętrznych może wydłużyć proces o dodatkowe 3-7 dni w zależności od portalu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy artykuły są zoptymalizowane pod SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, wszystkie nasze artykuły są domyślnie zoptymalizowane pod wyszukiwarki. Dobieramy słowa kluczowe, tworzymy właściwą strukturę nagłówków, dbamy o linkowanie wewnętrzne i meta dane. Artykuły pomagają w pozycjonowaniu strony."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich mediach możecie opublikować artykuł?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mamy dostęp do szerokiej bazy portali: ogólnoinformacyjne (Onet, WP, Interia), branżowe (IT, finanse, prawo, medycyna, budownictwo), biznesowe, lifestyle'owe i lokalne. Dopasowujemy medium do Twojej branży i celów marketingowych."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zamówić sam artykuł bez publikacji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oczywiście! Oferujemy zarówno samo pisanie artykułów (do publikacji na Twoim blogu/stronie), jak i pełen pakiet z publikacją w zewnętrznych mediach. Wybierasz opcję, która najlepiej odpowiada Twoim potrzebom."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jakie są korzyści z publikacji artykułów w mediach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Publikacja w mediach buduje wizerunek eksperta, zwiększa rozpoznawalność marki, generuje wartościowe linki zwrotne (link building), przyciąga nowych klientów i wzmacnia pozycję w wynikach wyszukiwania Google."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy piszecie artykuły na tematy specjalistyczne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, mamy doświadczenie w pisaniu artykułów z wielu branż: IT, finanse, prawo, medycyna, budownictwo, nieruchomości, marketing i wiele innych. Przeprowadzamy dokładny research i w razie potrzeby konsultujemy treści z ekspertami."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "3000", suffix: "+", label: "napisanych artykułów" },
+  { value: "500", suffix: "+", label: "publikacji w mediach" },
+  { value: "100", suffix: "+", label: "portali partnerskich" },
+  { value: "15", suffix: "+", label: "lat doświadczenia" }
+];
+
+const testimonials = [
+  {
+    quote: "Zamówiłem serię artykułów eksperckich z publikacją w portalach branżowych. Efekt? Wzrost ruchu na stronie o 60% i dziesiątki zapytań od nowych klientów. Pisanie artykułów na zlecenie w tej agencji to strzał w dziesiątkę!",
+    author: "Tomasz Kowalczyk",
+    role: "CEO",
+    company: "FinTech Solutions",
+    rating: 5
+  },
+  {
+    quote: "Współpracujemy od roku - regularne artykuły na blog firmowy plus publikacje w mediach branżowych. Widoczność naszej firmy znacząco wzrosła, a pozycje w Google się poprawiły.",
+    author: "Agnieszka Lewandowska",
+    role: "Marketing Manager",
+    company: "LegalTech Sp. z o.o.",
+    rating: 5
+  },
+  {
+    quote: "Profesjonalne podejście do tematu. Artykuły są merytoryczne, dobrze napisane i świetnie zoptymalizowane pod SEO. Publikacja w portalach przebiegła sprawnie. Polecam!",
+    author: "Michał Jabłoński",
+    role: "Właściciel",
+    company: "MedConsulting",
+    rating: 5
+  }
+];
+
+const articleTypes = [
+  {
+    title: "Artykuły blogowe",
+    description: "Angażujące treści na firmowego bloga, które przyciągają czytelników, budują pozycję eksperta i wspierają SEO. Regularny content marketing dla Twojej marki.",
+    features: ["Artykuły poradnikowe", "Wpisy edukacyjne", "Newsy branżowe", "Listy i rankingi"],
+    icon: "📝"
+  },
+  {
+    title: "Artykuły eksperckie",
+    description: "Pogłębione analizy i materiały budujące autorytet w branży. Idealne dla firm, które chcą być postrzegane jako liderzy opinii.",
+    features: ["Analizy rynkowe", "Opinie eksperckie", "Whitepapers", "Case studies"],
+    icon: "🎓"
+  },
+  {
+    title: "Artykuły SEO",
+    description: "Treści zoptymalizowane pod konkretne frazy kluczowe, które pozycjonują Twoją stronę wysoko w Google i generują organiczny ruch.",
+    features: ["Content pillar pages", "Artykuły zapleczowe", "Cluster content", "Long-tail SEO"],
+    icon: "🔍"
+  },
+  {
+    title: "Artykuły sponsorowane",
+    description: "Profesjonalne artykuły do publikacji w zewnętrznych mediach. Budują wizerunek, generują linki i zwiększają zasięg marki.",
+    features: ["Publikacje PR", "Link building", "Brand awareness", "Zasięg w mediach"],
+    icon: "📰"
+  },
+  {
+    title: "Artykuły branżowe",
+    description: "Specjalistyczne treści wymagające wiedzy domenowej: IT, finanse, prawo, medycyna, budownictwo i inne branże.",
+    features: ["Treści techniczne", "Artykuły medyczne", "Teksty prawnicze", "Content finansowy"],
+    icon: "🏢"
+  },
+  {
+    title: "Artykuły z publikacją",
+    description: "Pełen pakiet: napisanie artykułu + publikacja w wybranym przez Ciebie lub przez nas portalu. Kompleksowa obsługa od A do Z.",
+    features: ["Dobór medium", "Negocjacja warunków", "Publikacja", "Raport z linkiem"],
+    icon: "🚀"
+  }
+];
+
+const publicationOptions = [
+  {
+    title: "Publikacja w portalu klienta",
+    description: "Piszemy artykuł, który publikujesz na swoim blogu lub stronie. Otrzymujesz gotowy tekst zoptymalizowany pod SEO.",
+    price: "od 200 zł",
+    features: ["Artykuł na Twój blog", "Pełna optymalizacja SEO", "Bezpłatne poprawki", "Prawa autorskie"]
+  },
+  {
+    title: "Publikacja w wybranym medium",
+    description: "Wskazujesz portal, w którym chcesz się pojawić – my piszemy artykuł i zajmujemy się publikacją.",
+    price: "od 500 zł",
+    features: ["Artykuł + publikacja", "Twój wybór portalu", "Negocjacja z redakcją", "Link do publikacji"]
+  },
+  {
+    title: "Publikacja w dobranym medium",
+    description: "Nie wiesz, gdzie się publikować? Dobierzemy odpowiedni portal do Twojej branży i grupy docelowej.",
+    price: "od 600 zł",
+    features: ["Analiza branży", "Rekomendacja portali", "Artykuł + publikacja", "Raport z efektów"]
+  },
+  {
+    title: "Pakiet publikacji",
+    description: "Seria artykułów z publikacjami w różnych mediach. Kompleksowa strategia content marketingowa.",
+    price: "wycena indywidualna",
+    features: ["Strategia contentowa", "Seria artykułów", "Publikacje w wielu mediach", "Raportowanie"]
+  }
+];
+
+const mediaCategories = [
+  {
+    category: "Portale ogólnoinformacyjne",
+    examples: "Onet, WP, Interia, Gazeta.pl, o2.pl",
+    reach: "Miliony użytkowników miesięcznie"
+  },
+  {
+    category: "Portale biznesowe",
+    examples: "Business Insider, Forbes, Money.pl, Puls Biznesu",
+    reach: "Decydenci i przedsiębiorcy"
+  },
+  {
+    category: "Portale branżowe IT",
+    examples: "Computerworld, ITwiz, AntyWeb, Spider's Web",
+    reach: "Specjaliści IT i tech"
+  },
+  {
+    category: "Portale finansowe",
+    examples: "Bankier.pl, Stooq, Comparic, Finanse.wp.pl",
+    reach: "Inwestorzy i finansiści"
+  },
+  {
+    category: "Portale prawnicze",
+    examples: "Prawo.pl, LEX, Rzeczpospolita Prawo",
+    reach: "Prawnicy i przedsiębiorcy"
+  },
+  {
+    category: "Portale medyczne",
+    examples: "Medonet, Medycyna Praktyczna, Puls Medycyny",
+    reach: "Lekarze i pacjenci"
+  },
+  {
+    category: "Portale lokalne",
+    examples: "Portale regionalne, miejskie, dzielnicowe",
+    reach: "Społeczności lokalne"
+  },
+  {
+    category: "Portale lifestyle",
+    examples: "Glamour, Elle, Men's Health, Runner's World",
+    reach: "Konsumenci lifestyle"
+  }
+];
+
+const benefits = [
+  {
+    icon: "✍️",
+    title: "3000+ napisanych artykułów",
+    description: "Ponad 15 lat doświadczenia w pisaniu artykułów. Znamy się na rzeczy i wiemy, jak tworzyć treści, które działają."
+  },
+  {
+    icon: "📰",
+    title: "500+ publikacji w mediach",
+    description: "Setki artykułów opublikowanych w portalach branżowych i ogólnoinformacyjnych. Mamy sprawdzone kontakty w redakcjach."
+  },
+  {
+    icon: "🎯",
+    title: "Dobór odpowiedniego medium",
+    description: "Pomagamy wybrać portal idealnie dopasowany do Twojej branży, budżetu i grupy docelowej."
+  },
+  {
+    icon: "🔍",
+    title: "Pełna optymalizacja SEO",
+    description: "Każdy artykuł jest zoptymalizowany pod wyszukiwarki. Pomagamy budować widoczność w Google."
+  },
+  {
+    icon: "⚡",
+    title: "Szybka realizacja",
+    description: "Artykuł blogowy w 3-5 dni. Z publikacją w mediach w 1-2 tygodnie. Zawsze dotrzymujemy terminów."
+  },
+  {
+    icon: "🔄",
+    title: "Bezpłatne poprawki",
+    description: "Pracujemy do Twojej pełnej satysfakcji. Poprawki w ramach zlecenia są zawsze bezpłatne."
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Brief i wycena",
+    description: "Omawiamy temat, cel artykułu i preferencje publikacji. Przygotowujemy wycenę w 24h."
+  },
+  {
+    number: "02",
+    title: "Research i pisanie",
+    description: "Przeprowadzamy research tematu i tworzymy artykuł zgodnie z briefem i wytycznymi SEO."
+  },
+  {
+    number: "03",
+    title: "Akceptacja treści",
+    description: "Przedstawiamy gotowy artykuł do akceptacji. Wprowadzamy ewentualne poprawki."
+  },
+  {
+    number: "04",
+    title: "Publikacja",
+    description: "Publikujemy artykuł na Twoim blogu lub w wybranym portalu zewnętrznym. Dostarczamy link."
+  }
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="pisanie artykułów, artykuły na zlecenie, pisanie artykułów na zamówienie, artykuły blogowe, artykuły eksperckie, publikacja artykułów, artykuły sponsorowane, content marketing"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Pisanie artykułów</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">Artykuły + publikacja w mediach</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Pisanie artykułów</strong> z&nbsp;publikacją w&nbsp;wybranym medium
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Profesjonalne <strong>pisanie artykułów na zlecenie</strong> – od blogowych po eksperckie. 
+          Publikujemy w portalu, który wskażesz, lub dobieramy odpowiednie medium do Twojej branży. 
+          Ponad 3000 napisanych artykułów, 500+ publikacji w mediach.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów artykuł z publikacją
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#opcje-publikacji" class="btn btn--secondary btn--lg">
+            Zobacz opcje publikacji
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>100+ portali partnerskich</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Publikacja w Twoim lub naszym medium</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Pełna optymalizacja SEO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is Section -->
+  <section class="section what-is" id="o-usludze">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="O usłudze"
+            title="<span class='accent'>Pisanie artykułów</span> z publikacją – jak to działa?"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              Nasze <strong>pisanie artykułów na zlecenie</strong> to więcej niż tworzenie treści. Oferujemy 
+              kompleksową usługę obejmującą napisanie profesjonalnego artykułu oraz jego publikację w wybranym 
+              przez Ciebie lub przez nas medium.
+            </p>
+            <p>
+              Możesz wskazać konkretny portal, w którym chcesz się pojawić – zajmiemy się negocjacją z redakcją 
+              i publikacją. Możemy też zaproponować odpowiednie medium dopasowane do Twojej branży, budżetu 
+              i grupy docelowej. Mamy dostęp do ponad 100 portali o różnej tematyce i zasięgu.
+            </p>
+            <p>
+              Oczywiście możesz też zamówić sam artykuł do publikacji na własnym blogu lub stronie. 
+              Niezależnie od wybranej opcji, każdy artykuł jest profesjonalnie napisany, zoptymalizowany 
+              pod SEO i dopasowany do Twoich celów marketingowych.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">📰</div>
+            <h3>Twój wybór lub nasza rekomendacja</h3>
+            <p>Wskażesz portal? Opublikujemy tam. Nie wiesz, gdzie? Dobierzemy idealne medium dla Ciebie.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">100+</span>
+            <span class="what-is__highlight-text">portali partnerskich do publikacji artykułów</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publication Options Section -->
+  <section class="section publication-options" id="opcje-publikacji">
+    <div class="container">
+      <SectionHeading
+        label="Opcje publikacji"
+        title="Wybierz formę <span class='accent'>publikacji artykułu</span>"
+        subtitle="Elastyczne opcje dopasowane do Twoich potrzeb i budżetu"
+        align="center"
+      />
+      <div class="options__grid">
+        {publicationOptions.map((option, index) => (
+          <div class="option-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="option-card__header">
+              <h3 class="option-card__title">{option.title}</h3>
+              <span class="option-card__price">{option.price}</span>
+            </div>
+            <p class="option-card__description">{option.description}</p>
+            <ul class="option-card__features">
+              {option.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href="/kontakt" class="option-card__btn">Zapytaj o wycenę</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Types Section -->
+  <section class="section types" id="rodzaje-artykulow">
+    <div class="container">
+      <SectionHeading
+        label="Rodzaje artykułów"
+        title="Jakie <span class='accent'>artykuły</span> piszemy?"
+        subtitle="Od blogowych po eksperckie – kompleksowa oferta content marketingu"
+        align="center"
+      />
+      <div class="types__grid">
+        {articleTypes.map((type, index) => (
+          <article class="type-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="type-card__icon">{type.icon}</span>
+            <h3 class="type-card__title">{type.title}</h3>
+            <p class="type-card__description">{type.description}</p>
+            <ul class="type-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Media Categories Section -->
+  <section class="section media" id="media">
+    <div class="media__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Gdzie publikujemy"
+        title="Dostęp do <span class='accent'>100+ portali</span> partnerskich"
+        subtitle="Publikujemy w mediach dopasowanych do Twojej branży i grupy docelowej"
+        align="center"
+      />
+      <div class="media__grid">
+        {mediaCategories.map((media, index) => (
+          <div class="media-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <h3 class="media-card__category">{media.category}</h3>
+            <p class="media-card__examples">{media.examples}</p>
+            <span class="media-card__reach">{media.reach}</span>
+          </div>
+        ))}
+      </div>
+      <p class="media__note">
+        To tylko przykłady – mamy dostęp do znacznie większej liczby portali. 
+        <a href="/kontakt">Skontaktuj się z nami</a>, a dobierzemy idealne medium dla Twojej firmy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="dlaczego-my">
+    <div class="container">
+      <SectionHeading
+        label="Dlaczego my"
+        title="Dlaczego warto zlecić nam <span class='accent'>pisanie artykułów</span>?"
+        subtitle="Ponad 15 lat doświadczenia, tysiące napisanych artykułów"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="process__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Jak działamy"
+        title="Proces <span class='accent'>pisania artykułu</span> z publikacją"
+        subtitle="Od briefu do publikacji w 4 krokach"
+        align="center"
+      />
+      <div class="process__steps">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.15}s`}>
+            <span class="process-step__number">{step.number}</span>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+            {index < processSteps.length - 1 && (
+              <div class="process-step__connector">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Zamów artykuł
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszym <span class='accent'>pisaniu artykułów</span>?"
+        subtitle="Setki zadowolonych klientów z całej Polski"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Pytania o <span class='accent'>pisanie artykułów</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Ile kosztuje napisanie artykułu?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Ceny <strong>artykułów na zlecenie</strong> zależą od długości, tematyki i poziomu specjalizacji. 
+              Artykuły blogowe zaczynają się od 200 zł, artykuły eksperckie od 400 zł, a artykuły z publikacją 
+              w mediach od 600 zł (w zależności od portalu). <a href="/cennik">Zobacz pełny cennik</a>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy możecie opublikować artykuł w wybranym przeze mnie portalu?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak! Współpracujemy z wieloma portalami branżowymi i mediami. Możemy opublikować artykuł 
+              w portalu, który wskażesz, lub zaproponować odpowiednie medium dopasowane do Twojej branży 
+              i grupy docelowej. Mamy dostęp do ponad 100 portali o różnej tematyce.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długo trwa napisanie artykułu?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Standardowy artykuł blogowy przygotowujemy w 3-5 dni roboczych. Artykuły eksperckie 
+              wymagające głębszego researchu to 5-7 dni. Publikacja w mediach zewnętrznych może 
+              wydłużyć proces o dodatkowe 3-7 dni w zależności od portalu.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy artykuły są zoptymalizowane pod SEO?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, wszystkie nasze <strong>artykuły na zamówienie</strong> są domyślnie zoptymalizowane 
+              pod wyszukiwarki. Dobieramy słowa kluczowe, tworzymy właściwą strukturę nagłówków, 
+              dbamy o linkowanie wewnętrzne i meta dane. Artykuły pomagają w pozycjonowaniu strony.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>W jakich mediach możecie opublikować artykuł?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Mamy dostęp do szerokiej bazy portali: ogólnoinformacyjne (Onet, WP, Interia), 
+              branżowe (IT, finanse, prawo, medycyna, budownictwo), biznesowe, lifestyle'owe 
+              i lokalne. Dopasowujemy medium do Twojej branży i celów marketingowych.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy mogę zamówić sam artykuł bez publikacji?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Oczywiście! Oferujemy zarówno samo <strong>pisanie artykułów</strong> (do publikacji 
+              na Twoim blogu/stronie), jak i pełen pakiet z publikacją w zewnętrznych mediach. 
+              Wybierasz opcję, która najlepiej odpowiada Twoim potrzebom.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jakie są korzyści z publikacji artykułów w mediach?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Publikacja w mediach buduje wizerunek eksperta, zwiększa rozpoznawalność marki, 
+              generuje wartościowe linki zwrotne (link building), przyciąga nowych klientów 
+              i wzmacnia pozycję w wynikach wyszukiwania Google. To inwestycja w widoczność firmy.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy piszecie artykuły na tematy specjalistyczne?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, mamy doświadczenie w <strong>pisaniu artykułów</strong> z wielu branż: IT, finanse, 
+              prawo, medycyna, budownictwo, nieruchomości, marketing i wiele innych. Przeprowadzamy 
+              dokładny research i w razie potrzeby konsultujemy treści z ekspertami.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="pisanie-artykulow-na-zlecenie">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Pisanie artykułów na zlecenie – profesjonalne treści z publikacją w mediach</h2>
+        
+        <p>
+          W erze content marketingu <strong>pisanie artykułów na zlecenie</strong> stało się jednym 
+          z najskuteczniejszych narzędzi budowania widoczności marki w internecie. Profesjonalne artykuły 
+          nie tylko przyciągają czytelników – budują autorytet, generują ruch organiczny i wspierają sprzedaż.
+        </p>
+        
+        <p>
+          Nasza agencja specjalizuje się w <strong>pisaniu artykułów</strong> od ponad 15 lat. Napisaliśmy 
+          ponad 3000 artykułów dla firm z najróżniejszych branż i opublikowaliśmy ponad 500 tekstów 
+          w zewnętrznych mediach. Oferujemy kompleksową usługę: od stworzenia treści, przez optymalizację 
+          SEO, po publikację w wybranym przez Ciebie lub przez nas portalu.
+        </p>
+
+        <h3>Artykuł z publikacją – Twój wybór lub nasza rekomendacja</h3>
+        
+        <p>
+          Wyróżnia nas elastyczne podejście do publikacji. Jeśli wiesz, w jakim portalu chcesz się pojawić – 
+          wskaż go, a my zajmiemy się resztą. Napiszemy artykuł dopasowany do wymagań redakcji, wynegocjujemy 
+          warunki publikacji i dostarczymy Ci link do gotowego materiału.
+        </p>
+        
+        <p>
+          Nie masz pomysłu, gdzie publikować? Nie szkodzi! Na podstawie Twojej branży, grupy docelowej 
+          i budżetu zaproponujemy odpowiednie medium. Mamy dostęp do ponad 100 portali – od ogólnoinformacyjnych, 
+          przez branżowe, po lokalne. Dobierzemy portal, który przyniesie najlepsze efekty.
+        </p>
+
+        <h3>Korzyści z profesjonalnego pisania artykułów</h3>
+        
+        <p>
+          <strong>Pisanie artykułów na zamówienie</strong> przez profesjonalistów przynosi wymierne korzyści. 
+          Po pierwsze, budujesz wizerunek eksperta w swojej branży. Regularne publikacje merytorycznych 
+          treści pokazują, że znasz się na rzeczy i można Ci zaufać.
+        </p>
+        
+        <p>
+          Po drugie, artykuły zoptymalizowane pod SEO pomagają w pozycjonowaniu strony. Każdy tekst, 
+          który tworzymy, jest napisany z myślą o wyszukiwarkach – z odpowiednimi słowami kluczowymi, 
+          strukturą nagłówków i linkowaniem. To inwestycja w długoterminową widoczność w Google.
+        </p>
+        
+        <p>
+          Po trzecie, publikacje w zewnętrznych mediach generują wartościowe linki zwrotne (backlinki). 
+          Link building poprzez <a href="/uslugi/artykuly-sponsorowane">artykuły sponsorowane</a> to jedna 
+          z najskuteczniejszych strategii SEO. Zwiększasz autorytet domeny i poprawiasz pozycje w wynikach wyszukiwania.
+        </p>
+
+        <h3>Rodzaje artykułów, które piszemy</h3>
+        
+        <p>
+          Nasze <strong>pisanie artykułów</strong> obejmuje wszystkie rodzaje treści contentowych. 
+          Tworzymy artykuły blogowe – angażujące wpisy na firmowego bloga, które przyciągają czytelników 
+          i budują społeczność wokół marki.
+        </p>
+        
+        <p>
+          Piszemy artykuły eksperckie – pogłębione analizy, opinie branżowe, case studies i whitepapers. 
+          To treści dla firm, które chcą być postrzegane jako liderzy opinii w swoich dziedzinach.
+        </p>
+        
+        <p>
+          Specjalizujemy się również w artykułach SEO – treściach zoptymalizowanych pod konkretne 
+          frazy kluczowe, które pozycjonują stronę w Google. Content pillar pages, artykuły zapleczowe, 
+          cluster content – znamy wszystkie strategie content marketingu.
+        </p>
+
+        <h3>Pisanie artykułów dla każdej branży</h3>
+        
+        <p>
+          Przez ponad 15 lat napisaliśmy <strong>artykuły na zlecenie</strong> dla firm z najróżniejszych 
+          sektorów. Mamy doświadczenie w branżach: IT i technologie, finanse i bankowość, prawo, 
+          medycyna i zdrowie, budownictwo, nieruchomości, e-commerce, marketing, HR i wiele innych.
+        </p>
+        
+        <p>
+          Nawet jeśli Twoja branża jest wysoce specjalistyczna, poradzimy sobie. Przeprowadzamy 
+          dokładny research każdego tematu, a w razie potrzeby konsultujemy treści z ekspertami 
+          dziedzinowymi. Gwarantujemy merytoryczną poprawność każdego artykułu.
+        </p>
+
+        <h3>Jak zamówić artykuł z publikacją?</h3>
+        
+        <p>
+          Zamówienie <strong>artykułu na zlecenie</strong> jest proste. Skontaktuj się z nami i opisz 
+          swoje potrzeby – jaki temat, jaki cel, gdzie chcesz publikować. W ciągu 24 godzin przygotujemy 
+          bezpłatną wycenę z terminem realizacji.
+        </p>
+        
+        <p>
+          Po akceptacji wyceny przeprowadzamy research i zabieramy się do pisania. Gotowy artykuł 
+          przedstawiamy do akceptacji – wprowadzamy poprawki, aż będziesz w pełni zadowolony. 
+          Następnie publikujemy tekst w wybranym portalu i dostarczamy Ci link do publikacji.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Zamów artykuł z publikacją</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* Publication Options Section */
+  .publication-options {
+    background: var(--color-bg-secondary);
+  }
+  
+  .options__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .options__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .options__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .option-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+  
+  .option-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .option-card__header {
+    margin-bottom: var(--space-4);
+  }
+  
+  .option-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .option-card__price {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .option-card__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    flex-grow: 1;
+  }
+  
+  .option-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4) 0;
+  }
+  
+  .option-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .option-card__features li:last-child {
+    border-bottom: none;
+  }
+  
+  .option-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+  
+  .option-card__btn {
+    display: block;
+    text-align: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    transition: all 0.2s ease;
+  }
+  
+  .option-card__btn:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  /* Types Section */
+  .types {
+    background: var(--color-bg-primary);
+  }
+  
+  .types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .type-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .type-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .type-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .type-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .type-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .type-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .type-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .type-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .type-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .type-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  /* Media Section */
+  .media {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+  }
+  
+  .media__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .media .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .media :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .media :global(.section-heading__title),
+  .media :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .media :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .media__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .media__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .media__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .media-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    transition: all 0.3s ease;
+  }
+  
+  .media-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  .media-card__category {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+  
+  .media-card__examples {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-2);
+    line-height: 1.5;
+  }
+  
+  .media-card__reach {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+  }
+  
+  .media__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .media__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-secondary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Process Section */
+  .process {
+    position: relative;
+    background: var(--color-bg-primary);
+  }
+  
+  .process__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(18, 25, 58, 0.03) 0%, transparent 40%);
+  }
+  
+  .process .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 1024px) {
+    .process__steps {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+  }
+  
+  .process-step {
+    position: relative;
+    text-align: center;
+  }
+  
+  .process-step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .process-step__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-size: var(--text-sm);
+  }
+  
+  .process-step__connector {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .process-step__connector {
+      display: block;
+      position: absolute;
+      right: -24px;
+      top: 30px;
+      color: var(--color-accent);
+      opacity: 0.5;
+    }
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-secondary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-primary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-secondary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>

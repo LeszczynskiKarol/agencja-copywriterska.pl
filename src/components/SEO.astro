@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  keywords?: string;
+  author?: string;
+  noindex?: boolean;
+  schema?: object;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = '/og-image.jpg',
+  ogType = 'website',
+  keywords = 'agencja copywriterska, copywriting, pisanie tekstów, tworzenie treści, content marketing',
+  author = 'Agencja-Copywriterska.pl',
+  noindex = false,
+  schema
+} = Astro.props;
+
+const siteUrl = 'https://agencja-copywriterska.pl';
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Default Organization Schema
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Agencja-Copywriterska.pl",
+  "description": "Profesjonalna agencja copywriterska - tworzymy teksty, artykuły, ebooki i publikacje. Kompleksowe usługi content marketingu.",
+  "url": siteUrl,
+  "telephone": "+48509370772",
+  "email": "kontakt@agencja-copywriterska.pl",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Toruń",
+    "addressCountry": "PL"
+  },
+  "areaServed": "PL",
+  "priceRange": "$$",
+  "serviceType": ["Copywriting", "Content Marketing", "Pisanie tekstów", "Tworzenie ebooków", "Skład tekstu"]
+};
+
+const schemaData = schema || defaultSchema;
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content={author} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullOgImage} />
+<meta property="og:site_name" content="Agencja-Copywriterska.pl" />
+<meta property="og:locale" content="pl_PL" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonical} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={fullOgImage} />
+
+<!-- Structured Data / JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

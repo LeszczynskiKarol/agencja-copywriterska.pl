@@ -1,0 +1,1824 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Opisy Produktów - Profesjonalne Opisy do Sklepu Internetowego | Agencja Copywriterska";
+const pageDescription = "Opisy produktów do sklepu internetowego ✓ Unikalne opisy produktów ✓ SEO ✓ Zwiększenie sprzedaży ✓ E-commerce ✓ 10000+ napisanych opisów. Zamów opisy produktów!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Opisy produktów",
+      "item": "https://agencja-copywriterska.pl/uslugi/opisy-produktow"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Opisy produktów",
+  "name": "Profesjonalne Opisy Produktów do Sklepów Internetowych",
+  "description": "Profesjonalne pisanie opisów produktów do sklepów internetowych. Unikalne, SEO-friendly opisy zwiększające sprzedaż i konwersję w e-commerce.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi opisów produktów",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Opisy produktów SEO"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Opisy produktów e-commerce"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Opisy produktów hurtowe"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Opisy produktów premium"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje opis produktu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cena opisu produktu zależy od długości i złożoności. Krótki opis (100-150 słów) to koszt od 25-40 zł, standardowy opis (200-300 słów) od 40-70 zł, a rozbudowany opis premium (400+ słów) od 80-150 zł. Przy większych zamówieniach oferujemy rabaty ilościowe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa napisanie opisów produktów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Czas realizacji zależy od ilości produktów. 10-20 opisów to 3-5 dni roboczych. 50-100 opisów to 1-2 tygodnie. Większe projekty (500+ opisów) realizujemy według ustalonego harmonogramu. Pilne zlecenia możemy przyspieszyć."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy opisy produktów są unikalne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, każdy opis piszemy od podstaw. Gwarantujemy 100% unikalności – wszystkie opisy przechodzą weryfikację antyplagiatową. Unikalne opisy są niezbędne dla SEO i unikania duplicate content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy opisy są zoptymalizowane pod SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, wszystkie opisy produktów są domyślnie zoptymalizowane pod wyszukiwarki. Naturalne rozmieszczenie słów kluczowych, właściwa struktura, meta opisy. Pomagamy produktom być widocznym w Google."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Dla jakich platform e-commerce piszecie opisy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Piszemy opisy produktów dla wszystkich platform: WooCommerce, PrestaShop, Magento, Shopify, IdoSell, Shoper, Sky-Shop, BaseLinker i innych. Dostosowujemy format do wymagań konkretnej platformy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy potrzebuję dostarczyć zdjęcia produktów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zdjęcia są pomocne, ale nie niezbędne. Potrzebujemy specyfikacji technicznej produktów, linków do strony producenta lub podobnych produktów. Im więcej informacji dostarczysz, tym lepszy opis napiszemy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy piszecie opisy w językach obcych?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, oferujemy opisy produktów w języku angielskim i niemieckim. Tłumaczymy również istniejące opisy polskie na języki obce. Dla innych języków współpracujemy z native speakerami."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zamówić próbny opis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak! Przy większych zamówieniach oferujemy wykonanie 1-2 próbnych opisów, abyś mógł ocenić styl i jakość przed zleceniem całości. To pozwala dopracować ton i format opisów."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "10000", suffix: "+", label: "napisanych opisów" },
+  { value: "150", suffix: "+", label: "sklepów obsłużonych" },
+  { value: "35", suffix: "%", label: "średni wzrost konwersji" },
+  { value: "15", suffix: "+", label: "lat doświadczenia" }
+];
+
+const testimonials = [
+  {
+    quote: "Zamówiliśmy 500 opisów produktów do naszego sklepu z elektroniką. Jakość doskonała, terminy dotrzymane, a co najważniejsze – konwersja wzrosła o 40%! Polecam każdemu e-commerce.",
+    author: "Marek Jankowski",
+    role: "E-commerce Manager",
+    company: "TechMarket.pl",
+    rating: 5
+  },
+  {
+    quote: "Współpracujemy przy regularnych opisach nowych produktów. Świetnie rozumieją specyfikę branży fashion, opisy są kreatywne i sprzedażowe. Nasze produkty lepiej się pozycjonują.",
+    author: "Katarzyna Nowak",
+    role: "Marketing Director",
+    company: "ModaOnline.pl",
+    rating: 5
+  },
+  {
+    quote: "Potrzebowałem szybko 200 opisów do nowego asortymentu. Dostarczyli w tydzień, wszystkie unikalne i dobrze zoptymalizowane pod SEO. Profesjonalna obsługa od A do Z.",
+    author: "Tomasz Wiśniewski",
+    role: "Właściciel",
+    company: "HomeDecor24",
+    rating: 5
+  }
+];
+
+const descriptionTypes = [
+  {
+    title: "Opisy krótkie",
+    description: "Zwięzłe opisy 100-150 słów – idealne do kart produktów z ograniczoną przestrzenią lub jako uzupełnienie głównego opisu.",
+    features: ["100-150 słów", "Kluczowe cechy", "Call to action", "Szybka realizacja"],
+    price: "od 25 zł/szt.",
+    icon: "📝"
+  },
+  {
+    title: "Opisy standardowe",
+    description: "Pełne opisy 200-300 słów z korzyściami, cechami i zastosowaniem produktu. Najczęściej wybierana opcja.",
+    features: ["200-300 słów", "Korzyści i cechy", "SEO optimization", "Język korzyści"],
+    price: "od 40 zł/szt.",
+    icon: "📄"
+  },
+  {
+    title: "Opisy premium",
+    description: "Rozbudowane opisy 400+ słów ze storytellingiem, szczegółową specyfikacją i elementami perswazji.",
+    features: ["400+ słów", "Storytelling", "Szczegółowa specyfikacja", "Rich content"],
+    price: "od 80 zł/szt.",
+    icon: "⭐"
+  },
+  {
+    title: "Opisy techniczne",
+    description: "Specjalistyczne opisy produktów technicznych, elektroniki, narzędzi. Z parametrami i specyfikacją.",
+    features: ["Parametry techniczne", "Kompatybilność", "Zastosowania", "Porównania"],
+    price: "od 50 zł/szt.",
+    icon: "⚙️"
+  },
+  {
+    title: "Opisy fashion",
+    description: "Kreatywne opisy odzieży, obuwia, akcesoriów. Emocjonalne, lifestyle'owe, budujące aspiracje.",
+    features: ["Styl lifestyle", "Emocje i aspiracje", "Okazje użycia", "Trend language"],
+    price: "od 45 zł/szt.",
+    icon: "👗"
+  },
+  {
+    title: "Opisy hurtowe",
+    description: "Duże ilości opisów w atrakcyjnych cenach. Idealne dla hurtowni i marketplace'ów.",
+    features: ["Od 100 szt.", "Rabaty ilościowe", "Szybka realizacja", "Spójna jakość"],
+    price: "wycena indywidualna",
+    icon: "📦"
+  }
+];
+
+const industries = [
+  { name: "Elektronika i RTV/AGD", icon: "📱" },
+  { name: "Moda i odzież", icon: "👕" },
+  { name: "Kosmetyki i uroda", icon: "💄" },
+  { name: "Dom i ogród", icon: "🏡" },
+  { name: "Sport i outdoor", icon: "⚽" },
+  { name: "Meble i wyposażenie", icon: "🛋️" },
+  { name: "Zabawki i dziecko", icon: "🧸" },
+  { name: "Motoryzacja", icon: "🚗" },
+  { name: "Zdrowie i suplementy", icon: "💊" },
+  { name: "Biżuteria i zegarki", icon: "💎" },
+  { name: "Książki i multimedia", icon: "📚" },
+  { name: "Narzędzia i DIY", icon: "🔧" }
+];
+
+const platforms = [
+  "WooCommerce", "PrestaShop", "Magento", "Shopify", 
+  "IdoSell", "Shoper", "Sky-Shop", "BaseLinker",
+  "Allegro", "Amazon", "eBay", "Empik Marketplace"
+];
+
+const benefits = [
+  {
+    icon: "📈",
+    title: "Wzrost konwersji",
+    description: "Profesjonalne opisy produktów zwiększają konwersję średnio o 35%. Klient, który rozumie produkt, chętniej kupuje."
+  },
+  {
+    icon: "🔍",
+    title: "Lepsze pozycje w Google",
+    description: "Unikalne, zoptymalizowane opisy pomagają produktom być widocznym w wynikach wyszukiwania i Google Shopping."
+  },
+  {
+    icon: "✅",
+    title: "100% unikalności",
+    description: "Każdy opis piszemy od podstaw. Zero duplicate content, pełna oryginalność potwierdzona weryfikacją."
+  },
+  {
+    icon: "⚡",
+    title: "Szybka realizacja",
+    description: "Sprawnie realizujemy nawet duże zamówienia. 100 opisów w tydzień? Żaden problem."
+  },
+  {
+    icon: "🎯",
+    title: "Dopasowanie do branży",
+    description: "Rozumiemy specyfikę różnych branż – od elektroniki po modę. Opisy pisane językiem Twoich klientów."
+  },
+  {
+    icon: "💰",
+    title: "Rabaty ilościowe",
+    description: "Im więcej opisów zamawiasz, tym niższa cena jednostkowa. Atrakcyjne warunki dla hurtowych zamówień."
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Brief i wycena",
+    description: "Przesyłasz listę produktów i wymagania. Przygotowujemy wycenę i harmonogram realizacji."
+  },
+  {
+    number: "02",
+    title: "Próbne opisy",
+    description: "Przy większych zamówieniach tworzymy 1-2 próbne opisy do akceptacji stylu i formatu."
+  },
+  {
+    number: "03",
+    title: "Pisanie opisów",
+    description: "Nasi copywriterzy tworzą unikalne, zoptymalizowane opisy zgodnie z ustaleniami."
+  },
+  {
+    number: "04",
+    title: "Kontrola jakości",
+    description: "Każdy opis przechodzi weryfikację jakościową i sprawdzenie unikalności."
+  },
+  {
+    number: "05",
+    title: "Dostarczenie",
+    description: "Otrzymujesz gotowe opisy w uzgodnionym formacie (Excel, CSV, bezpośredni import)."
+  }
+];
+
+const pricingTiers = [
+  {
+    name: "Pakiet S",
+    quantity: "10-50 opisów",
+    price: "od 35 zł/szt.",
+    features: [
+      "Opisy 200-300 słów",
+      "Optymalizacja SEO",
+      "100% unikalności",
+      "Weryfikacja jakości",
+      "Format Excel/CSV"
+    ]
+  },
+  {
+    name: "Pakiet M",
+    quantity: "51-200 opisów",
+    price: "od 30 zł/szt.",
+    features: [
+      "Wszystko z pakietu S",
+      "Próbne opisy gratis",
+      "Priorytetowa realizacja",
+      "Dedykowany copywriter",
+      "Rabat 15%"
+    ],
+    highlighted: true
+  },
+  {
+    name: "Pakiet L",
+    quantity: "201+ opisów",
+    price: "wycena indywidualna",
+    features: [
+      "Wszystko z pakietu M",
+      "Największe rabaty",
+      "Elastyczny harmonogram",
+      "Account manager",
+      "Import do platformy"
+    ]
+  }
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="opisy produktów, pisanie opisów produktów, opisy produktów do sklepu, opisy produktów e-commerce, opisy produktów SEO, unikalne opisy produktów, copywriting e-commerce"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Opisy produktów</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">Opisy, które sprzedają</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Opisy produktów</strong> do sklepu internetowego
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Profesjonalne <strong>pisanie opisów produktów</strong> dla e-commerce. Unikalne, zoptymalizowane 
+          pod SEO treści, które zwiększają konwersję i pomagają sprzedawać. Ponad 10&nbsp;000 napisanych 
+          opisów, 150+ obsłużonych sklepów.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów opisy produktów
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#cennik" class="btn btn--secondary btn--lg">
+            Zobacz cennik
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>10 000+ opisów</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>100% unikalności</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>+35% konwersji</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is Section -->
+  <section class="section what-is" id="o-usludze">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="O usłudze"
+            title="Dlaczego <span class='accent'>opisy produktów</span> są tak ważne?"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              W e-commerce klient nie może dotknąć produktu, przymierzyć go ani zobaczyć na żywo. 
+              <strong>Opis produktu</strong> to Twój sprzedawca – musi przekonać, odpowiedzieć na pytania 
+              i rozwiać wątpliwości. Dobry opis to różnica między porzuconym koszykiem a finalizacją zakupu.
+            </p>
+            <p>
+              <strong>Profesjonalne opisy produktów</strong> nie tylko informują – sprzedają. Używają języka 
+              korzyści, odpowiadają na potrzeby klienta i budują zaufanie do marki. Jednocześnie są 
+              zoptymalizowane pod SEO, pomagając produktom być widocznym w Google i Google Shopping.
+            </p>
+            <p>
+              Napisaliśmy ponad 10&nbsp;000 <strong>opisów produktów</strong> dla sklepów z różnych branż. 
+              Wiemy, jak pisać, żeby klient dodał produkt do koszyka. Średni wzrost konwersji u naszych 
+              klientów to 35%.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">🛒</div>
+            <h3>Opis = Twój sprzedawca 24/7</h3>
+            <p>Dobry opis produktu pracuje na Ciebie przez całą dobę, przekonując klientów do zakupu.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">+35%</span>
+            <span class="what-is__highlight-text">średni wzrost konwersji po wdrożeniu naszych opisów</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description Types Section -->
+  <section class="section desc-types" id="rodzaje-opisow">
+    <div class="container">
+      <SectionHeading
+        label="Rodzaje opisów"
+        title="Jakie <span class='accent'>opisy produktów</span> piszemy?"
+        subtitle="Od krótkich notek po rozbudowane opisy premium"
+        align="center"
+      />
+      <div class="desc-types__grid">
+        {descriptionTypes.map((type, index) => (
+          <article class="desc-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="desc-card__icon">{type.icon}</span>
+            <h3 class="desc-card__title">{type.title}</h3>
+            <p class="desc-card__description">{type.description}</p>
+            <div class="desc-card__price">{type.price}</div>
+            <ul class="desc-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="section industries" id="branze">
+    <div class="container">
+      <SectionHeading
+        label="Branże"
+        title="<span class='accent'>Opisy produktów</span> dla każdej branży"
+        subtitle="Rozumiemy specyfikę różnych kategorii e-commerce"
+        align="center"
+      />
+      <div class="industries__grid">
+        {industries.map((industry, index) => (
+          <div class="industry-card animate-fade-in" style={`animation-delay: ${index * 0.05}s`}>
+            <span class="industry-card__icon">{industry.icon}</span>
+            <span class="industry-card__name">{industry.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms Section -->
+  <section class="section platforms" id="platformy">
+    <div class="platforms__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Platformy"
+        title="Piszemy dla <span class='accent'>wszystkich platform</span> e-commerce"
+        subtitle="Format opisów dopasowany do wymagań Twojego sklepu"
+        align="center"
+      />
+      <div class="platforms__grid">
+        {platforms.map((platform, index) => (
+          <div class="platform-tag animate-fade-in" style={`animation-delay: ${index * 0.05}s`}>
+            {platform}
+          </div>
+        ))}
+      </div>
+      <p class="platforms__note">
+        Nie widzisz swojej platformy? Piszemy dla każdego systemu e-commerce. 
+        <a href="/kontakt">Skontaktuj się z nami</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section pricing" id="cennik">
+    <div class="container">
+      <SectionHeading
+        label="Cennik"
+        title="Ile kosztują <span class='accent'>opisy produktów</span>?"
+        subtitle="Transparentne ceny z rabatami ilościowymi"
+        align="center"
+      />
+      <div class="pricing__grid">
+        {pricingTiers.map((tier, index) => (
+          <div class={`pricing-card animate-fade-in ${tier.highlighted ? 'pricing-card--highlighted' : ''}`} style={`animation-delay: ${index * 0.1}s`}>
+            {tier.highlighted && <span class="pricing-card__badge">Najpopularniejszy</span>}
+            <h3 class="pricing-card__name">{tier.name}</h3>
+            <p class="pricing-card__quantity">{tier.quantity}</p>
+            <div class="pricing-card__price">{tier.price}</div>
+            <ul class="pricing-card__features">
+              {tier.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href="/kontakt" class="pricing-card__btn">Zapytaj o wycenę</a>
+          </div>
+        ))}
+      </div>
+      <p class="pricing__note">
+        Ceny netto. Dokładna wycena po analizie specyfikacji produktów. 
+        <a href="/kontakt">Wyślij listę produktów</a> do bezpłatnej wyceny.
+      </p>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="korzysci">
+    <div class="container">
+      <SectionHeading
+        label="Korzyści"
+        title="Dlaczego warto zlecić nam <span class='accent'>opisy produktów</span>?"
+        subtitle="Więcej niż tekst – opisy, które sprzedają"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="process__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Jak działamy"
+        title="Proces <span class='accent'>tworzenia opisów</span>"
+        subtitle="Od briefu do gotowych opisów w 5 krokach"
+        align="center"
+      />
+      <div class="process__steps">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="process-step__number">{step.number}</span>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Zamów opisy produktów
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszych <span class='accent'>opisach produktów</span>?"
+        subtitle="Ponad 150 obsłużonych sklepów internetowych"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Pytania o <span class='accent'>opisy produktów</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Ile kosztuje opis produktu?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Cena <strong>opisu produktu</strong> zależy od długości i złożoności. Krótki opis (100-150 słów) 
+              to koszt od 25-40 zł, standardowy opis (200-300 słów) od 40-70 zł, a rozbudowany opis premium 
+              (400+ słów) od 80-150 zł. Przy większych zamówieniach oferujemy rabaty ilościowe.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długo trwa napisanie opisów produktów?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Czas realizacji zależy od ilości produktów. 10-20 <strong>opisów produktów</strong> to 3-5 dni 
+              roboczych. 50-100 opisów to 1-2 tygodnie. Większe projekty (500+ opisów) realizujemy według 
+              ustalonego harmonogramu. Pilne zlecenia możemy przyspieszyć.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy opisy produktów są unikalne?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, każdy <strong>opis produktu</strong> piszemy od podstaw. Gwarantujemy 100% unikalności – 
+              wszystkie opisy przechodzą weryfikację antyplagiatową. Unikalne opisy są niezbędne dla SEO 
+              i unikania duplicate content.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy opisy są zoptymalizowane pod SEO?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, wszystkie <strong>opisy produktów</strong> są domyślnie zoptymalizowane pod wyszukiwarki. 
+              Naturalne rozmieszczenie słów kluczowych, właściwa struktura, meta opisy. Pomagamy produktom 
+              być widocznym w Google.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Dla jakich platform e-commerce piszecie opisy?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Piszemy <strong>opisy produktów</strong> dla wszystkich platform: WooCommerce, PrestaShop, 
+              Magento, Shopify, IdoSell, Shoper, Sky-Shop, BaseLinker i innych. Dostosowujemy format 
+              do wymagań konkretnej platformy.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy potrzebuję dostarczyć zdjęcia produktów?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Zdjęcia są pomocne, ale nie niezbędne. Potrzebujemy specyfikacji technicznej produktów, 
+              linków do strony producenta lub podobnych produktów. Im więcej informacji dostarczysz, 
+              tym lepszy <strong>opis produktu</strong> napiszemy.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy piszecie opisy w językach obcych?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, oferujemy <strong>opisy produktów</strong> w języku angielskim i niemieckim. Tłumaczymy 
+              również istniejące opisy polskie na języki obce. Dla innych języków współpracujemy 
+              z native speakerami.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy mogę zamówić próbny opis?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak! Przy większych zamówieniach oferujemy wykonanie 1-2 próbnych opisów, abyś mógł 
+              ocenić styl i jakość przed zleceniem całości. To pozwala dopracować ton i format 
+              <strong>opisów produktów</strong>.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="opisy-produktow-info">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Opisy produktów – klucz do sukcesu w e-commerce</h2>
+        
+        <p>
+          <strong>Opisy produktów</strong> to jeden z najważniejszych elementów każdego sklepu internetowego. 
+          W świecie e-commerce, gdzie klient nie może dotknąć ani przymierzyć produktu, to właśnie opis 
+          musi przekonać go do zakupu. Profesjonalnie napisane opisy produktów zwiększają konwersję, 
+          budują zaufanie i pomagają wyróżnić się na tle konkurencji.
+        </p>
+        
+        <p>
+          Od ponad 15 lat specjalizujemy się w <strong>pisaniu opisów produktów</strong> dla sklepów 
+          internetowych. Napisaliśmy ponad 10&nbsp;000 opisów dla 150+ sklepów z różnych branż. Wiemy, 
+          jak tworzyć treści, które nie tylko informują, ale przede wszystkim sprzedają.
+        </p>
+
+        <h3>Dlaczego profesjonalne opisy produktów są tak ważne?</h3>
+        
+        <p>
+          Badania pokazują, że 87% konsumentów uważa <strong>opis produktu</strong> za kluczowy czynnik 
+          przy podejmowaniu decyzji zakupowej. Dobry opis odpowiada na pytania klienta, rozwiewa 
+          wątpliwości i pokazuje korzyści z zakupu. To Twój sprzedawca pracujący 24/7.
+        </p>
+        
+        <p>
+          <strong>Unikalne opisy produktów</strong> są również niezbędne dla SEO. Google karze za duplicate 
+          content – kopiowanie opisów od producenta lub konkurencji szkodzi pozycjom w wyszukiwarce. 
+          Oryginalne treści pomagają produktom być widocznym w Google i Google Shopping.
+        </p>
+
+        <h3>Opisy produktów a konwersja</h3>
+        
+        <p>
+          Nasze <strong>opisy produktów</strong> zwiększają konwersję średnio o 35%. Jak to osiągamy? 
+          Używamy języka korzyści – zamiast suchych parametrów pokazujemy, jak produkt poprawi życie 
+          klienta. Odpowiadamy na potencjalne obiekcje i budujemy zaufanie.
+        </p>
+        
+        <p>
+          Każdy opis jest dostosowany do grupy docelowej. Inaczej piszemy <strong>opisy produktów</strong> 
+          dla elektroniki (parametry techniczne, kompatybilność), inaczej dla mody (styl, emocje, okazje). 
+          Rozumiemy specyfikę różnych branż i potrafimy mówić językiem Twoich klientów.
+        </p>
+
+        <h3>Opisy produktów dla każdej platformy</h3>
+        
+        <p>
+          Piszemy <strong>opisy produktów</strong> dla wszystkich platform e-commerce: WooCommerce, 
+          PrestaShop, Magento, Shopify, IdoSell, Shoper, Sky-Shop, BaseLinker. Dostosowujemy format 
+          i strukturę do wymagań konkretnego systemu.
+        </p>
+        
+        <p>
+          Współpracujemy również ze sprzedawcami na marketplace'ach: Allegro, Amazon, eBay, 
+          Empik Marketplace. <strong>Opisy produktów</strong> na tych platformach mają swoją specyfikę – 
+          znamy ją i potrafimy wykorzystać.
+        </p>
+
+        <h3>Jak zamawiać opisy produktów?</h3>
+        
+        <p>
+          Zamówienie <strong>opisów produktów</strong> jest proste. Wyślij nam listę produktów 
+          ze specyfikacją (linki do producenta, zdjęcia, parametry). Przygotujemy wycenę i harmonogram. 
+          Przy większych zamówieniach wykonujemy próbne opisy do akceptacji stylu.
+        </p>
+        
+        <p>
+          Oferujemy atrakcyjne rabaty ilościowe – im więcej opisów zamawiasz, tym niższa cena jednostkowa. 
+          Dla stałych klientów mamy specjalne warunki współpracy. Sprawdź nasz <a href="/cennik">cennik</a> 
+          lub <a href="/kontakt">skontaktuj się</a> po indywidualną wycenę.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Zamów opisy produktów</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* Description Types Section */
+  .desc-types {
+    background: var(--color-bg-secondary);
+  }
+  
+  .desc-types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .desc-types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .desc-types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .desc-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .desc-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .desc-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .desc-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .desc-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .desc-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .desc-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .desc-card__price {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+  
+  .desc-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .desc-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .desc-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  /* Industries Section */
+  .industries {
+    background: var(--color-bg-primary);
+  }
+  
+  .industries__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+  }
+  
+  @media (min-width: 768px) {
+    .industries__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .industries__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .industry-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+  }
+  
+  .industry-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  .industry-card__icon {
+    font-size: 1.5rem;
+  }
+  
+  .industry-card__name {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  /* Platforms Section */
+  .platforms {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+  
+  .platforms__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .platforms .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .platforms :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .platforms :global(.section-heading__title),
+  .platforms :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .platforms :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .platforms__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-top: var(--space-10);
+  }
+  
+  .platform-tag {
+    padding: var(--space-3) var(--space-5);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: white;
+    transition: all 0.2s ease;
+  }
+  
+  .platform-tag:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  .platforms__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .platforms__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Pricing Section */
+  .pricing {
+    background: var(--color-bg-secondary);
+  }
+  
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .pricing__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .pricing-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .pricing-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .pricing-card--highlighted {
+    border-color: var(--color-accent);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .pricing-card--highlighted:hover {
+    transform: scale(1.05) translateY(-4px);
+  }
+  
+  .pricing-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .pricing-card__name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .pricing-card__quantity {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+  
+  .pricing-card__price {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-6);
+  }
+  
+  .pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+    text-align: left;
+  }
+  
+  .pricing-card__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .pricing-card__features li:last-child {
+    border-bottom: none;
+  }
+  
+  .pricing-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .pricing-card__btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    transition: all 0.2s ease;
+  }
+  
+  .pricing-card__btn:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+  
+  .pricing__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: var(--color-text-secondary);
+  }
+  
+  .pricing__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-primary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Process Section */
+  .process {
+    position: relative;
+    background: var(--color-bg-secondary);
+  }
+  
+  .process__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(18, 25, 58, 0.03) 0%, transparent 40%);
+  }
+  
+  .process .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  @media (min-width: 768px) {
+    .process__steps {
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-4);
+    }
+  }
+  
+  .process-step {
+    text-align: center;
+  }
+  
+  .process-step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .process-step__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-primary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-secondary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-primary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>

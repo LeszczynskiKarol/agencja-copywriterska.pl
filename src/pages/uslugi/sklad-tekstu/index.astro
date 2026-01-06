@@ -1,0 +1,1812 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Skład Tekstu LaTeX - Profesjonalny Skład DTP Publikacji | Agencja Copywriterska";
+const pageDescription = "Profesjonalny skład tekstu LaTeX ✓ Skład DTP publikacji ✓ Podręczniki i zeszyty ćwiczeń ✓ Prace naukowe ✓ Print-ready PDF ✓ 1500+ złożonych stron. Zamów skład tekstu!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Skład tekstu",
+      "item": "https://agencja-copywriterska.pl/uslugi/sklad-tekstu"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Skład tekstu LaTeX",
+  "name": "Profesjonalny Skład Tekstu LaTeX i DTP",
+  "description": "Profesjonalny skład tekstu w systemie LaTeX: podręczniki, zeszyty ćwiczeń, prace naukowe, publikacje książkowe, materiały edukacyjne. Print-ready PDF gotowy do druku.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi składu tekstu",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Skład podręczników"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Skład zeszytów ćwiczeń"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Skład prac naukowych"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Skład publikacji książkowych"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje skład tekstu w LaTeX?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ceny składu tekstu zależą od objętości i złożoności publikacji. Prosty skład to koszt od 15-25 zł za stronę, skład z grafikami i tabelami od 25-40 zł za stronę, a skład matematyczny/naukowy od 35-60 zł za stronę. Każdy projekt wyceniamy indywidualnie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Dlaczego LaTeX, a nie Word czy InDesign?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LaTeX to profesjonalny system składu używany przez wydawnictwa naukowe na całym świecie. Gwarantuje idealną typografię, precyzyjne formatowanie wzorów matematycznych, automatyczne numerowanie i spisy treści. Publikacje wyglądają profesjonalnie i są gotowe do druku."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa skład publikacji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Czas realizacji zależy od objętości i złożoności. Broszura 20-30 stron to 3-5 dni roboczych. Podręcznik 100-200 stron to 2-4 tygodnie. Kompleksowa publikacja 300+ stron może zająć 4-8 tygodni. Harmonogram ustalamy indywidualnie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jakie publikacje składacie w LaTeX?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Składamy wszystkie rodzaje publikacji: podręczniki i skrypty akademickie, zeszyty ćwiczeń, prace naukowe i dyplomowe, książki i monografie, raporty i whitepapers, materiały szkoleniowe, katalogi i broszury, a także publikacje z dużą ilością wzorów matematycznych."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakim formacie dostarczacie gotową publikację?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowo dostarczamy pliki PDF w jakości print-ready (do druku) oraz web-optimized (do dystrybucji online). Na życzenie udostępniamy również pliki źródłowe LaTeX. Pliki są gotowe do przekazania do drukarni."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy możecie złożyć publikację z dużą ilością wzorów matematycznych?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, to nasza specjalność! LaTeX został stworzony właśnie do składu publikacji matematycznych i naukowych. Składamy podręczniki matematyki, fizyki, chemii i innych nauk ścisłych z dowolną ilością wzorów, równań i symboli."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy zajmujecie się też korektą i redakcją?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, oferujemy kompleksową obsługę: skład tekstu, redakcję językową, korektę oraz projekt graficzny okładki. Możesz zamówić sam skład lub pełen pakiet usług wydawniczych."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy współpracujecie z wydawnictwami?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, współpracujemy z wydawnictwami, uczelniami i firmami szkoleniowymi. Realizujemy zarówno pojedyncze projekty, jak i stałą współpracę przy seriach wydawniczych. Mamy doświadczenie w pracy z wymaganiami różnych wydawnictw."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "1500", suffix: "+", label: "stron złożonych w LaTeX" },
+  { value: "50", suffix: "+", label: "publikacji" },
+  { value: "11", suffix: "", label: "wydanych książek" },
+  { value: "15", suffix: "+", label: "lat doświadczenia" }
+];
+
+const testimonials = [
+  {
+    quote: "Skład naszego podręcznika akademickiego był wyzwaniem – setki wzorów matematycznych, tabele, wykresy. Efekt przeszedł oczekiwania. Publikacja wygląda jak z renomowanego wydawnictwa naukowego.",
+    author: "dr hab. Marek Kowalski",
+    role: "Profesor",
+    company: "Politechnika Warszawska",
+    rating: 5
+  },
+  {
+    quote: "Współpracujemy przy serii zeszytów ćwiczeń do matematyki. Skład LaTeX jest perfekcyjny, terminy dotrzymane, a współpraca bezproblemowa. Polecam każdemu wydawnictwu edukacyjnemu.",
+    author: "Anna Nowicka",
+    role: "Redaktor naczelny",
+    company: "Wydawnictwo Edukacyjne",
+    rating: 5
+  },
+  {
+    quote: "Moja praca doktorska wymagała profesjonalnego składu z wieloma wzorami i diagramami. Efekt jest doskonały – promotor i recenzenci byli pod wrażeniem jakości publikacji.",
+    author: "dr Tomasz Wiśniewski",
+    role: "Adiunkt",
+    company: "Uniwersytet Jagielloński",
+    rating: 5
+  }
+];
+
+const publicationTypes = [
+  {
+    title: "Podręczniki akademickie",
+    description: "Profesjonalny skład podręczników i skryptów dla uczelni wyższych. Idealna typografia, precyzyjne wzory, czytelne tabele i diagramy.",
+    features: ["Wzory matematyczne", "Tabele i wykresy", "Spisy treści", "Indeksy"],
+    icon: "📚",
+    complexity: "Średnia - wysoka"
+  },
+  {
+    title: "Zeszyty ćwiczeń",
+    description: "Materiały edukacyjne z polami do wypełnienia, zadaniami i ćwiczeniami. Idealne uzupełnienie podręczników i kursów.",
+    features: ["Pola do wypełnienia", "Zadania i ćwiczenia", "Miejsce na notatki", "Numeracja"],
+    icon: "✏️",
+    complexity: "Średnia"
+  },
+  {
+    title: "Prace naukowe",
+    description: "Skład prac dyplomowych, doktorskich, habilitacyjnych i artykułów naukowych. Zgodność ze standardami akademickimi.",
+    features: ["Format naukowy", "Bibliografia", "Przypisy", "Wzory i symbole"],
+    icon: "🎓",
+    complexity: "Wysoka"
+  },
+  {
+    title: "Publikacje książkowe",
+    description: "Książki, monografie i publikacje autorskie. Profesjonalny skład gotowy do druku i dystrybucji.",
+    features: ["Projekt makiety", "Okładka", "Spis treści", "Print-ready PDF"],
+    icon: "📖",
+    complexity: "Średnia - wysoka"
+  },
+  {
+    title: "Materiały szkoleniowe",
+    description: "Podręczniki firmowe, materiały kursowe i dokumentacja szkoleniowa. Spójny layout i profesjonalny wygląd.",
+    features: ["Branding firmowy", "Moduły i rozdziały", "Ćwiczenia", "Certyfikaty"],
+    icon: "📋",
+    complexity: "Niska - średnia"
+  },
+  {
+    title: "Raporty i whitepapers",
+    description: "Profesjonalne raporty branżowe, analizy i whitepapers. Czytelna prezentacja danych i wykresów.",
+    features: ["Wykresy i dane", "Infografiki", "Executive summary", "Format PDF"],
+    icon: "📊",
+    complexity: "Niska - średnia"
+  }
+];
+
+const latexAdvantages = [
+  {
+    title: "Perfekcyjna typografia",
+    description: "LaTeX automatycznie dba o właściwe odstępy, łamanie wierszy, justowanie i przenoszenie wyrazów. Tekst wygląda profesjonalnie bez ręcznej ingerencji.",
+    icon: "✨"
+  },
+  {
+    title: "Wzory matematyczne",
+    description: "Najlepszy system do składu wzorów matematycznych na świecie. Równania, symbole, macierze – wszystko wygląda idealnie.",
+    icon: "∑"
+  },
+  {
+    title: "Automatyzacja",
+    description: "Automatyczne numerowanie rozdziałów, rysunków, tabel. Dynamiczne spisy treści, bibliografie i indeksy aktualizują się same.",
+    icon: "⚙️"
+  },
+  {
+    title: "Spójność dokumentu",
+    description: "Jednolity styl w całej publikacji. Czcionki, marginesy, nagłówki – wszystko jest spójne od pierwszej do ostatniej strony.",
+    icon: "📐"
+  },
+  {
+    title: "Print-ready PDF",
+    description: "Pliki wyjściowe w jakości drukarskiej. Właściwe profile kolorów, spady, znaczniki cięcia – gotowe do profesjonalnego druku.",
+    icon: "🖨️"
+  },
+  {
+    title: "Wersjonowanie",
+    description: "Łatwe zarządzanie wersjami i wprowadzanie poprawek. Historia zmian i możliwość powrotu do poprzednich wersji.",
+    icon: "📁"
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Analiza materiałów",
+    description: "Otrzymujemy Twoje materiały źródłowe i analizujemy zakres prac. Omawiamy oczekiwania dotyczące layoutu i formatowania."
+  },
+  {
+    number: "02",
+    title: "Wycena i harmonogram",
+    description: "Przygotowujemy szczegółową wycenę i harmonogram realizacji. Ustalamy etapy pracy i terminy."
+  },
+  {
+    number: "03",
+    title: "Projekt makiety",
+    description: "Tworzymy projekt layoutu publikacji – układ stron, czcionki, style nagłówków. Przedstawiamy do akceptacji."
+  },
+  {
+    number: "04",
+    title: "Skład tekstu",
+    description: "Profesjonalny skład całości publikacji w LaTeX. Formatowanie tekstu, wzorów, tabel i grafik."
+  },
+  {
+    number: "05",
+    title: "Korekta składu",
+    description: "Weryfikacja poprawności składu, sprawdzenie łamania stron, numeracji i spisów. Poprawki techniczne."
+  },
+  {
+    number: "06",
+    title: "Finalizacja",
+    description: "Dostarczenie gotowych plików PDF (print-ready i web). Ewentualne poprawki i archiwizacja projektu."
+  }
+];
+
+const pricingTiers = [
+  {
+    name: "Skład prosty",
+    description: "Tekst ciągły, podstawowe formatowanie",
+    price: "15-25 zł/strona",
+    features: [
+      "Tekst ciągły",
+      "Podstawowe nagłówki",
+      "Proste tabele",
+      "Spis treści",
+      "PDF print-ready"
+    ],
+    examples: "Broszury, proste podręczniki, raporty tekstowe"
+  },
+  {
+    name: "Skład standardowy",
+    description: "Tekst z grafikami, tabelami, formatowaniem",
+    price: "25-40 zł/strona",
+    features: [
+      "Wszystko z pakietu prostego",
+      "Złożone tabele",
+      "Grafiki i wykresy",
+      "Przypisy i bibliografia",
+      "Indeks rzeczowy"
+    ],
+    examples: "Podręczniki, materiały szkoleniowe, publikacje firmowe"
+  },
+  {
+    name: "Skład naukowy",
+    description: "Publikacje z wzorami, symbolami, diagramami",
+    price: "35-60 zł/strona",
+    features: [
+      "Wszystko z pakietu standardowego",
+      "Wzory matematyczne",
+      "Symbole specjalne",
+      "Diagramy i schematy",
+      "Format akademicki"
+    ],
+    examples: "Prace naukowe, podręczniki matematyki, publikacje techniczne"
+  }
+];
+
+const benefits = [
+  {
+    icon: "📐",
+    title: "Profesjonalny skład LaTeX",
+    description: "System używany przez wydawnictwa naukowe na całym świecie. Gwarancja perfekcyjnej typografii i jakości druku."
+  },
+  {
+    icon: "🎯",
+    title: "1500+ złożonych stron",
+    description: "Bogate doświadczenie w składzie różnorodnych publikacji – od broszur po wielotomowe podręczniki akademickie."
+  },
+  {
+    icon: "∑",
+    title: "Specjalizacja w naukach ścisłych",
+    description: "Składamy publikacje matematyczne, fizyczne, chemiczne i techniczne z dowolną ilością wzorów i symboli."
+  },
+  {
+    icon: "🖨️",
+    title: "Print-ready PDF",
+    description: "Pliki gotowe do przekazania do drukarni. Właściwe profile kolorów, spady, znaczniki cięcia."
+  },
+  {
+    icon: "⏱️",
+    title: "Terminowa realizacja",
+    description: "Ustalamy harmonogram i go dotrzymujemy. Wiesz dokładnie, kiedy otrzymasz gotową publikację."
+  },
+  {
+    icon: "🔄",
+    title: "Poprawki w cenie",
+    description: "Wprowadzamy poprawki do momentu Twojej pełnej satysfakcji. Korekta składu w ramach projektu."
+  }
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="skład tekstu, skład LaTeX, skład DTP, skład publikacji, skład podręczników, skład książek, skład prac naukowych, profesjonalny skład, typografia"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Skład tekstu</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">Profesjonalny skład w LaTeX</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Skład tekstu LaTeX</strong> – publikacje jak z&nbsp;wydawnictwa
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Profesjonalny <strong>skład tekstu</strong> w systemie LaTeX – podręczniki, zeszyty ćwiczeń, 
+          prace naukowe, publikacje książkowe. Perfekcyjna typografia, precyzyjne wzory matematyczne, 
+          print-ready PDF gotowy do druku.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów skład publikacji
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#cennik" class="btn btn--secondary btn--lg">
+            Zobacz cennik
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>1500+ stron złożonych</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Wzory matematyczne</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Print-ready PDF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is LaTeX Section -->
+  <section class="section what-is" id="o-usludze">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="O usłudze"
+            title="Czym jest <span class='accent'>skład tekstu LaTeX</span>?"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              <strong>LaTeX</strong> to profesjonalny system składu tekstu używany przez wydawnictwa 
+              naukowe, uczelnie i redakcje na całym świecie. W odróżnieniu od Worda czy InDesigna, 
+              LaTeX automatycznie dba o perfekcyjną typografię – właściwe odstępy, łamanie wierszy, 
+              przenoszenie wyrazów i rozmieszczenie elementów na stronie.
+            </p>
+            <p>
+              <strong>Skład tekstu w LaTeX</strong> jest szczególnie ceniony przy publikacjach 
+              zawierających wzory matematyczne, symbole specjalne i złożone tabele. Równania i formuły 
+              wyglądają profesjonalnie, a całość dokumentu zachowuje spójny, elegancki wygląd.
+            </p>
+            <p>
+              Oferujemy profesjonalny <strong>skład DTP</strong> w LaTeX dla wydawnictw, uczelni, 
+              firm szkoleniowych i autorów indywidualnych. Od prostych broszur po wielotomowe 
+              podręczniki akademickie – każda publikacja wychodzi od nas w jakości print-ready.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">📐</div>
+            <h3>LaTeX = jakość wydawnicza</h3>
+            <p>System używany przez Nature, IEEE, Springer i najlepsze wydawnictwa naukowe świata.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">1500+</span>
+            <span class="what-is__highlight-text">stron profesjonalnie złożonych w LaTeX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LaTeX Advantages Section -->
+  <section class="section advantages" id="zalety-latex">
+    <div class="container">
+      <SectionHeading
+        label="Dlaczego LaTeX"
+        title="Zalety <span class='accent'>składu w LaTeX</span>"
+        subtitle="Profesjonalna typografia, automatyzacja i jakość wydawnicza"
+        align="center"
+      />
+      <div class="advantages__grid">
+        {latexAdvantages.map((advantage, index) => (
+          <div class="advantage-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="advantage-card__icon">{advantage.icon}</span>
+            <h3 class="advantage-card__title">{advantage.title}</h3>
+            <p class="advantage-card__description">{advantage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Publication Types Section -->
+  <section class="section pub-types" id="rodzaje-publikacji">
+    <div class="container">
+      <SectionHeading
+        label="Co składamy"
+        title="Rodzaje <span class='accent'>publikacji</span> do składu"
+        subtitle="Od podręczników akademickich po raporty biznesowe"
+        align="center"
+      />
+      <div class="pub-types__grid">
+        {publicationTypes.map((type, index) => (
+          <article class="pub-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="pub-card__icon">{type.icon}</span>
+            <h3 class="pub-card__title">{type.title}</h3>
+            <p class="pub-card__description">{type.description}</p>
+            <div class="pub-card__complexity">
+              <span>Złożoność:</span> {type.complexity}
+            </div>
+            <ul class="pub-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section pricing" id="cennik">
+    <div class="pricing__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Cennik"
+        title="Ile kosztuje <span class='accent'>skład tekstu</span>?"
+        subtitle="Transparentne ceny zależne od złożoności publikacji"
+        align="center"
+      />
+      <div class="pricing__grid">
+        {pricingTiers.map((tier, index) => (
+          <div class="pricing-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <h3 class="pricing-card__name">{tier.name}</h3>
+            <p class="pricing-card__description">{tier.description}</p>
+            <div class="pricing-card__price">{tier.price}</div>
+            <ul class="pricing-card__features">
+              {tier.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <p class="pricing-card__examples"><strong>Przykłady:</strong> {tier.examples}</p>
+            <a href="/kontakt" class="pricing-card__btn">Zapytaj o wycenę</a>
+          </div>
+        ))}
+      </div>
+      <p class="pricing__note">
+        Ceny orientacyjne – każdy projekt wyceniamy indywidualnie po analizie materiałów. 
+        <a href="/kontakt">Wyślij materiały</a> do bezpłatnej wyceny.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="container">
+      <SectionHeading
+        label="Jak pracujemy"
+        title="Proces <span class='accent'>składu publikacji</span>"
+        subtitle="Od materiałów źródłowych do print-ready PDF"
+        align="center"
+      />
+      <div class="process__timeline">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="process-step__marker">
+              <span class="process-step__number">{step.number}</span>
+            </div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Wyślij materiały do wyceny
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="dlaczego-my">
+    <div class="container">
+      <SectionHeading
+        label="Dlaczego my"
+        title="Dlaczego warto zlecić nam <span class='accent'>skład tekstu</span>?"
+        subtitle="Doświadczenie, specjalizacja, terminowość"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszym <span class='accent'>składzie tekstu</span>?"
+        subtitle="Zaufali nam wykładowcy, wydawnictwa i autorzy"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Pytania o <span class='accent'>skład tekstu</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Ile kosztuje skład tekstu w LaTeX?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Ceny <strong>składu tekstu</strong> zależą od objętości i złożoności publikacji. 
+              Prosty skład to koszt od 15-25 zł za stronę, skład z grafikami i tabelami od 25-40 zł 
+              za stronę, a skład matematyczny/naukowy od 35-60 zł za stronę. Każdy projekt wyceniamy 
+              indywidualnie po analizie materiałów.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Dlaczego LaTeX, a nie Word czy InDesign?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              <strong>LaTeX</strong> to profesjonalny system składu używany przez wydawnictwa naukowe 
+              na całym świecie. Gwarantuje idealną typografię, precyzyjne formatowanie wzorów 
+              matematycznych, automatyczne numerowanie i spisy treści. Publikacje wyglądają 
+              profesjonalnie i są gotowe do druku.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długo trwa skład publikacji?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Czas realizacji zależy od objętości i złożoności. Broszura 20-30 stron to 3-5 dni 
+              roboczych. Podręcznik 100-200 stron to 2-4 tygodnie. Kompleksowa publikacja 300+ stron 
+              może zająć 4-8 tygodni. Harmonogram ustalamy indywidualnie.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jakie publikacje składacie w LaTeX?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Składamy wszystkie rodzaje publikacji: podręczniki i skrypty akademickie, zeszyty 
+              ćwiczeń, prace naukowe i dyplomowe, książki i monografie, raporty i whitepapers, 
+              materiały szkoleniowe, katalogi i broszury, a także publikacje z dużą ilością 
+              wzorów matematycznych.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>W jakim formacie dostarczacie gotową publikację?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Standardowo dostarczamy pliki PDF w jakości print-ready (do druku) oraz web-optimized 
+              (do dystrybucji online). Na życzenie udostępniamy również pliki źródłowe LaTeX. 
+              Pliki są gotowe do przekazania do drukarni.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy możecie złożyć publikację z dużą ilością wzorów matematycznych?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, to nasza specjalność! <strong>LaTeX</strong> został stworzony właśnie do składu 
+              publikacji matematycznych i naukowych. Składamy podręczniki matematyki, fizyki, 
+              chemii i innych nauk ścisłych z dowolną ilością wzorów, równań i symboli.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy zajmujecie się też korektą i redakcją?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, oferujemy kompleksową obsługę: <strong>skład tekstu</strong>, redakcję językową, 
+              korektę oraz projekt graficzny okładki. Możesz zamówić sam skład lub pełen pakiet 
+              usług wydawniczych. Zobacz też nasze <a href="/uslugi/tworzenie-ebookow">tworzenie ebooków</a>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy współpracujecie z wydawnictwami?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, współpracujemy z wydawnictwami, uczelniami i firmami szkoleniowymi. Realizujemy 
+              zarówno pojedyncze projekty, jak i stałą współpracę przy seriach wydawniczych. 
+              Mamy doświadczenie w pracy z wymaganiami różnych wydawnictw.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="sklad-tekstu-profesjonalny">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Skład tekstu LaTeX – profesjonalna typografia dla Twoich publikacji</h2>
+        
+        <p>
+          <strong>Profesjonalny skład tekstu</strong> to fundament każdej udanej publikacji. 
+          Nie wystarczy napisać dobry tekst – trzeba go jeszcze odpowiednio złożyć, sformatować 
+          i przygotować do druku. W naszej agencji specjalizujemy się w składzie publikacji 
+          w systemie LaTeX – najlepszym narzędziu do profesjonalnej typografii.
+        </p>
+        
+        <p>
+          Od ponad 15 lat realizujemy projekty <strong>składu DTP</strong> dla wydawnictw, uczelni, 
+          firm szkoleniowych i autorów indywidualnych. Złożyliśmy ponad 1500 stron publikacji – 
+          od prostych broszur po wielotomowe podręczniki akademickie z setkami wzorów matematycznych.
+        </p>
+
+        <h3>Dlaczego skład tekstu w LaTeX?</h3>
+        
+        <p>
+          <strong>LaTeX</strong> to system składu stworzony na potrzeby publikacji naukowych 
+          i akademickich. Używają go najlepsze wydawnictwa świata: Springer, Elsevier, IEEE, 
+          Nature. Dlaczego? Bo gwarantuje perfekcyjną typografię bez ręcznej ingerencji.
+        </p>
+        
+        <p>
+          W Wordzie czy InDesignie musisz ręcznie dbać o każdy szczegół – odstępy, łamanie stron, 
+          przenoszenie wyrazów. LaTeX robi to automatycznie, stosując algorytmy opracowane przez 
+          najlepszych typografów. Efekt? Publikacja, która wygląda profesjonalnie od pierwszej 
+          do ostatniej strony.
+        </p>
+
+        <h3>Skład publikacji matematycznych i naukowych</h3>
+        
+        <p>
+          Szczególną specjalizacją naszego <strong>składu tekstu</strong> są publikacje zawierające 
+          wzory matematyczne, symbole specjalne i złożone tabele. LaTeX został stworzony właśnie 
+          do tego – składamy podręczniki matematyki, fizyki, chemii, informatyki i innych nauk ścisłych.
+        </p>
+        
+        <p>
+          Równania, macierze, symbole greckie, indeksy górne i dolne – wszystko wygląda idealnie. 
+          Numeracja wzorów jest automatyczna, odwołania aktualizują się same. To oszczędność czasu 
+          i gwarancja bezbłędności.
+        </p>
+
+        <h3>Jakie publikacje składamy?</h3>
+        
+        <p>
+          Nasze usługi <strong>składu DTP</strong> obejmują wszystkie rodzaje publikacji. 
+          Podręczniki i skrypty akademickie – od matematyki po historię sztuki. Zeszyty ćwiczeń 
+          z polami do wypełnienia. Prace naukowe zgodne ze standardami akademickimi.
+        </p>
+        
+        <p>
+          Składamy również materiały firmowe: podręczniki szkoleniowe, raporty, whitepapers, 
+          katalogi produktów. Każda publikacja powstaje w jakości print-ready – gotowej 
+          do przekazania do drukarni.
+        </p>
+
+        <h3>Kompleksowa obsługa wydawnicza</h3>
+        
+        <p>
+          <strong>Skład tekstu</strong> to tylko część procesu wydawniczego. Oferujemy również 
+          <a href="/uslugi/pisanie-tekstow">pisanie treści</a>, redakcję językową i merytoryczną, 
+          korektę oraz projekt graficzny okładki. Możesz zamówić sam skład lub pełen pakiet 
+          <a href="/uslugi/tworzenie-ebookow">tworzenia ebooka</a> czy publikacji.
+        </p>
+
+        <h3>Współpraca z wydawnictwami i uczelniami</h3>
+        
+        <p>
+          Współpracujemy z wydawnictwami edukacyjnymi, uczelniami wyższymi i firmami szkoleniowymi. 
+          Realizujemy zarówno pojedyncze projekty, jak i stałą współpracę przy seriach wydawniczych. 
+          Znamy wymagania różnych wydawnictw i potrafimy dostosować skład do ich standardów.
+        </p>
+
+        <h3>Zamów skład tekstu</h3>
+        
+        <p>
+          Jeśli szukasz profesjonalnego <strong>składu tekstu w LaTeX</strong>, skontaktuj się 
+          z nami. Wyślij materiały źródłowe, a przygotujemy bezpłatną wycenę i harmonogram realizacji. 
+          Z nami Twoja publikacja będzie wyglądać jak z najlepszego wydawnictwa.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Zamów skład publikacji</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* Advantages Section */
+  .advantages {
+    background: var(--color-bg-secondary);
+  }
+  
+  .advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .advantages__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .advantages__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .advantage-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .advantage-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .advantage-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3);
+    display: block;
+  }
+  
+  .advantage-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .advantage-card__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  /* Publication Types Section */
+  .pub-types {
+    background: var(--color-bg-primary);
+  }
+  
+  .pub-types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .pub-types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .pub-types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .pub-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pub-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .pub-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .pub-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .pub-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .pub-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .pub-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .pub-card__complexity {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+  }
+  
+  .pub-card__complexity span {
+    color: var(--color-text-tertiary);
+    font-weight: 400;
+  }
+  
+  .pub-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .pub-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .pub-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  /* Pricing Section */
+  .pricing {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+  
+  .pricing__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .pricing .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .pricing :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .pricing :global(.section-heading__title),
+  .pricing :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .pricing :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .pricing__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .pricing-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+  }
+  
+  .pricing-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+  
+  .pricing-card__name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-2);
+  }
+  
+  .pricing-card__description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+  
+  .pricing-card__price {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-6);
+  }
+  
+  .pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4) 0;
+  }
+  
+  .pricing-card__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.8);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .pricing-card__features li:last-child {
+    border-bottom: none;
+  }
+  
+  .pricing-card__features svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .pricing-card__examples {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: var(--space-4);
+    line-height: 1.5;
+  }
+  
+  .pricing-card__examples strong {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .pricing-card__btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    transition: all 0.2s ease;
+  }
+  
+  .pricing-card__btn:hover {
+    background: var(--color-accent-dark);
+  }
+  
+  .pricing__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .pricing__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Process Section */
+  .process {
+    background: var(--color-bg-secondary);
+  }
+  
+  .process__timeline {
+    max-width: 700px;
+    margin: var(--space-12) auto 0;
+    position: relative;
+  }
+  
+  .process__timeline::before {
+    content: "";
+    position: absolute;
+    left: 29px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+  
+  @media (min-width: 768px) {
+    .process__timeline::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .process-step {
+    position: relative;
+    display: flex;
+    gap: var(--space-6);
+    padding-bottom: var(--space-8);
+  }
+  
+  @media (min-width: 768px) {
+    .process-step {
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .process-step__marker {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process-step__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+  }
+  
+  .process-step__content {
+    flex: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .process-step__content {
+      max-width: 400px;
+    }
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .process-step__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-8);
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-primary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-secondary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-primary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-secondary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>

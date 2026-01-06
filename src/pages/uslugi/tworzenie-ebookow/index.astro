@@ -1,0 +1,1975 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Tworzenie Ebooków - Pisanie, Skład, Redakcja i Publikacja | Agencja Copywriterska";
+const pageDescription = "Tworzenie ebooków od A do Z ✓ Pisanie e-booków ✓ Profesjonalny skład LaTeX ✓ Redakcja i korekta ✓ Współpraca z wydawnictwami ✓ Gotowy materiał do publikacji. Zamów ebooka!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Tworzenie ebooków",
+      "item": "https://agencja-copywriterska.pl/uslugi/tworzenie-ebookow"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Tworzenie ebooków",
+  "name": "Kompleksowe Tworzenie Ebooków - Pisanie, Skład, Redakcja, Publikacja",
+  "description": "Profesjonalne tworzenie ebooków od A do Z: pisanie treści, skład w LaTeX, redakcja językowa i merytoryczna, korekta, przygotowanie do publikacji, współpraca z wydawnictwami.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi tworzenia ebooków",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Pisanie ebooków"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Skład ebooków LaTeX"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Redakcja i korekta ebooków"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Publikacja ebooków"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje stworzenie ebooka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Koszt tworzenia ebooka zależy od objętości, tematyki i zakresu usług. Krótkie ebooki (20-30 stron) zaczynają się od 2000 zł, średnie (50-80 stron) od 4000 zł, a kompleksowe publikacje (100+ stron) wyceniamy indywidualnie. Cena obejmuje pisanie, skład, redakcję i korektę."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa stworzenie ebooka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Czas realizacji zależy od objętości i złożoności projektu. Krótki ebook (20-30 stron) to około 2-3 tygodnie. Średni ebook (50-80 stron) to 4-6 tygodni. Kompleksowa publikacja (100+ stron) może zająć 2-3 miesiące. Zawsze ustalamy harmonogram indywidualnie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co obejmuje usługa tworzenia ebooka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nasza usługa obejmuje pełen proces: research i planowanie struktury, pisanie treści, profesjonalny skład w LaTeX lub InDesign, redakcję językową i merytoryczną, korektę, projekt graficzny okładki oraz przygotowanie plików do publikacji (PDF, EPUB, MOBI)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy pomagacie w publikacji ebooka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak! Współpracujemy z wydawnictwami i platformami publikacyjnymi. Możemy pomóc w publikacji na Amazon Kindle, Google Play Books, Legimi, Empik Go i innych platformach. Dostarczamy pliki w formatach wymaganych przez konkretne serwisy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zamówić tylko część usługi, np. sam skład?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oczywiście! Oferujemy zarówno kompleksową realizację, jak i pojedyncze usługi: samo pisanie, sam skład LaTeX, samą redakcję lub korektę. Dopasowujemy zakres prac do Twoich potrzeb i budżetu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich formatach dostarczacie gotowego ebooka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowo dostarczamy ebooka w formacie PDF (print-ready i web-optimized). Na życzenie przygotowujemy również formaty EPUB i MOBI do czytników e-booków. Pliki są gotowe do publikacji i dystrybucji."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy tworzycie ebooki na tematy specjalistyczne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, mamy doświadczenie w tworzeniu ebooków z wielu branż: biznes, marketing, IT, finanse, prawo, medycyna, edukacja i wiele innych. Przeprowadzamy dokładny research i w razie potrzeby konsultujemy treści z ekspertami."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę dostarczyć własne materiały do ebooka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak! Możesz dostarczyć własne materiały źródłowe, notatki, prezentacje lub nawet surowy tekst. My zajmiemy się ich opracowaniem, rozwinięciem, składem i redakcją. To świetna opcja dla ekspertów, którzy mają wiedzę, ale brakuje im czasu na pisanie."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "50", suffix: "+", label: "stworzonych ebooków" },
+  { value: "1500", suffix: "+", label: "stron złożonych w LaTeX" },
+  { value: "11", suffix: "", label: "wydanych publikacji" },
+  { value: "15", suffix: "+", label: "lat doświadczenia" }
+];
+
+const testimonials = [
+  {
+    quote: "Zamówiłem ebooka jako lead magnet do mojego kursu online. Efekt przeszedł oczekiwania – profesjonalna treść, piękny skład, gotowy PDF w 3 tygodnie. Ebook przyciągnął setki nowych leadów!",
+    author: "Paweł Górski",
+    role: "Twórca kursów online",
+    company: "Digital Academy",
+    rating: 5
+  },
+  {
+    quote: "Współpracowaliśmy przy tworzeniu podręcznika firmowego. Kompleksowa obsługa od A do Z – pisanie, skład w LaTeX, redakcja, korekta. Publikacja wygląda jak z profesjonalnego wydawnictwa.",
+    author: "Katarzyna Malinowska",
+    role: "HR Director",
+    company: "TechCorp Polska",
+    rating: 5
+  },
+  {
+    quote: "Mój ebook biznesowy został wydany na Amazonie dzięki wsparciu tej agencji. Od pomysłu do publikacji – wszystko załatwione. Profesjonalizm na najwyższym poziomie.",
+    author: "Andrzej Wiśniewski",
+    role: "Konsultant biznesowy",
+    company: "Business Growth Lab",
+    rating: 5
+  }
+];
+
+const ebookTypes = [
+  {
+    title: "Lead magnety",
+    description: "Krótkie, wartościowe ebooki przyciągające potencjalnych klientów. Idealne do budowania listy mailingowej i generowania leadów.",
+    features: ["20-40 stron", "Szybka realizacja", "Optymalizacja pod konwersję", "Projekt okładki"],
+    icon: "🧲",
+    timeline: "2-3 tygodnie"
+  },
+  {
+    title: "Poradniki i przewodniki",
+    description: "Kompleksowe materiały edukacyjne dzielące się wiedzą ekspercką. Budują autorytet i pozycję lidera w branży.",
+    features: ["40-80 stron", "Struktura krok po kroku", "Przykłady i case studies", "Grafiki i diagramy"],
+    icon: "📘",
+    timeline: "4-6 tygodni"
+  },
+  {
+    title: "Podręczniki firmowe",
+    description: "Profesjonalne materiały szkoleniowe i proceduralne dla firm. Onboarding, standardy, procesy w jednym miejscu.",
+    features: ["50-150 stron", "Skład LaTeX", "Spis treści i indeksy", "Wersja print-ready"],
+    icon: "📋",
+    timeline: "6-10 tygodni"
+  },
+  {
+    title: "Publikacje autorskie",
+    description: "Pełnowymiarowe książki i publikacje do wydania. Współpracujemy z wydawnictwami i platformami self-publishing.",
+    features: ["100+ stron", "Pełna redakcja", "ISBN i publikacja", "Dystrybucja"],
+    icon: "📚",
+    timeline: "2-4 miesiące"
+  },
+  {
+    title: "Raporty i whitepapers",
+    description: "Profesjonalne materiały B2B prezentujące badania, analizy i ekspertyzy. Idealne dla firm technologicznych i konsultingowych.",
+    features: ["20-60 stron", "Dane i wykresy", "Profesjonalny layout", "Format PDF"],
+    icon: "📊",
+    timeline: "3-5 tygodni"
+  },
+  {
+    title: "Zeszyty ćwiczeń",
+    description: "Interaktywne materiały edukacyjne z miejscem na notatki i ćwiczenia. Idealne uzupełnienie kursów i szkoleń.",
+    features: ["30-100 stron", "Pola do wypełnienia", "Ćwiczenia praktyczne", "Druk i PDF"],
+    icon: "✏️",
+    timeline: "4-8 tygodni"
+  }
+];
+
+const services = [
+  {
+    title: "Pisanie treści",
+    description: "Tworzymy merytoryczne, angażujące treści ebooka od podstaw. Research, struktura, pisanie – wszystko w naszych rękach.",
+    icon: "✍️",
+    features: ["Research tematu", "Planowanie struktury", "Pisanie rozdziałów", "Optymalizacja treści"]
+  },
+  {
+    title: "Skład i DTP",
+    description: "Profesjonalny skład w LaTeX lub InDesign. Publikacja, która wygląda jak z wydawnictwa – czytelna, estetyczna, profesjonalna.",
+    icon: "📐",
+    features: ["Skład LaTeX/InDesign", "Typografia", "Formatowanie", "Grafiki i tabele"]
+  },
+  {
+    title: "Redakcja językowa",
+    description: "Dopracowujemy styl, poprawiamy składnię i dbamy o spójność językową całej publikacji.",
+    icon: "📝",
+    features: ["Korekta stylistyczna", "Spójność terminologii", "Czytelność tekstu", "Ton i głos marki"]
+  },
+  {
+    title: "Redakcja merytoryczna",
+    description: "Weryfikujemy poprawność merytoryczną treści, sprawdzamy fakty i dbamy o logikę wywodu.",
+    icon: "🔍",
+    features: ["Fact-checking", "Weryfikacja źródeł", "Logika argumentacji", "Konsultacje eksperckie"]
+  },
+  {
+    title: "Korekta",
+    description: "Ostateczna weryfikacja tekstu – wyłapujemy literówki, błędy ortograficzne i interpunkcyjne.",
+    icon: "✅",
+    features: ["Ortografia", "Interpunkcja", "Formatowanie", "Finalna weryfikacja"]
+  },
+  {
+    title: "Projekt graficzny",
+    description: "Projektujemy okładkę i elementy graficzne ebooka. Spójna identyfikacja wizualna od pierwszej do ostatniej strony.",
+    icon: "🎨",
+    features: ["Projekt okładki", "Grafiki wewnętrzne", "Diagramy i infografiki", "Spójny layout"]
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Brief i koncepcja",
+    description: "Omawiamy temat, cel, grupę docelową i zakres ebooka. Przygotowujemy szczegółowy plan i wycenę."
+  },
+  {
+    number: "02",
+    title: "Research i struktura",
+    description: "Przeprowadzamy research tematu i tworzymy szczegółową strukturę rozdziałów do akceptacji."
+  },
+  {
+    number: "03",
+    title: "Pisanie treści",
+    description: "Piszemy kolejne rozdziały ebooka. Możesz śledzić postępy i zgłaszać uwagi na bieżąco."
+  },
+  {
+    number: "04",
+    title: "Skład i projekt",
+    description: "Profesjonalny skład w LaTeX lub InDesign. Projektujemy okładkę i elementy graficzne."
+  },
+  {
+    number: "05",
+    title: "Redakcja i korekta",
+    description: "Redakcja językowa i merytoryczna, korekta – dopracowujemy każdy szczegół publikacji."
+  },
+  {
+    number: "06",
+    title: "Finalizacja",
+    description: "Dostarczamy gotowe pliki (PDF, EPUB, MOBI). Pomagamy w publikacji na wybranych platformach."
+  }
+];
+
+const publishingPartners = [
+  { name: "Amazon Kindle", type: "Self-publishing" },
+  { name: "Google Play Books", type: "Dystrybucja" },
+  { name: "Legimi", type: "Subskrypcja" },
+  { name: "Empik Go", type: "E-booki" },
+  { name: "Woblink", type: "Księgarnia" },
+  { name: "Virtualo", type: "Dystrybucja" },
+  { name: "Wydawnictwa tradycyjne", type: "Współpraca" },
+  { name: "Self-publishing", type: "Wsparcie" }
+];
+
+const benefits = [
+  {
+    icon: "🎯",
+    title: "Kompleksowa realizacja",
+    description: "Od pomysłu do gotowej publikacji – zajmujemy się wszystkim. Ty dostarczasz wizję, my realizujemy projekt."
+  },
+  {
+    icon: "📐",
+    title: "Profesjonalny skład LaTeX",
+    description: "Skład na poziomie wydawnictw naukowych. Idealna typografia, precyzyjne formatowanie, print-ready PDF."
+  },
+  {
+    icon: "✍️",
+    title: "Doświadczeni autorzy",
+    description: "Nasi copywriterzy mają ponad 15 lat doświadczenia. Piszemy na każdy temat – od biznesu po technologie."
+  },
+  {
+    icon: "🔍",
+    title: "Pełna redakcja i korekta",
+    description: "Redakcja językowa, merytoryczna i korekta w standardzie. Każdy tekst przechodzi wieloetapową weryfikację."
+  },
+  {
+    icon: "📚",
+    title: "Współpraca z wydawnictwami",
+    description: "Pomagamy w publikacji na Amazon, Legimi, Empik Go i innych platformach. Współpracujemy z wydawnictwami."
+  },
+  {
+    icon: "⏱️",
+    title: "Terminowa realizacja",
+    description: "Ustalamy harmonogram i go dotrzymujemy. Wiesz dokładnie, kiedy otrzymasz gotową publikację."
+  }
+];
+
+const packages = [
+  {
+    name: "Podstawowy",
+    description: "Samo pisanie treści ebooka",
+    price: "od 2000 zł",
+    features: [
+      "Pisanie treści (20-30 stron)",
+      "Research tematu",
+      "Struktura i spis treści",
+      "2 rundy poprawek",
+      "Plik Word/Google Docs"
+    ],
+    highlighted: false
+  },
+  {
+    name: "Standard",
+    description: "Pisanie + skład + korekta",
+    price: "od 3500 zł",
+    features: [
+      "Wszystko z pakietu Podstawowy",
+      "Profesjonalny skład LaTeX",
+      "Projekt okładki",
+      "Korekta językowa",
+      "PDF print-ready i web"
+    ],
+    highlighted: true
+  },
+  {
+    name: "Premium",
+    description: "Pełen pakiet + publikacja",
+    price: "od 5000 zł",
+    features: [
+      "Wszystko z pakietu Standard",
+      "Redakcja merytoryczna",
+      "Formaty EPUB i MOBI",
+      "Pomoc w publikacji",
+      "Konsultacje strategiczne"
+    ],
+    highlighted: false
+  }
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="tworzenie ebooków, pisanie e-booków, ebook na zamówienie, tworzenie e-booków, pisanie ebooków, skład ebooka, redakcja ebooka, publikacja ebooka, ebook LaTeX"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Tworzenie ebooków</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">Kompleksowa realizacja od A do Z</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Tworzenie ebooków</strong> – pisanie, skład, redakcja i&nbsp;publikacja
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Profesjonalne <strong>pisanie e-booków</strong> z pełną obsługą: tworzenie treści, 
+          skład w LaTeX, redakcja językowa i merytoryczna, korekta oraz przygotowanie do publikacji. 
+          Współpracujemy z wydawnictwami i platformami self-publishing.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów ebooka
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#pakiety" class="btn btn--secondary btn--lg">
+            Zobacz pakiety
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>50+ stworzonych ebooków</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Profesjonalny skład LaTeX</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Współpraca z wydawnictwami</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is Section -->
+  <section class="section what-is" id="o-usludze">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="O usłudze"
+            title="Kompleksowe <span class='accent'>tworzenie ebooków</span> – od pomysłu do publikacji"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              Nasze <strong>tworzenie ebooków</strong> to kompleksowa usługa obejmująca cały proces 
+              powstawania publikacji. Nie musisz szukać osobno copywritera, redaktora, korektora 
+              i grafika – zajmujemy się wszystkim od A do Z.
+            </p>
+            <p>
+              Zaczynamy od researchu i planowania struktury. Następnie nasi doświadczeni autorzy 
+              tworzą merytoryczne, angażujące treści. Profesjonalny <a href="/uslugi/sklad-tekstu">skład 
+              w LaTeX</a> nadaje publikacji wygląd godny wydawnictwa. Redakcja językowa i merytoryczna 
+              oraz korekta gwarantują najwyższą jakość tekstu.
+            </p>
+            <p>
+              Końcowym efektem jest gotowy do publikacji ebook w formatach PDF, EPUB i MOBI. 
+              Współpracujemy z wydawnictwami i platformami self-publishing, takimi jak Amazon Kindle, 
+              Legimi czy Empik Go. Pomagamy w całym procesie wydawniczym.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">📚</div>
+            <h3>Wszystko w jednym miejscu</h3>
+            <p>Pisanie, skład, redakcja, korekta, projekt graficzny i publikacja – kompleksowa obsługa.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">11</span>
+            <span class="what-is__highlight-text">profesjonalnych publikacji wydanych z naszym udziałem</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ebook Types Section -->
+  <section class="section ebook-types" id="rodzaje-ebookow">
+    <div class="container">
+      <SectionHeading
+        label="Rodzaje ebooków"
+        title="Jakie <span class='accent'>e-booki</span> tworzymy?"
+        subtitle="Od krótkich lead magnetów po pełnowymiarowe publikacje książkowe"
+        align="center"
+      />
+      <div class="ebook-types__grid">
+        {ebookTypes.map((type, index) => (
+          <article class="ebook-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="ebook-card__icon">{type.icon}</span>
+            <h3 class="ebook-card__title">{type.title}</h3>
+            <p class="ebook-card__description">{type.description}</p>
+            <div class="ebook-card__timeline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              {type.timeline}
+            </div>
+            <ul class="ebook-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section services-detail" id="co-obejmuje">
+    <div class="container">
+      <SectionHeading
+        label="Zakres usług"
+        title="Co obejmuje <span class='accent'>tworzenie ebooka</span>?"
+        subtitle="Kompleksowa realizacja na każdym etapie procesu"
+        align="center"
+      />
+      <div class="services-detail__grid">
+        {services.map((service, index) => (
+          <div class="service-detail-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="service-detail-card__icon">{service.icon}</span>
+            <h3 class="service-detail-card__title">{service.title}</h3>
+            <p class="service-detail-card__description">{service.description}</p>
+            <ul class="service-detail-card__features">
+              {service.features.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section class="section packages" id="pakiety">
+    <div class="packages__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Pakiety"
+        title="Wybierz pakiet <span class='accent'>tworzenia ebooka</span>"
+        subtitle="Elastyczne opcje dopasowane do Twoich potrzeb i budżetu"
+        align="center"
+      />
+      <div class="packages__grid">
+        {packages.map((pkg, index) => (
+          <div class={`package-card animate-fade-in ${pkg.highlighted ? 'package-card--highlighted' : ''}`} style={`animation-delay: ${index * 0.1}s`}>
+            {pkg.highlighted && <span class="package-card__badge">Najpopularniejszy</span>}
+            <h3 class="package-card__name">{pkg.name}</h3>
+            <p class="package-card__description">{pkg.description}</p>
+            <div class="package-card__price">{pkg.price}</div>
+            <ul class="package-card__features">
+              {pkg.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href="/kontakt" class="package-card__btn">Zapytaj o wycenę</a>
+          </div>
+        ))}
+      </div>
+      <p class="packages__note">
+        Potrzebujesz innego zakresu? <a href="/kontakt">Skontaktuj się z nami</a> – przygotujemy indywidualną ofertę.
+      </p>
+    </div>
+  </section>
+
+  <!-- Publishing Partners Section -->
+  <section class="section publishing" id="publikacja">
+    <div class="container">
+      <SectionHeading
+        label="Publikacja"
+        title="Współpracujemy z <span class='accent'>wydawnictwami i platformami</span>"
+        subtitle="Pomagamy opublikować Twojego ebooka w wybranych kanałach dystrybucji"
+        align="center"
+      />
+      <div class="publishing__grid">
+        {publishingPartners.map((partner, index) => (
+          <div class="publishing-card animate-fade-in" style={`animation-delay: ${index * 0.05}s`}>
+            <span class="publishing-card__name">{partner.name}</span>
+            <span class="publishing-card__type">{partner.type}</span>
+          </div>
+        ))}
+      </div>
+      <p class="publishing__note">
+        Nie wiesz, gdzie opublikować ebooka? Doradzimy najlepszą platformę dla Twojej grupy docelowej i celów biznesowych.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="process__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Jak pracujemy"
+        title="Proces <span class='accent'>tworzenia ebooka</span>"
+        subtitle="Od pomysłu do gotowej publikacji w 6 krokach"
+        align="center"
+      />
+      <div class="process__timeline">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="process-step__marker">
+              <span class="process-step__number">{step.number}</span>
+            </div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Rozpocznij projekt
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="dlaczego-my">
+    <div class="container">
+      <SectionHeading
+        label="Dlaczego my"
+        title="Dlaczego warto zlecić nam <span class='accent'>tworzenie ebooka</span>?"
+        subtitle="Kompleksowa obsługa, profesjonalny skład, współpraca z wydawnictwami"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszym <span class='accent'>tworzeniu ebooków</span>?"
+        subtitle="Dziesiątki zadowolonych autorów i firm"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Pytania o <span class='accent'>tworzenie ebooków</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Ile kosztuje stworzenie ebooka?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Koszt <strong>tworzenia ebooka</strong> zależy od objętości, tematyki i zakresu usług. 
+              Krótkie ebooki (20-30 stron) zaczynają się od 2000 zł, średnie (50-80 stron) od 4000 zł, 
+              a kompleksowe publikacje (100+ stron) wyceniamy indywidualnie. Cena obejmuje pisanie, 
+              skład, redakcję i korektę. <a href="/cennik">Zobacz pełny cennik</a>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długo trwa stworzenie ebooka?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Czas realizacji zależy od objętości i złożoności projektu. Krótki ebook (20-30 stron) 
+              to około 2-3 tygodnie. Średni ebook (50-80 stron) to 4-6 tygodni. Kompleksowa publikacja 
+              (100+ stron) może zająć 2-3 miesiące. Zawsze ustalamy harmonogram indywidualnie.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Co obejmuje usługa tworzenia ebooka?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Nasza usługa <strong>tworzenia e-booków</strong> obejmuje pełen proces: research 
+              i planowanie struktury, pisanie treści, profesjonalny <a href="/uslugi/sklad-tekstu">skład 
+              w LaTeX</a> lub InDesign, redakcję językową i merytoryczną, korektę, projekt graficzny 
+              okładki oraz przygotowanie plików do publikacji (PDF, EPUB, MOBI).
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy pomagacie w publikacji ebooka?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak! Współpracujemy z wydawnictwami i platformami publikacyjnymi. Możemy pomóc 
+              w publikacji na Amazon Kindle, Google Play Books, Legimi, Empik Go i innych platformach. 
+              Dostarczamy pliki w formatach wymaganych przez konkretne serwisy.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy mogę zamówić tylko część usługi, np. sam skład?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Oczywiście! Oferujemy zarówno kompleksową realizację, jak i pojedyncze usługi: 
+              samo <a href="/uslugi/pisanie-tekstow">pisanie</a>, sam <a href="/uslugi/sklad-tekstu">skład 
+              LaTeX</a>, samą redakcję lub korektę. Dopasowujemy zakres prac do Twoich potrzeb i budżetu.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>W jakich formatach dostarczacie gotowego ebooka?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Standardowo dostarczamy ebooka w formacie PDF (print-ready i web-optimized). 
+              Na życzenie przygotowujemy również formaty EPUB i MOBI do czytników e-booków. 
+              Pliki są gotowe do publikacji i dystrybucji.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy tworzycie ebooki na tematy specjalistyczne?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, mamy doświadczenie w <strong>pisaniu ebooków</strong> z wielu branż: biznes, 
+              marketing, IT, finanse, prawo, medycyna, edukacja i wiele innych. Przeprowadzamy 
+              dokładny research i w razie potrzeby konsultujemy treści z ekspertami.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy mogę dostarczyć własne materiały do ebooka?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak! Możesz dostarczyć własne materiały źródłowe, notatki, prezentacje lub nawet 
+              surowy tekst. My zajmiemy się ich opracowaniem, rozwinięciem, składem i redakcją. 
+              To świetna opcja dla ekspertów, którzy mają wiedzę, ale brakuje im czasu na pisanie.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="tworzenie-ebookow-profesjonalnie">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Tworzenie ebooków – kompleksowa realizacja od pomysłu do publikacji</h2>
+        
+        <p>
+          <strong>Tworzenie ebooków</strong> to znacznie więcej niż samo pisanie tekstu. To kompleksowy 
+          proces obejmujący research, planowanie struktury, tworzenie treści, profesjonalny skład, 
+          redakcję, korektę i przygotowanie do publikacji. W naszej agencji zajmujemy się wszystkimi 
+          tymi etapami, dostarczając klientom gotową publikację najwyższej jakości.
+        </p>
+        
+        <p>
+          Od ponad 15 lat pomagamy firmom i autorom indywidualnym w <strong>pisaniu e-booków</strong>. 
+          Stworzyliśmy ponad 50 ebooków i publikacji, złożyliśmy ponad 1500 stron w LaTeX i pomogliśmy 
+          wydać 11 profesjonalnych publikacji. Nasza wiedza obejmuje zarówno aspekty merytoryczne, 
+          jak i techniczne procesu wydawniczego.
+        </p>
+
+        <h3>Dlaczego warto zlecić tworzenie ebooka profesjonalistom?</h3>
+        
+        <p>
+          Stworzenie profesjonalnego ebooka wymaga wielu kompetencji: umiejętności pisania, znajomości 
+          zasad składu i typografii, doświadczenia w redakcji i korekcie, a także wiedzy o procesie 
+          publikacji. Znalezienie wszystkich tych specjalistów osobno jest czasochłonne i kosztowne.
+        </p>
+        
+        <p>
+          Zlecając <strong>tworzenie ebooka</strong> naszej agencji, otrzymujesz kompleksową obsługę 
+          w jednym miejscu. Jeden koordynator projektu, jeden kontakt, jedna odpowiedzialność za całość. 
+          Ty dostarczasz wizję i wiedzę ekspercką, my zajmujemy się resztą.
+        </p>
+
+        <h3>Profesjonalny skład LaTeX</h3>
+        
+        <p>
+          Wyróżnia nas <a href="/uslugi/sklad-tekstu">profesjonalny skład w LaTeX</a> – systemie 
+          używanym przez wydawnictwa naukowe i akademickie na całym świecie. LaTeX gwarantuje 
+          idealną typografię, precyzyjne formatowanie i profesjonalny wygląd publikacji.
+        </p>
+        
+        <p>
+          Nasze ebooki wyglądają jak publikacje z renomowanych wydawnictw – z właściwymi marginesami, 
+          poprawną interpunkcją, profesjonalnymi nagłówkami i spisami treści. To szczególnie ważne 
+          dla publikacji biznesowych, edukacyjnych i eksperckich, gdzie wygląd buduje wiarygodność.
+        </p>
+
+        <h3>Pełna redakcja i korekta</h3>
+        
+        <p>
+          Każdy ebook przechodzi wieloetapowy proces weryfikacji. Redakcja językowa dopracowuje 
+          styl i składnię. Redakcja merytoryczna sprawdza poprawność faktyczną i logikę argumentacji. 
+          Korekta wyłapuje literówki i błędy ortograficzne. Dzięki temu Twoja publikacja jest 
+          wolna od błędów i gotowa do dystrybucji.
+        </p>
+
+        <h3>Współpraca z wydawnictwami i platformami</h3>
+        
+        <p>
+          <strong>Tworzenie ebooków</strong> to nie tylko pisanie i skład – to także publikacja 
+          i dystrybucja. Współpracujemy z wydawnictwami tradycyjnymi oraz platformami self-publishing. 
+          Pomagamy w publikacji na Amazon Kindle, Legimi, Empik Go, Google Play Books i innych serwisach.
+        </p>
+        
+        <p>
+          Dostarczamy pliki w formatach wymaganych przez konkretne platformy: PDF (print-ready i web), 
+          EPUB, MOBI. Doradzimy, która platforma najlepiej odpowiada Twojej grupie docelowej i celom 
+          biznesowym.
+        </p>
+
+        <h3>Dla kogo są nasze usługi tworzenia ebooków?</h3>
+        
+        <p>
+          Nasze <strong>pisanie e-booków</strong> jest idealne dla ekspertów i konsultantów, którzy 
+          chcą podzielić się wiedzą, ale nie mają czasu na pisanie. Dla firm potrzebujących 
+          profesjonalnych materiałów marketingowych (lead magnety, poradniki). Dla przedsiębiorców 
+          budujących personal brand poprzez publikacje.
+        </p>
+        
+        <p>
+          Tworzymy również podręczniki firmowe, materiały szkoleniowe i raporty branżowe. 
+          Bez względu na temat i objętość – zajmiemy się Twoim projektem kompleksowo.
+        </p>
+
+        <h3>Zamów tworzenie ebooka</h3>
+        
+        <p>
+          Jeśli planujesz <strong>stworzenie ebooka</strong>, skontaktuj się z nami. Omówimy 
+          Twoje potrzeby, zaproponujemy optymalny zakres usług i przygotujemy bezpłatną wycenę. 
+          Z nami Twoja publikacja powstanie sprawnie, profesjonalnie i bez stresu.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Zamów ebooka</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__text a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* Ebook Types Section */
+  .ebook-types {
+    background: var(--color-bg-secondary);
+  }
+  
+  .ebook-types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .ebook-types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .ebook-types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .ebook-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ebook-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .ebook-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .ebook-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .ebook-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .ebook-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .ebook-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .ebook-card__timeline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+  }
+  
+  .ebook-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .ebook-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .ebook-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  /* Services Detail Section */
+  .services-detail {
+    background: var(--color-bg-primary);
+  }
+  
+  .services-detail__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .services-detail__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .services-detail__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .service-detail-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    transition: all 0.3s ease;
+  }
+  
+  .service-detail-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .service-detail-card__icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+    display: block;
+  }
+  
+  .service-detail-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .service-detail-card__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .service-detail-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .service-detail-card__features li {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    background: var(--color-bg-primary);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+  }
+
+  /* Packages Section */
+  .packages {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+  
+  .packages__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .packages .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .packages :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .packages :global(.section-heading__title),
+  .packages :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .packages :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .packages__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .packages__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .package-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .package-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+  
+  .package-card--highlighted {
+    background: white;
+    border-color: var(--color-accent);
+    transform: scale(1.05);
+  }
+  
+  .package-card--highlighted:hover {
+    background: white;
+    transform: scale(1.05) translateY(-4px);
+  }
+  
+  .package-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .package-card__name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-2);
+  }
+  
+  .package-card--highlighted .package-card__name {
+    color: var(--color-primary);
+  }
+  
+  .package-card__description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+  
+  .package-card--highlighted .package-card__description {
+    color: var(--color-text-secondary);
+  }
+  
+  .package-card__price {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-6);
+  }
+  
+  .package-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+    text-align: left;
+  }
+  
+  .package-card__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.8);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .package-card--highlighted .package-card__features li {
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+  }
+  
+  .package-card__features li:last-child {
+    border-bottom: none;
+  }
+  
+  .package-card__features svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .package-card__btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    transition: all 0.2s ease;
+  }
+  
+  .package-card__btn:hover {
+    background: var(--color-accent-dark);
+  }
+  
+  .packages__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .packages__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Publishing Section */
+  .publishing {
+    background: var(--color-bg-secondary);
+  }
+  
+  .publishing__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-top: var(--space-10);
+  }
+  
+  .publishing-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-6);
+    text-align: center;
+    transition: all 0.2s ease;
+    min-width: 180px;
+  }
+  
+  .publishing-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  .publishing-card__name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+  
+  .publishing-card__type {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+  
+  .publishing__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: var(--color-text-secondary);
+  }
+
+  /* Process Section */
+  .process {
+    position: relative;
+    background: var(--color-bg-primary);
+  }
+  
+  .process__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(18, 25, 58, 0.03) 0%, transparent 40%);
+  }
+  
+  .process .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process__timeline {
+    max-width: 700px;
+    margin: var(--space-12) auto 0;
+    position: relative;
+  }
+  
+  .process__timeline::before {
+    content: "";
+    position: absolute;
+    left: 29px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+  
+  @media (min-width: 768px) {
+    .process__timeline::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .process-step {
+    position: relative;
+    display: flex;
+    gap: var(--space-6);
+    padding-bottom: var(--space-8);
+  }
+  
+  @media (min-width: 768px) {
+    .process-step {
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .process-step__marker {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process-step__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+  }
+  
+  .process-step__content {
+    flex: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .process-step__content {
+      max-width: 400px;
+    }
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .process-step__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-8);
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-secondary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-primary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-secondary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-primary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>

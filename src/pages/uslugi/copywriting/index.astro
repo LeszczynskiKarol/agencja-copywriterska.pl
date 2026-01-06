@@ -1,0 +1,1533 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Copywriting - Profesjonalne Teksty Reklamowe i Sprzedażowe | Agencja Copywriterska";
+const pageDescription = "Copywriting na najwyższym poziomie ✓ Teksty reklamowe ✓ Treści sprzedażowe ✓ Content marketing ✓ 15+ lat doświadczenia ✓ 5000+ napisanych tekstów. Zamów bezpłatną wycenę!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Copywriting",
+      "item": "https://agencja-copywriterska.pl/uslugi/copywriting"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Copywriting",
+  "name": "Profesjonalny Copywriting - Teksty Reklamowe i Sprzedażowe",
+  "description": "Profesjonalne usługi copywriterskie obejmujące tworzenie tekstów reklamowych, treści sprzedażowych, content marketingu, tekstów na strony internetowe i materiałów promocyjnych.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi Copywriterskie",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Copywriting reklamowy"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Copywriting sprzedażowy"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Copywriting SEO"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Content marketing"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Czym jest copywriting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Copywriting to sztuka tworzenia tekstów reklamowych i sprzedażowych, które przekonują odbiorców do podjęcia określonego działania. Profesjonalny copywriting łączy psychologię sprzedaży z umiejętnością pisania, tworząc treści, które nie tylko informują, ale przede wszystkim sprzedają produkty i usługi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje copywriting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ceny usług copywriterskich zależą od rodzaju i objętości tekstu. Krótkie teksty reklamowe zaczynają się od 200 zł, opisy produktów od 50-150 zł za sztukę, a kompleksowe landing page od 800 zł. Każdy projekt wyceniamy indywidualnie po bezpłatnej konsultacji."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa realizacja zlecenia copywriterskiego?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowy czas realizacji to 3-7 dni roboczych, w zależności od objętości i złożoności projektu. Krótsze teksty reklamowe realizujemy nawet w 24-48 godzin. Przy większych projektach ustalamy harmonogram indywidualnie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy teksty są unikalne i oryginalne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, wszystkie nasze teksty są w 100% unikalne i pisane od podstaw pod konkretny projekt. Każdy tekst przechodzi weryfikację antyplagiatową. Gwarantujemy oryginalność i pełne prawa autorskie do zamówionych treści."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zamówić poprawki do tekstu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oczywiście! W ramach każdego zlecenia oferujemy bezpłatne poprawki, aż tekst będzie w pełni odpowiadał Twoim oczekiwaniom. Zależy nam na Twojej satysfakcji, dlatego pracujemy nad tekstem do momentu jego akceptacji."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jakie rodzaje copywritingu oferujecie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oferujemy pełen zakres usług copywriterskich: copywriting reklamowy, copywriting sprzedażowy, copywriting SEO, content marketing, teksty na strony internetowe, opisy produktów, artykuły blogowe, mailingi, teksty do social media, slogany i hasła reklamowe oraz naming."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy copywriting pomaga w pozycjonowaniu strony?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, profesjonalny copywriting SEO jest kluczowy dla pozycjonowania. Tworzymy treści zoptymalizowane pod wyszukiwarki, z naturalnym rozmieszczeniem słów kluczowych, właściwą strukturą nagłówków i wartościową treścią, która przyciąga zarówno użytkowników, jak i roboty Google."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak wygląda proces współpracy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Proces jest prosty: 1) Bezpłatna konsultacja i brief, 2) Indywidualna wycena w 24h, 3) Akceptacja i rozpoczęcie pracy, 4) Dostarczenie tekstu, 5) Ewentualne poprawki, 6) Finalna akceptacja. Na każdym etapie pozostajemy w stałym kontakcie."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "15", suffix: "+", label: "lat doświadczenia" },
+  { value: "5000", suffix: "+", label: "napisanych tekstów" },
+  { value: "98", suffix: "%", label: "zadowolonych klientów" },
+  { value: "24", suffix: "h", label: "czas odpowiedzi" }
+];
+
+const testimonials = [
+  {
+    quote: "Współpraca z Agencją Copywriterską to strzał w dziesiątkę. Teksty na naszą stronę zwiększyły konwersję o 40%. Copywriting na najwyższym poziomie!",
+    author: "Marcin Kowalski",
+    role: "Właściciel",
+    company: "E-commerce Fashion",
+    rating: 5
+  },
+  {
+    quote: "Profesjonalne podejście, świetne teksty reklamowe i terminowość. Nasze kampanie Google Ads mają teraz znacznie lepsze wyniki dzięki nowym treściom.",
+    author: "Anna Wiśniewska",
+    role: "Marketing Manager",
+    company: "Software House",
+    rating: 5
+  },
+  {
+    quote: "Zamówiłem opisy produktów dla mojego sklepu. Jakość copywritingu przeszła moje oczekiwania. Klienci chwalą, że opisy są pomocne i przekonujące.",
+    author: "Piotr Nowak",
+    role: "CEO",
+    company: "TechGadgets.pl",
+    rating: 5
+  }
+];
+
+const copywritingTypes = [
+  {
+    title: "Copywriting reklamowy",
+    description: "Teksty do kampanii reklamowych Google Ads, Facebook Ads i innych platform. Krótkie, chwytliwe komunikaty, które przyciągają uwagę i generują kliknięcia.",
+    features: ["Nagłówki reklamowe", "Teksty do banerów", "Kreacje do social ads", "Slogany i hasła"]
+  },
+  {
+    title: "Copywriting sprzedażowy",
+    description: "Teksty nastawione na konwersję i sprzedaż. Landing page, oferty handlowe i materiały, które przekonują do zakupu i budują zaufanie.",
+    features: ["Landing page", "Oferty handlowe", "Strony produktowe", "Sekwencje sprzedażowe"]
+  },
+  {
+    title: "Copywriting SEO",
+    description: "Treści zoptymalizowane pod wyszukiwarki, które pozycjonują Twoją stronę wysoko w Google i przyciągają organiczny ruch.",
+    features: ["Artykuły SEO", "Opisy kategorii", "Teksty na stronę", "Blog firmowy"]
+  },
+  {
+    title: "Content marketing",
+    description: "Strategiczne treści budujące wizerunek eksperta i angażujące odbiorców. Długofalowa strategia contentowa dla Twojej marki.",
+    features: ["Artykuły eksperckie", "Case studies", "Whitepapers", "Newsletter"]
+  },
+  {
+    title: "Copywriting e-commerce",
+    description: "Specjalistyczne teksty dla sklepów internetowych, które zwiększają sprzedaż i poprawiają doświadczenie zakupowe klientów.",
+    features: ["Opisy produktów", "Opisy kategorii", "Strony O nas", "FAQ i poradniki"]
+  },
+  {
+    title: "Copywriting B2B",
+    description: "Profesjonalne treści dla firm działających w sektorze business-to-business. Budujemy wiarygodność i generujemy leady.",
+    features: ["Strony firmowe", "Prezentacje", "Materiały sprzedażowe", "LinkedIn content"]
+  }
+];
+
+const benefits = [
+  {
+    icon: "✍️",
+    title: "15+ lat doświadczenia",
+    description: "Ponad dekada w branży copywriterskiej. Tysiące zrealizowanych projektów dla firm z różnych sektorów."
+  },
+  {
+    icon: "🎯",
+    title: "Teksty, które sprzedają",
+    description: "Łączymy psychologię sprzedaży z copywritingiem. Nasze teksty nie tylko informują – przekonują do działania."
+  },
+  {
+    icon: "🔍",
+    title: "Optymalizacja SEO",
+    description: "Każdy tekst jest zoptymalizowany pod wyszukiwarki. Naturalne słowa kluczowe, właściwa struktura, wartościowa treść."
+  },
+  {
+    icon: "⚡",
+    title: "Szybka realizacja",
+    description: "Standardowe projekty realizujemy w 3-7 dni. Pilne zlecenia nawet w 24 godziny. Zawsze dotrzymujemy terminów."
+  },
+  {
+    icon: "✅",
+    title: "100% unikalności",
+    description: "Gwarantujemy pełną oryginalność tekstów. Każdy tekst przechodzi weryfikację antyplagiatową."
+  },
+  {
+    icon: "🔄",
+    title: "Bezpłatne poprawki",
+    description: "Pracujemy do momentu Twojej pełnej satysfakcji. Poprawki w ramach zlecenia są zawsze bezpłatne."
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Bezpłatna konsultacja",
+    description: "Omawiamy Twoje potrzeby, cele i grupę docelową. Poznajemy specyfikę Twojej branży i oczekiwania względem tekstów."
+  },
+  {
+    number: "02",
+    title: "Brief i wycena",
+    description: "Na podstawie konsultacji przygotowujemy szczegółowy brief i indywidualną wycenę. Odpowiadamy w ciągu 24 godzin."
+  },
+  {
+    number: "03",
+    title: "Tworzenie treści",
+    description: "Nasi copywriterzy tworzą teksty zgodnie z briefem. Research, pisanie, optymalizacja – wszystko pod Twój projekt."
+  },
+  {
+    number: "04",
+    title: "Korekta i akceptacja",
+    description: "Otrzymujesz gotowy tekst do weryfikacji. Wprowadzamy poprawki aż do pełnej akceptacji z Twojej strony."
+  }
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="copywriting, copywriter, teksty reklamowe, treści sprzedażowe, content marketing, copywriting SEO, teksty na stronę, agencja copywriterska"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Copywriting</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">Profesjonalne usługi copywriterskie</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Copywriting</strong>, który sprzedaje i&nbsp;buduje marki
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Tworzymy <strong>teksty reklamowe</strong> i <strong>treści sprzedażowe</strong>, które przekonują odbiorców do działania. 
+          Ponad 15 lat doświadczenia, 5000+ napisanych tekstów, 98% zadowolonych klientów.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów bezpłatną wycenę
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#rodzaje-copywritingu" class="btn btn--secondary btn--lg">
+            Zobacz, co oferujemy
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Odpowiedź w 24h</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>100% unikalnych tekstów</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Bezpłatne poprawki</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is Copywriting Section -->
+  <section class="section what-is" id="czym-jest-copywriting">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="Definicja"
+            title="Czym jest <span class='accent'>copywriting</span>?"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              <strong>Copywriting</strong> to sztuka tworzenia tekstów reklamowych i sprzedażowych, których celem jest przekonanie 
+              odbiorcy do podjęcia określonego działania – zakupu produktu, skorzystania z usługi, zapisania się na newsletter 
+              czy wypełnienia formularza kontaktowego.
+            </p>
+            <p>
+              W odróżnieniu od zwykłego pisania, profesjonalny <strong>copywriting</strong> łączy w sobie znajomość psychologii 
+              sprzedaży, marketingu i sztuki perswazji. Dobry <strong>copywriter</strong> wie, jak budować komunikaty, które 
+              nie tylko przyciągają uwagę, ale przede wszystkim konwertują – zamieniają czytelników w klientów.
+            </p>
+            <p>
+              Nasze usługi <strong>copywriterskie</strong> obejmują pełen zakres treści marketingowych: od krótkich tekstów 
+              reklamowych, przez rozbudowane landing page, aż po kompleksowe strategie content marketingowe. Każdy tekst 
+              tworzymy z myślą o konkretnych celach biznesowych i grupie docelowej klienta.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">✍️</div>
+            <h3>Copywriting to nie tylko pisanie</h3>
+            <p>To strategia komunikacji, która zamienia słowa w wyniki biznesowe.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">40%</span>
+            <span class="what-is__highlight-text">średni wzrost konwersji dzięki profesjonalnym tekstom</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types of Copywriting Section -->
+  <section class="section types" id="rodzaje-copywritingu">
+    <div class="container">
+      <SectionHeading
+        label="Nasza oferta"
+        title="Rodzaje <span class='accent'>copywritingu</span>, które oferujemy"
+        subtitle="Kompleksowe usługi copywriterskie dopasowane do Twoich potrzeb biznesowych"
+        align="center"
+      />
+      <div class="types__grid">
+        {copywritingTypes.map((type, index) => (
+          <article class="type-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <h3 class="type-card__title">{type.title}</h3>
+            <p class="type-card__description">{type.description}</p>
+            <ul class="type-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="types__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Zapytaj o wycenę
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="dlaczego-my">
+    <div class="container">
+      <SectionHeading
+        label="Dlaczego my"
+        title="Dlaczego warto zlecić <span class='accent'>copywriting</span> naszej agencji?"
+        subtitle="Ponad 15 lat doświadczenia w tworzeniu tekstów, które sprzedają"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="process__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Jak działamy"
+        title="Proces współpracy <span class='accent'>copywriterskiej</span>"
+        subtitle="Od briefu do gotowego tekstu w 4 prostych krokach"
+        align="center"
+      />
+      <div class="process__steps">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.15}s`}>
+            <span class="process-step__number">{step.number}</span>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+            {index < processSteps.length - 1 && (
+              <div class="process-step__connector">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Rozpocznij współpracę
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszym <span class='accent'>copywritingu</span>?"
+        subtitle="Zaufało nam ponad 500 firm z całej Polski"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Najczęściej zadawane pytania o <span class='accent'>copywriting</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Czym jest copywriting?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              <strong>Copywriting</strong> to sztuka tworzenia tekstów reklamowych i sprzedażowych, które przekonują odbiorców 
+              do podjęcia określonego działania. Profesjonalny copywriting łączy psychologię sprzedaży z umiejętnością pisania, 
+              tworząc treści, które nie tylko informują, ale przede wszystkim sprzedają produkty i usługi.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Ile kosztuje copywriting?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Ceny usług <strong>copywriterskich</strong> zależą od rodzaju i objętości tekstu. Krótkie teksty reklamowe 
+              zaczynają się od 200 zł, opisy produktów od 50-150 zł za sztukę, a kompleksowe landing page od 800 zł. 
+              Każdy projekt wyceniamy indywidualnie po bezpłatnej konsultacji. <a href="/cennik">Zobacz pełny cennik</a>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długo trwa realizacja zlecenia copywriterskiego?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Standardowy czas realizacji to 3-7 dni roboczych, w zależności od objętości i złożoności projektu. 
+              Krótsze teksty reklamowe realizujemy nawet w 24-48 godzin. Przy większych projektach ustalamy 
+              harmonogram indywidualnie.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy teksty są unikalne i oryginalne?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, wszystkie nasze teksty są w 100% unikalne i pisane od podstaw pod konkretny projekt. Każdy tekst 
+              przechodzi weryfikację antyplagiatową. Gwarantujemy oryginalność i pełne prawa autorskie do zamówionych treści.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy mogę zamówić poprawki do tekstu?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Oczywiście! W ramach każdego zlecenia oferujemy bezpłatne poprawki, aż tekst będzie w pełni odpowiadał 
+              Twoim oczekiwaniom. Zależy nam na Twojej satysfakcji, dlatego pracujemy nad tekstem do momentu jego akceptacji.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jakie rodzaje copywritingu oferujecie?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Oferujemy pełen zakres usług <strong>copywriterskich</strong>: copywriting reklamowy, copywriting sprzedażowy, 
+              copywriting SEO, content marketing, teksty na strony internetowe, <a href="/uslugi/opisy-produktow">opisy produktów</a>, 
+              <a href="/uslugi/pisanie-artykulow">artykuły blogowe</a>, mailingi, teksty do social media, 
+              slogany i hasła reklamowe oraz <a href="/uslugi/naming">naming</a>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy copywriting pomaga w pozycjonowaniu strony?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, profesjonalny <strong>copywriting SEO</strong> jest kluczowy dla pozycjonowania. Tworzymy treści 
+              zoptymalizowane pod wyszukiwarki, z naturalnym rozmieszczeniem słów kluczowych, właściwą strukturą 
+              nagłówków i wartościową treścią, która przyciąga zarówno użytkowników, jak i roboty Google.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak wygląda proces współpracy?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Proces jest prosty: 1) Bezpłatna konsultacja i brief, 2) Indywidualna wycena w 24h, 3) Akceptacja 
+              i rozpoczęcie pracy, 4) Dostarczenie tekstu, 5) Ewentualne poprawki, 6) Finalna akceptacja. 
+              Na każdym etapie pozostajemy w stałym kontakcie.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="copywriting-profesjonalny">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Profesjonalny copywriting – klucz do skutecznej komunikacji marketingowej</h2>
+        
+        <p>
+          W dzisiejszym cyfrowym świecie, gdzie każda firma walczy o uwagę klienta, <strong>profesjonalny copywriting</strong> 
+          stał się jednym z najważniejszych narzędzi marketingowych. Dobrze napisane teksty reklamowe mogą zdecydować 
+          o sukcesie lub porażce kampanii marketingowej, strony internetowej czy całej strategii sprzedażowej.
+        </p>
+        
+        <p>
+          Nasza <strong>agencja copywriterska</strong> specjalizuje się w tworzeniu treści, które nie tylko przyciągają 
+          uwagę, ale przede wszystkim przekonują do działania. Przez ponad 15 lat działalności napisaliśmy ponad 5000 tekstów 
+          dla firm z najróżniejszych branż – od małych lokalnych przedsiębiorstw po duże korporacje i sklepy e-commerce.
+        </p>
+
+        <h3>Czym wyróżnia się skuteczny copywriting?</h3>
+        
+        <p>
+          Skuteczny <strong>copywriting</strong> to znacznie więcej niż poprawne pisanie. To umiejętność połączenia 
+          kilku kluczowych elementów: zrozumienia grupy docelowej, znajomości psychologii sprzedaży, umiejętności 
+          budowania przekonujących argumentów oraz dbałości o optymalizację SEO.
+        </p>
+        
+        <p>
+          Profesjonalny <strong>copywriter</strong> wie, że każde słowo ma znaczenie. Nagłówek musi przyciągnąć uwagę 
+          w ułamku sekundy. Pierwsze zdanie musi zachęcić do dalszego czytania. A cała treść musi prowadzić czytelnika 
+          do konkretnego działania – zakupu, kontaktu, zapisu na newsletter.
+        </p>
+        
+        <p>
+          W naszej pracy stosujemy sprawdzone techniki <strong>copywritingu sprzedażowego</strong>, takie jak model AIDA 
+          (Attention, Interest, Desire, Action), storytelling marketingowy, techniki budowania social proof czy metody 
+          neutralizacji obiekcji. Dzięki temu nasze teksty nie tylko dobrze wyglądają, ale przede wszystkim skutecznie sprzedają.
+        </p>
+
+        <h3>Copywriting SEO – teksty, które pozycjonują</h3>
+        
+        <p>
+          Współczesny <strong>copywriting</strong> musi uwzględniać również wymagania wyszukiwarek internetowych. 
+          <strong>Copywriting SEO</strong> to sztuka tworzenia treści, które są jednocześnie wartościowe dla czytelników 
+          i zoptymalizowane pod algorytmy Google.
+        </p>
+        
+        <p>
+          Nasze teksty tworzymy zgodnie z najnowszymi wytycznymi SEO: z naturalnym rozmieszczeniem słów kluczowych, 
+          właściwą strukturą nagłówków (H1, H2, H3), odpowiednią długością treści i wewnętrznym linkowaniem. 
+          Dzięki temu strony naszych klientów osiągają wysokie pozycje w wynikach wyszukiwania.
+        </p>
+        
+        <p>
+          Pamiętamy jednak, że <strong>copywriting SEO</strong> to nie tylko słowa kluczowe. Google coraz lepiej rozumie 
+          intencje użytkowników i premiuje treści, które rzeczywiście odpowiadają na ich pytania i potrzeby. Dlatego 
+          nasze teksty są przede wszystkim wartościowe i pomocne dla czytelników.
+        </p>
+
+        <h3>Dla kogo jest copywriting?</h3>
+        
+        <p>
+          Usługi <strong>copywriterskie</strong> są niezbędne dla każdej firmy, która chce skutecznie komunikować się 
+          ze swoimi klientami. Niezależnie od tego, czy prowadzisz mały sklep internetowy, czy zarządzasz dużą korporacją – 
+          profesjonalne teksty mogą znacząco wpłynąć na Twoje wyniki sprzedażowe.
+        </p>
+        
+        <p>
+          Szczególnie istotny jest <strong>copywriting</strong> dla firm działających w branżach o dużej konkurencji, 
+          gdzie różnica między sukcesem a porażką często tkwi w szczegółach. Dobrze napisana strona produktowa może 
+          zwiększyć konwersję o kilkadziesiąt procent. Skuteczny landing page może zdecydować o powodzeniu kampanii reklamowej.
+        </p>
+
+        <h3>Copywriting e-commerce – opisy, które sprzedają</h3>
+        
+        <p>
+          Dla sklepów internetowych <strong>copywriting</strong> ma szczególne znaczenie. Profesjonalne 
+          <a href="/uslugi/opisy-produktow">opisy produktów</a> to nie tylko wymóg SEO, ale przede wszystkim narzędzie 
+          sprzedażowe. Dobry opis produktu odpowiada na pytania klienta, neutralizuje jego wątpliwości i przekonuje 
+          do dodania produktu do koszyka.
+        </p>
+        
+        <p>
+          W naszej agencji tworzymy <a href="/uslugi/opisy-kategorii">opisy kategorii</a> i produktów, które łączą 
+          walory sprzedażowe z optymalizacją SEO. Każdy tekst jest unikalny, napisany z myślą o konkretnym produkcie 
+          i grupie docelowej. Nie stosujemy szablonów ani automatycznych generatorów – każdy opis jest efektem 
+          ręcznej pracy doświadczonego copywritera.
+        </p>
+
+        <h3>Content marketing – strategia długofalowa</h3>
+        
+        <p>
+          <strong>Copywriting</strong> to również fundament skutecznego content marketingu. Regularne publikowanie 
+          wartościowych treści buduje wizerunek eksperta, zwiększa widoczność w wyszukiwarkach i przyciąga potencjalnych klientów.
+        </p>
+        
+        <p>
+          Oferujemy kompleksową obsługę content marketingową: od strategii contentowej, przez <a href="/uslugi/pisanie-artykulow">
+          pisanie artykułów</a> blogowych i eksperckich, po <a href="/uslugi/tworzenie-ebookow">tworzenie ebooków</a> 
+          i whitepaperów. Pomagamy firmom budować pozycję liderów opinii w swoich branżach.
+        </p>
+
+        <h3>Jak rozpocząć współpracę?</h3>
+        
+        <p>
+          Rozpoczęcie współpracy z naszą <strong>agencją copywriterską</strong> jest proste. Wystarczy 
+          <a href="/kontakt">wypełnić formularz kontaktowy</a> lub zadzwonić pod numer <a href="tel:+48509370772">
+          +48 509 370 772</a>. Oferujemy bezpłatną konsultację, podczas której omawiamy potrzeby projektu 
+          i przygotowujemy indywidualną wycenę.
+        </p>
+        
+        <p>
+          Nie czekaj – <strong>profesjonalny copywriting</strong> może być kluczem do sukcesu Twojego biznesu. 
+          Skontaktuj się z nami i przekonaj się, jak skuteczne teksty mogą wpłynąć na Twoje wyniki sprzedażowe.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Skontaktuj się z nami</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Copywriting Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* Types Section */
+  .types {
+    background: var(--color-bg-secondary);
+  }
+  
+  .types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .type-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .type-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .type-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .type-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .type-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .type-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .type-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .type-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .type-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+  
+  .types__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-primary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Process Section */
+  .process {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+  }
+  
+  .process__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .process .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .process :global(.section-heading__title),
+  .process :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .process :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .process__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 1024px) {
+    .process__steps {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+  }
+  
+  .process-step {
+    position: relative;
+    text-align: center;
+  }
+  
+  .process-step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+  }
+  
+  .process-step__description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: var(--text-sm);
+  }
+  
+  .process-step__connector {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .process-step__connector {
+      display: block;
+      position: absolute;
+      right: -24px;
+      top: 30px;
+      color: var(--color-accent);
+      opacity: 0.5;
+    }
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+  }
+  
+  .process__cta .btn--primary {
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+  
+  .process__cta .btn--primary:hover {
+    background: var(--color-accent-dark);
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-secondary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-primary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-secondary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Final CTA Section */
+  .final-cta {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    text-align: center;
+  }
+  
+  .final-cta__content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .final-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .final-cta h2 .accent {
+    color: var(--color-primary-dark);
+  }
+  
+  .final-cta p {
+    font-size: var(--text-xl);
+    color: var(--color-primary);
+    opacity: 0.9;
+    margin-bottom: var(--space-8);
+  }
+  
+  .final-cta__buttons {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .final-cta .btn--primary {
+    background: var(--color-primary);
+    color: white;
+  }
+  
+  .final-cta .btn--primary:hover {
+    background: var(--color-primary-dark);
+  }
+  
+  .final-cta .btn--secondary {
+    background: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  
+  .final-cta .btn--secondary:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>

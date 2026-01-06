@@ -1,0 +1,155 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  href: string;
+  features?: string[];
+  class?: string;
+}
+
+const { title, description, icon, href, features = [], class: className = '' } = Astro.props;
+---
+
+<a href={href} class:list={['service-card', className]}>
+  <div class="service-card__icon" set:html={icon} />
+  <div class="service-card__content">
+    <h3 class="service-card__title">{title}</h3>
+    <p class="service-card__desc">{description}</p>
+    {features.length > 0 && (
+      <ul class="service-card__features">
+        {features.map((feature) => (
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            {feature}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+  <div class="service-card__arrow">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </div>
+</a>
+
+<style>
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .service-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card__icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1a2248 100%);
+    border-radius: var(--radius-lg);
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .service-card__icon :global(svg) {
+    width: 28px;
+    height: 28px;
+  }
+
+  .service-card__content {
+    flex: 1;
+  }
+
+  .service-card__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+    transition: color var(--transition-fast);
+  }
+
+  .service-card:hover .service-card__title {
+    color: var(--color-accent);
+  }
+
+  .service-card__desc {
+    font-size: var(--fs-base);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .service-card__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .service-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+  }
+
+  .service-card__features svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .service-card__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    color: var(--text-tertiary);
+    transition: all var(--transition-base);
+    align-self: flex-end;
+  }
+
+  .service-card:hover .service-card__arrow {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    transform: translateX(4px);
+  }
+</style>

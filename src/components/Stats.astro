@@ -1,0 +1,121 @@
+---
+interface StatItem {
+  value: string;
+  label: string;
+  suffix?: string;
+}
+
+interface Props {
+  items: StatItem[];
+  variant?: 'default' | 'dark' | 'inline';
+  class?: string;
+}
+
+const { items, variant = 'default', class: className = '' } = Astro.props;
+---
+
+<div class:list={['stats', `stats--${variant}`, className]}>
+  {items.map((item, index) => (
+    <div class="stat-item" style={`--delay: ${index * 0.1}s`}>
+      <div class="stat-item__value">
+        {item.value}
+        {item.suffix && <span class="stat-item__suffix">{item.suffix}</span>}
+      </div>
+      <div class="stat-item__label">{item.label}</div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stats--inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6) var(--space-12);
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: var(--space-6);
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+  }
+
+  .stat-item:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .stats--dark .stat-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .stats--inline .stat-item {
+    text-align: left;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+  }
+
+  .stats--inline .stat-item:hover {
+    transform: none;
+  }
+
+  .stat-item__value {
+    font-family: var(--font-display);
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--space-2);
+  }
+
+  .stats--dark .stat-item__value {
+    color: var(--color-accent);
+  }
+
+  .stats--inline .stat-item__value {
+    font-size: var(--fs-3xl);
+  }
+
+  .stat-item__suffix {
+    font-size: 0.6em;
+    font-weight: var(--fw-medium);
+    color: var(--text-tertiary);
+    margin-left: 2px;
+  }
+
+  .stat-item__label {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    font-weight: var(--fw-medium);
+  }
+
+  .stats--dark .stat-item__label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Animation on scroll */
+  @media (prefers-reduced-motion: no-preference) {
+    .stat-item {
+      animation: fadeInUp 0.6s ease forwards;
+      animation-delay: var(--delay, 0);
+      opacity: 0;
+    }
+  }
+</style>

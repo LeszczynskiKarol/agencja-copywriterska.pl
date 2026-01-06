@@ -1,0 +1,126 @@
+---
+// ThemeToggle component - handles dark/light mode switching
+---
+
+<button 
+  id="theme-toggle" 
+  class="theme-toggle" 
+  type="button" 
+  aria-label="Przełącz motyw"
+  title="Zmień motyw"
+>
+  <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    color: var(--text-primary);
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+    transform: scale(1.05);
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.95);
+  }
+
+  .sun-icon,
+  .moon-icon {
+    position: absolute;
+    transition: all var(--transition-base);
+  }
+
+  /* Light mode - show moon, hide sun */
+  :global([data-theme="light"]) .sun-icon,
+  :global(:root:not([data-theme])) .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+
+  :global([data-theme="light"]) .moon-icon,
+  :global(:root:not([data-theme])) .moon-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  /* Dark mode - show sun, hide moon */
+  :global([data-theme="dark"]) .sun-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  :global([data-theme="dark"]) .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+  }
+</style>
+
+<script>
+  // Initialize theme on page load
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (prefersDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+
+  // Toggle theme
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  }
+
+  // Initialize on load
+  initTheme();
+
+  // Add click handler
+  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+
+  // Handle system preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+  });
+
+  // Re-initialize on view transitions (for Astro)
+  document.addEventListener('astro:after-swap', initTheme);
+</script>

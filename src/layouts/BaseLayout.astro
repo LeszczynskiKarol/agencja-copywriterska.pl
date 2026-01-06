@@ -1,0 +1,161 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  keywords?: string;
+  noindex?: boolean;
+  schema?: object;
+}
+
+const { 
+  title, 
+  description, 
+  canonical,
+  ogImage,
+  ogType,
+  keywords,
+  noindex,
+  schema
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#12193a" />
+  
+  <SEO 
+    title={title}
+    description={description}
+    canonical={canonical}
+    ogImage={ogImage}
+    ogType={ogType}
+    keywords={keywords}
+    noindex={noindex}
+    schema={schema}
+  />
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Inline critical theme script to prevent flash -->
+  <script is:inline>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <Header />
+  
+  <main id="main-content" class="main-content">
+    <slot />
+  </main>
+  
+  <Footer />
+
+  <!-- Back to top button -->
+  <button 
+    id="back-to-top" 
+    class="back-to-top" 
+    aria-label="Przewiń do góry"
+    title="Przewiń do góry"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <style>
+    .main-content {
+      margin-top: 80px; /* Header height */
+      min-height: calc(100vh - 80px);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-accent);
+      color: var(--color-primary);
+      border: none;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-lg), var(--shadow-accent);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl), 0 12px 32px rgba(252, 187, 66, 0.4);
+    }
+
+    .back-to-top:active {
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    // Back to top functionality
+    function initBackToTop() {
+      const btn = document.getElementById('back-to-top');
+      
+      function toggleButton() {
+        if (window.scrollY > 400) {
+          btn?.classList.add('visible');
+        } else {
+          btn?.classList.remove('visible');
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+
+      window.addEventListener('scroll', toggleButton);
+      btn?.addEventListener('click', scrollToTop);
+      
+      // Initial check
+      toggleButton();
+    }
+
+    initBackToTop();
+    document.addEventListener('astro:after-swap', initBackToTop);
+  </script>
+</body>
+</html>

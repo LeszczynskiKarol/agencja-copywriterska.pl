@@ -1,0 +1,1619 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Pisanie Tekstów na Zamówienie - Profesjonalne Treści na Zlecenie | Agencja Copywriterska";
+const pageDescription = "Pisanie tekstów na zamówienie ✓ Tworzenie tekstów na zlecenie ✓ Treści na strony WWW ✓ Teksty firmowe ✓ 15+ lat doświadczenia ✓ 5000+ napisanych tekstów. Zamów wycenę!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Pisanie tekstów",
+      "item": "https://agencja-copywriterska.pl/uslugi/pisanie-tekstow"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Pisanie tekstów na zamówienie",
+  "name": "Profesjonalne Pisanie Tekstów na Zlecenie",
+  "description": "Profesjonalne usługi pisania tekstów na zamówienie obejmujące tworzenie treści na strony internetowe, tekstów firmowych, opisów, artykułów i wszelkich materiałów pisemnych.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi pisania tekstów",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Teksty na strony WWW"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Teksty firmowe"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Treści SEO"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Teksty marketingowe"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje pisanie tekstów na zamówienie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ceny pisania tekstów na zamówienie zależą od rodzaju i objętości treści. Teksty na strony WWW to koszt od 150 zł za stronę, artykuły od 200 zł, a kompleksowe teksty firmowe wyceniamy indywidualnie. Oferujemy bezpłatną wycenę każdego projektu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak szybko mogę otrzymać gotowy tekst?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowy czas realizacji to 3-7 dni roboczych. Krótsze teksty możemy przygotować w 24-48 godzin. Przy większych projektach ustalamy harmonogram indywidualnie, zawsze dotrzymując ustalonych terminów."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy teksty są pisane pod SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, wszystkie nasze teksty są domyślnie optymalizowane pod wyszukiwarki. Stosujemy naturalne rozmieszczenie słów kluczowych, właściwą strukturę nagłówków i dbamy o czytelność treści zarówno dla użytkowników, jak i robotów Google."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jakie rodzaje tekstów piszecie na zlecenie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tworzymy wszystkie rodzaje tekstów: treści na strony internetowe, teksty firmowe (o nas, oferta, misja), opisy produktów i usług, artykuły blogowe i eksperckie, teksty reklamowe, mailingi, posty do social media, materiały PR i wiele innych."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zamówić tekst na dowolny temat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, piszemy teksty na praktycznie każdy temat. Mamy doświadczenie w wielu branżach: od IT i technologii, przez finanse i prawo, po medycynę, modę i lifestyle. Przed rozpoczęciem pracy przeprowadzamy dokładny research tematu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy teksty są unikalne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutnie tak. Każdy tekst piszemy od podstaw, specjalnie dla konkretnego klienta. Gwarantujemy 100% unikalności - wszystkie treści przechodzą weryfikację antyplagiatową przed dostarczeniem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co jeśli tekst mi się nie spodoba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "W ramach każdego zlecenia oferujemy bezpłatne poprawki. Pracujemy nad tekstem do momentu Twojej pełnej satysfakcji. Jeśli coś wymaga zmiany - po prostu nam to zgłoś, a my wprowadzimy korekty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak wygląda proces zamawiania tekstów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Proces jest prosty: 1) Kontaktujesz się z nami i opisujesz potrzeby, 2) Przygotowujemy bezpłatną wycenę w 24h, 3) Po akceptacji rozpoczynamy pracę, 4) Dostarczamy gotowy tekst, 5) Wprowadzamy ewentualne poprawki, 6) Otrzymujesz finalną wersję."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "15", suffix: "+", label: "lat doświadczenia" },
+  { value: "5000", suffix: "+", label: "napisanych tekstów" },
+  { value: "200", suffix: "+", label: "stałych klientów" },
+  { value: "100", suffix: "%", label: "unikalnych treści" }
+];
+
+const testimonials = [
+  {
+    quote: "Zamówiłam teksty na całą stronę firmową. Efekt przeszedł moje oczekiwania - treści są profesjonalne, czytelne i świetnie oddają charakter naszej firmy. Polecam pisanie tekstów na zlecenie w tej agencji!",
+    author: "Magdalena Zawadzka",
+    role: "Właścicielka",
+    company: "Studio Projektowe MZ",
+    rating: 5
+  },
+  {
+    quote: "Współpracujemy od 2 lat - regularne teksty na blog i materiały marketingowe. Zawsze na czas, zawsze wysokiej jakości. Tworzenie tekstów na zamówienie nigdy nie było tak proste.",
+    author: "Krzysztof Adamski",
+    role: "Marketing Director",
+    company: "InnoTech Solutions",
+    rating: 5
+  },
+  {
+    quote: "Potrzebowałem pilnie tekstów na nową stronę. Dostarczyli wszystko w 3 dni, a jakość była doskonała. Pisanie tekstów na zlecenie to ich specjalność - widać lata doświadczenia.",
+    author: "Robert Majewski",
+    role: "CEO",
+    company: "Majewski Consulting",
+    rating: 5
+  }
+];
+
+const textTypes = [
+  {
+    title: "Teksty na strony WWW",
+    description: "Kompleksowe treści na strony internetowe - od strony głównej, przez podstrony usług, po sekcje O nas i Kontakt. Teksty zoptymalizowane pod SEO i konwersję.",
+    features: ["Strona główna", "Podstrony usług", "O nas / O firmie", "Strony produktowe"]
+  },
+  {
+    title: "Teksty firmowe",
+    description: "Profesjonalne treści budujące wizerunek firmy: misja, wizja, wartości, historia firmy, prezentacje dla inwestorów i partnerów biznesowych.",
+    features: ["Misja i wizja", "Historia firmy", "Wartości firmowe", "Prezentacje biznesowe"]
+  },
+  {
+    title: "Treści SEO",
+    description: "Teksty zoptymalizowane pod wyszukiwarki, które pozycjonują Twoją stronę wysoko w Google i przyciągają organiczny ruch z wyszukiwarek.",
+    features: ["Artykuły SEO", "Opisy kategorii", "Teksty zapleczowe", "Content pillar pages"]
+  },
+  {
+    title: "Teksty marketingowe",
+    description: "Treści wspierające działania marketingowe: ulotki, broszury, katalogi, materiały promocyjne, teksty do kampanii reklamowych.",
+    features: ["Ulotki i broszury", "Katalogi produktów", "Materiały BTL", "Teksty do reklam"]
+  },
+  {
+    title: "Treści do social media",
+    description: "Angażujące posty na Facebook, Instagram, LinkedIn i inne platformy. Budujemy społeczność i zwiększamy zasięgi Twojej marki.",
+    features: ["Posty na Facebook", "Treści na Instagram", "Artykuły LinkedIn", "Opisy i bio"]
+  },
+  {
+    title: "Teksty specjalistyczne",
+    description: "Treści wymagające wiedzy branżowej: teksty medyczne, prawnicze, techniczne, finansowe. Współpracujemy z ekspertami z różnych dziedzin.",
+    features: ["Teksty medyczne", "Treści prawnicze", "Opisy techniczne", "Teksty finansowe"]
+  }
+];
+
+const benefits = [
+  {
+    icon: "✍️",
+    title: "15+ lat doświadczenia",
+    description: "Ponad dekada pisania tekstów dla firm z różnych branż. Tysiące zrealizowanych projektów i setki zadowolonych klientów."
+  },
+  {
+    icon: "🎯",
+    title: "Teksty szyte na miarę",
+    description: "Każdy tekst tworzymy indywidualnie pod Twoje potrzeby. Żadnych szablonów - tylko unikalne treści dopasowane do Twojej marki."
+  },
+  {
+    icon: "🔍",
+    title: "Optymalizacja SEO",
+    description: "Wszystkie teksty są domyślnie zoptymalizowane pod wyszukiwarki. Pomagamy Ci być widocznym w Google."
+  },
+  {
+    icon: "⚡",
+    title: "Szybka realizacja",
+    description: "Standardowe projekty w 3-7 dni. Pilne zlecenia nawet w 24h. Zawsze dotrzymujemy terminów."
+  },
+  {
+    icon: "✅",
+    title: "100% unikalności",
+    description: "Gwarantujemy pełną oryginalność każdego tekstu. Weryfikacja antyplagiatowa w standardzie."
+  },
+  {
+    icon: "🔄",
+    title: "Bezpłatne poprawki",
+    description: "Pracujemy do Twojej pełnej satysfakcji. Poprawki w ramach zlecenia są zawsze bezpłatne."
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Kontakt i brief",
+    description: "Opisujesz swoje potrzeby - jaki tekst, na jaki temat, dla kogo. Odpowiadamy na pytania i doradzamy."
+  },
+  {
+    number: "02",
+    title: "Wycena w 24h",
+    description: "Przygotowujemy szczegółową, bezpłatną wycenę. Podajemy koszt, termin realizacji i zakres prac."
+  },
+  {
+    number: "03",
+    title: "Tworzenie tekstu",
+    description: "Po akceptacji wyceny zabieramy się do pracy. Research, pisanie, optymalizacja - wszystko w naszych rękach."
+  },
+  {
+    number: "04",
+    title: "Dostarczenie i poprawki",
+    description: "Otrzymujesz gotowy tekst. Jeśli coś wymaga zmiany - wprowadzamy poprawki do skutku."
+  }
+];
+
+const industries = [
+  "IT i technologie", "E-commerce", "Finanse i bankowość", "Prawo", "Medycyna i zdrowie", 
+  "Budownictwo", "Nieruchomości", "Edukacja", "Marketing", "HR i rekrutacja",
+  "Moda i uroda", "Sport i fitness", "Gastronomia", "Turystyka", "Motoryzacja", "Przemysł"
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="pisanie tekstów na zamówienie, tworzenie tekstów na zlecenie, pisanie tekstów, teksty na zlecenie, teksty na zamówienie, pisanie treści, copywriter, teksty na stronę"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Pisanie tekstów</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">Profesjonalne usługi copywriterskie</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Pisanie tekstów na zamówienie</strong> – treści, które działają
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Profesjonalne <strong>tworzenie tekstów na zlecenie</strong> dla firm i osób prywatnych. 
+          Od treści na strony WWW, przez teksty firmowe, po specjalistyczne materiały branżowe. 
+          Ponad 5000 napisanych tekstów, 15+ lat doświadczenia.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów tekst na zlecenie
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#rodzaje-tekstow" class="btn btn--secondary btn--lg">
+            Zobacz, co piszemy
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Wycena w 24h</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>100% unikalnych treści</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Bezpłatne poprawki</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is Section -->
+  <section class="section what-is" id="o-usludze">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="O usłudze"
+            title="Czym jest <span class='accent'>pisanie tekstów na zamówienie</span>?"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              <strong>Pisanie tekstów na zamówienie</strong> to profesjonalna usługa tworzenia treści pisemnych 
+              na zlecenie klienta. Obejmuje wszystkie rodzaje tekstów – od krótkich opisów produktów, przez 
+              rozbudowane artykuły, po kompleksowe treści na całe strony internetowe.
+            </p>
+            <p>
+              W przeciwieństwie do gotowych szablonów czy automatycznie generowanych treści, <strong>teksty 
+              na zlecenie</strong> są pisane od podstaw, z uwzględnieniem indywidualnych potrzeb klienta, 
+              specyfiki branży i grupy docelowej. Każdy tekst jest unikalny i dopasowany do konkretnego celu.
+            </p>
+            <p>
+              Nasza agencja specjalizuje się w <strong>tworzeniu tekstów na zlecenie</strong> od ponad 15 lat. 
+              Napisaliśmy ponad 5000 tekstów dla firm z najróżniejszych branż – od startupów technologicznych, 
+              przez kancelarie prawne, po sklepy internetowe i korporacje. Wiemy, jak pisać, żeby teksty 
+              realizowały cele biznesowe naszych klientów.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">📝</div>
+            <h3>Tekst na zamówienie to inwestycja</h3>
+            <p>Profesjonalne treści budują wizerunek, przyciągają klientów i zwiększają sprzedaż.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">5000+</span>
+            <span class="what-is__highlight-text">tekstów napisanych dla klientów z całej Polski</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types of Texts Section -->
+  <section class="section types" id="rodzaje-tekstow">
+    <div class="container">
+      <SectionHeading
+        label="Co piszemy"
+        title="Rodzaje <span class='accent'>tekstów na zamówienie</span>"
+        subtitle="Tworzymy wszystkie rodzaje treści pisemnych dla biznesu"
+        align="center"
+      />
+      <div class="types__grid">
+        {textTypes.map((type, index) => (
+          <article class="type-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <h3 class="type-card__title">{type.title}</h3>
+            <p class="type-card__description">{type.description}</p>
+            <ul class="type-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="types__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Zamów tekst na zlecenie
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="section industries" id="branze">
+    <div class="container">
+      <SectionHeading
+        label="Doświadczenie"
+        title="Piszemy dla <span class='accent'>każdej branży</span>"
+        subtitle="Mamy doświadczenie w tworzeniu tekstów dla firm z różnych sektorów"
+        align="center"
+      />
+      <div class="industries__grid">
+        {industries.map((industry, index) => (
+          <div class="industry-tag animate-fade-in" style={`animation-delay: ${index * 0.05}s`}>
+            {industry}
+          </div>
+        ))}
+      </div>
+      <p class="industries__note">
+        Nie widzisz swojej branży? Nie martw się – piszemy teksty na każdy temat. 
+        <a href="/kontakt">Skontaktuj się z nami</a> i powiedz, czego potrzebujesz.
+      </p>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="dlaczego-my">
+    <div class="container">
+      <SectionHeading
+        label="Dlaczego my"
+        title="Dlaczego warto zlecić nam <span class='accent'>pisanie tekstów</span>?"
+        subtitle="Ponad 15 lat doświadczenia w tworzeniu treści dla biznesu"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="process__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Jak działamy"
+        title="Jak zamówić <span class='accent'>tekst na zlecenie</span>?"
+        subtitle="Prosty proces w 4 krokach"
+        align="center"
+      />
+      <div class="process__steps">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.15}s`}>
+            <span class="process-step__number">{step.number}</span>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+            {index < processSteps.length - 1 && (
+              <div class="process-step__connector">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Rozpocznij współpracę
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszym <span class='accent'>pisaniu tekstów</span>?"
+        subtitle="Zaufało nam ponad 200 firm z całej Polski"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Pytania o <span class='accent'>pisanie tekstów na zamówienie</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Ile kosztuje pisanie tekstów na zamówienie?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Ceny <strong>pisania tekstów na zamówienie</strong> zależą od rodzaju i objętości treści. 
+              Teksty na strony WWW to koszt od 150 zł za stronę, artykuły od 200 zł, a kompleksowe 
+              teksty firmowe wyceniamy indywidualnie. Oferujemy bezpłatną wycenę każdego projektu.
+              <a href="/cennik">Zobacz pełny cennik</a>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak szybko mogę otrzymać gotowy tekst?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Standardowy czas realizacji to 3-7 dni roboczych. Krótsze teksty możemy przygotować 
+              w 24-48 godzin. Przy większych projektach ustalamy harmonogram indywidualnie, 
+              zawsze dotrzymując ustalonych terminów.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy teksty są pisane pod SEO?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, wszystkie nasze <strong>teksty na zlecenie</strong> są domyślnie optymalizowane 
+              pod wyszukiwarki. Stosujemy naturalne rozmieszczenie słów kluczowych, właściwą strukturę 
+              nagłówków i dbamy o czytelność treści zarówno dla użytkowników, jak i robotów Google.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jakie rodzaje tekstów piszecie na zlecenie?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tworzymy wszystkie rodzaje tekstów: treści na strony internetowe, teksty firmowe 
+              (o nas, oferta, misja), <a href="/uslugi/opisy-produktow">opisy produktów</a> i usług, 
+              <a href="/uslugi/pisanie-artykulow">artykuły blogowe</a> i eksperckie, teksty reklamowe, 
+              mailingi, posty do social media, materiały PR i wiele innych.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy mogę zamówić tekst na dowolny temat?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, piszemy <strong>teksty na zamówienie</strong> na praktycznie każdy temat. Mamy 
+              doświadczenie w wielu branżach: od IT i technologii, przez finanse i prawo, po medycynę, 
+              modę i lifestyle. Przed rozpoczęciem pracy przeprowadzamy dokładny research tematu.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy teksty są unikalne?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Absolutnie tak. Każdy tekst piszemy od podstaw, specjalnie dla konkretnego klienta. 
+              Gwarantujemy 100% unikalności - wszystkie treści przechodzą weryfikację antyplagiatową 
+              przed dostarczeniem. To standard w naszym <strong>tworzeniu tekstów na zlecenie</strong>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Co jeśli tekst mi się nie spodoba?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              W ramach każdego zlecenia oferujemy bezpłatne poprawki. Pracujemy nad tekstem do momentu 
+              Twojej pełnej satysfakcji. Jeśli coś wymaga zmiany - po prostu nam to zgłoś, a my 
+              wprowadzimy korekty.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak wygląda proces zamawiania tekstów?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Proces jest prosty: 1) Kontaktujesz się z nami i opisujesz potrzeby, 2) Przygotowujemy 
+              bezpłatną wycenę w 24h, 3) Po akceptacji rozpoczynamy pracę, 4) Dostarczamy gotowy tekst, 
+              5) Wprowadzamy ewentualne poprawki, 6) Otrzymujesz finalną wersję.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="pisanie-tekstow-na-zamowienie">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Pisanie tekstów na zamówienie – profesjonalne treści dla Twojego biznesu</h2>
+        
+        <p>
+          W erze cyfrowej, gdzie treść jest królem, <strong>profesjonalne pisanie tekstów na zamówienie</strong> 
+          stało się kluczowym elementem sukcesu każdego biznesu online. Dobrze napisane teksty nie tylko 
+          informują – przyciągają klientów, budują zaufanie i przekonują do zakupu.
+        </p>
+        
+        <p>
+          Nasza agencja specjalizuje się w <strong>tworzeniu tekstów na zlecenie</strong> od ponad 15 lat. 
+          Przez ten czas napisaliśmy ponad 5000 tekstów dla firm z najróżniejszych branż. Wiemy, jak pisać, 
+          żeby treści realizowały cele biznesowe naszych klientów – od zwiększenia ruchu na stronie, 
+          przez budowanie wizerunku, po bezpośrednie wspieranie sprzedaży.
+        </p>
+
+        <h3>Dlaczego warto zlecić pisanie tekstów profesjonalistom?</h3>
+        
+        <p>
+          Możesz pomyśleć: "Napiszę teksty sam – oszczędzę pieniądze". To zrozumiałe podejście, ale w praktyce 
+          często okazuje się nieopłacalne. <strong>Pisanie tekstów na zamówienie</strong> przez profesjonalistów 
+          to inwestycja, która zwraca się wielokrotnie.
+        </p>
+        
+        <p>
+          Po pierwsze, profesjonalny copywriter wie, jak pisać skutecznie. Zna techniki perswazji, rozumie 
+          psychologię odbiorcy i potrafi dopasować styl do grupy docelowej. Po drugie, <strong>tworzenie 
+          tekstów na zlecenie</strong> oszczędza Twój czas – możesz skupić się na prowadzeniu biznesu, 
+          podczas gdy my zajmujemy się treściami.
+        </p>
+        
+        <p>
+          Po trzecie, profesjonalne <strong>teksty na zamówienie</strong> są zoptymalizowane pod SEO. 
+          Oznacza to, że pomagają Twojej stronie pozycjonować się w Google, przyciągając organiczny ruch 
+          bez konieczności płacenia za reklamy.
+        </p>
+
+        <h3>Jakie teksty piszemy na zlecenie?</h3>
+        
+        <p>
+          Nasze <strong>pisanie tekstów na zamówienie</strong> obejmuje praktycznie wszystkie rodzaje treści 
+          pisemnych dla biznesu. Tworzymy teksty na strony internetowe – od strony głównej, przez podstrony 
+          usług, po sekcje "O nas" i "Kontakt". Piszemy profesjonalne <a href="/uslugi/pisanie-artykulow">
+          artykuły blogowe</a> i eksperckie, które budują Twój autorytet w branży.
+        </p>
+        
+        <p>
+          Specjalizujemy się również w <a href="/uslugi/opisy-produktow">opisach produktów</a> dla sklepów 
+          e-commerce, <a href="/uslugi/opisy-kategorii">opisach kategorii</a> wspierających SEO oraz 
+          tekstach firmowych budujących wizerunek marki. Tworzymy treści do social media, mailingi, 
+          materiały marketingowe i <a href="/uslugi/artykuly-sponsorowane">artykuły sponsorowane</a>.
+        </p>
+
+        <h3>Teksty na zlecenie dla każdej branży</h3>
+        
+        <p>
+          Przez ponad 15 lat działalności pisaliśmy <strong>teksty na zamówienie</strong> dla firm 
+          z najróżniejszych sektorów. Mamy doświadczenie w branżach technologicznych – IT, software, 
+          e-commerce. Tworzymy treści dla sektora finansowego – banków, firm ubezpieczeniowych, 
+          doradców finansowych.
+        </p>
+        
+        <p>
+          Piszemy teksty medyczne i zdrowotne, prawnicze, budowlane, nieruchomościowe. Tworzymy treści 
+          dla branży beauty, fashion, fitness, gastronomii, turystyki. Bez względu na to, w jakiej 
+          branży działasz – mamy doświadczenie i wiemy, jak pisać skuteczne teksty dla Twoich odbiorców.
+        </p>
+
+        <h3>Jak wygląda nasze pisanie tekstów na zamówienie?</h3>
+        
+        <p>
+          Proces <strong>tworzenia tekstów na zlecenie</strong> w naszej agencji jest prosty i przejrzysty. 
+          Zaczynamy od szczegółowego briefu – poznajemy Twoje potrzeby, cele, grupę docelową i specyfikę 
+          branży. Na tej podstawie przygotowujemy bezpłatną wycenę z terminem realizacji.
+        </p>
+        
+        <p>
+          Po akceptacji wyceny przeprowadzamy research tematu i zabieramy się do pisania. Każdy tekst 
+          jest tworzony od podstaw – nie używamy szablonów ani automatycznych generatorów. Gotowy tekst 
+          dostarczamy w ustalonym terminie i wprowadzamy ewentualne poprawki do momentu Twojej pełnej satysfakcji.
+        </p>
+
+        <h3>Gwarancja jakości tekstów na zamówienie</h3>
+        
+        <p>
+          Nasze <strong>pisanie tekstów na zamówienie</strong> to gwarancja jakości. Każdy tekst jest:
+        </p>
+        <p>
+          100% unikalny – piszemy od podstaw, weryfikujemy antyplagiatowo. Zoptymalizowany pod SEO – 
+          pomagamy Ci być widocznym w Google. Dopasowany do Twojej marki – zachowujemy spójny ton 
+          i styl komunikacji. Skuteczny – realizuje cele biznesowe, do których został stworzony.
+        </p>
+        
+        <p>
+          Oferujemy również bezpłatne poprawki w ramach każdego zlecenia. Pracujemy do momentu Twojej 
+          pełnej satysfakcji – bo zadowolenie klienta to podstawa naszej działalności.
+        </p>
+
+        <h3>Zamów tekst na zlecenie już dziś</h3>
+        
+        <p>
+          Jeśli szukasz profesjonalnego <strong>pisania tekstów na zamówienie</strong>, jesteśmy do Twojej 
+          dyspozycji. Skontaktuj się z nami i powiedz, czego potrzebujesz. Przygotujemy bezpłatną wycenę 
+          w ciągu 24 godzin i odpowiemy na wszystkie Twoje pytania.
+        </p>
+        
+        <p>
+          <strong>Tworzenie tekstów na zlecenie</strong> to nasza specjalność od ponad 15 lat. Dołącz 
+          do grona naszych zadowolonych klientów i przekonaj się, jak profesjonalne treści mogą 
+          wspierać rozwój Twojego biznesu.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Skontaktuj się z nami</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* Types Section */
+  .types {
+    background: var(--color-bg-secondary);
+  }
+  
+  .types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .type-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .type-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .type-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .type-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .type-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .type-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .type-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .type-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .type-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+  
+  .types__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+  }
+
+  /* Industries Section */
+  .industries {
+    background: var(--color-bg-primary);
+  }
+  
+  .industries__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-top: var(--space-10);
+  }
+  
+  .industry-tag {
+    padding: var(--space-3) var(--space-5);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+  }
+  
+  .industry-tag:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  .industries__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: var(--color-text-secondary);
+  }
+  
+  .industries__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-secondary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Process Section */
+  .process {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+  }
+  
+  .process__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .process .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .process :global(.section-heading__title),
+  .process :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .process :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .process__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 1024px) {
+    .process__steps {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+  }
+  
+  .process-step {
+    position: relative;
+    text-align: center;
+  }
+  
+  .process-step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+  }
+  
+  .process-step__description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: var(--text-sm);
+  }
+  
+  .process-step__connector {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .process-step__connector {
+      display: block;
+      position: absolute;
+      right: -24px;
+      top: 30px;
+      color: var(--color-accent);
+      opacity: 0.5;
+    }
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+  }
+  
+  .process__cta .btn--primary {
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+  
+  .process__cta .btn--primary:hover {
+    background: var(--color-accent-dark);
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-primary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-secondary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-primary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Final CTA Section */
+  .final-cta {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    text-align: center;
+  }
+  
+  .final-cta__content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .final-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .final-cta h2 .accent {
+    color: var(--color-primary-dark);
+  }
+  
+  .final-cta p {
+    font-size: var(--text-xl);
+    color: var(--color-primary);
+    opacity: 0.9;
+    margin-bottom: var(--space-8);
+  }
+  
+  .final-cta__buttons {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .final-cta .btn--primary {
+    background: var(--color-primary);
+    color: white;
+  }
+  
+  .final-cta .btn--primary:hover {
+    background: var(--color-primary-dark);
+  }
+  
+  .final-cta .btn--secondary {
+    background: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  
+  .final-cta .btn--secondary:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>

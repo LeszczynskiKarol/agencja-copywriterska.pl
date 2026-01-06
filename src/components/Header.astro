@@ -1,0 +1,543 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface NavItem {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}
+
+const navItems: NavItem[] = [
+  { label: 'Start', href: '/' },
+  { 
+    label: 'Usługi', 
+    href: '/uslugi',
+    children: [
+      { label: 'Copywriting', href: '/uslugi/copywriting' },
+      { label: 'Pisanie tekstów', href: '/uslugi/pisanie-tekstow' },
+      { label: 'Pisanie artykułów', href: '/uslugi/pisanie-artykulow' },
+      { label: 'Tworzenie ebooków', href: '/uslugi/tworzenie-ebookow' },
+      { label: 'Skład tekstu LaTeX', href: '/uslugi/sklad-tekstu' },
+      { label: 'Artykuły sponsorowane', href: '/uslugi/artykuly-sponsorowane' },
+      { label: 'Opisy produktów', href: '/uslugi/opisy-produktow' },
+      { label: 'Opisy kategorii', href: '/uslugi/opisy-kategorii' },
+      { label: 'Naming', href: '/uslugi/naming' },
+    ]
+  },
+  { label: 'Cennik', href: '/cennik' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Kontakt', href: '/kontakt' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header" id="header">
+  <div class="header__container container">
+    <!-- Logo -->
+    <a href="/" class="header__logo" aria-label="Strona główna">
+      <span class="logo-icon">AC</span>
+      <span class="logo-text">
+        <span class="logo-text__main">Agencja</span>
+        <span class="logo-text__sub">Copywriterska</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="header__nav" aria-label="Nawigacja główna">
+      <ul class="nav-list">
+        {navItems.map((item) => (
+          <li class={`nav-item ${item.children ? 'has-dropdown' : ''}`}>
+            <a 
+              href={item.href} 
+              class={`nav-link ${currentPath === item.href || currentPath.startsWith(item.href + '/') ? 'active' : ''}`}
+            >
+              {item.label}
+              {item.children && (
+                <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              )}
+            </a>
+            {item.children && (
+              <ul class="dropdown-menu">
+                {item.children.map((child) => (
+                  <li>
+                    <a 
+                      href={child.href} 
+                      class={`dropdown-link ${currentPath === child.href ? 'active' : ''}`}
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header__actions">
+      <ThemeToggle />
+      <a href="/kontakt" class="btn btn-primary header__cta">
+        Darmowa wycena
+      </a>
+      
+      <!-- Mobile Menu Toggle -->
+      <button 
+        class="mobile-toggle" 
+        id="mobile-toggle"
+        type="button" 
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="hamburger">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-nav">
+      <ul class="mobile-nav__list">
+        {navItems.map((item) => (
+          <li class="mobile-nav__item">
+            {item.children ? (
+              <>
+                <button 
+                  class="mobile-nav__link mobile-nav__toggle"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  {item.label}
+                  <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <ul class="mobile-nav__submenu">
+                  <li>
+                    <a href={item.href} class="mobile-nav__sublink">
+                      Wszystkie usługi
+                    </a>
+                  </li>
+                  {item.children.map((child) => (
+                    <li>
+                      <a href={child.href} class="mobile-nav__sublink">
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a href={item.href} class={`mobile-nav__link ${currentPath === item.href ? 'active' : ''}`}>
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+      <div class="mobile-nav__footer">
+        <a href="/kontakt" class="btn btn-primary btn-lg">Darmowa wycena</a>
+        <p class="mobile-nav__contact">
+          <a href="tel:+48509370772">+48 509 370 772</a>
+        </p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+  }
+
+  .header.scrolled {
+    box-shadow: var(--shadow-md);
+  }
+
+  .header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    gap: var(--space-8);
+  }
+
+  /* Logo */
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1a2248 100%);
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+    border-radius: var(--radius-lg);
+    transition: transform var(--transition-base);
+  }
+
+  .header__logo:hover .logo-icon {
+    transform: scale(1.05) rotate(-3deg);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-text__main {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+    color: var(--text-primary);
+  }
+
+  .logo-text__sub {
+    font-family: var(--font-display);
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-sm);
+    color: var(--color-accent);
+  }
+
+  /* Desktop Navigation */
+  .header__nav {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .header__nav {
+      display: block;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-medium);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-accent);
+    background-color: var(--bg-tertiary);
+  }
+
+  .dropdown-arrow {
+    transition: transform var(--transition-fast);
+  }
+
+  .nav-item:hover .dropdown-arrow,
+  .nav-item.open .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    padding: var(--space-2);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-fast);
+  }
+
+  .nav-item:hover .dropdown-menu,
+  .nav-item.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .dropdown-link:hover,
+  .dropdown-link.active {
+    color: var(--color-accent);
+    background-color: var(--bg-tertiary);
+  }
+
+  /* Header Actions */
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .header__cta {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .header__cta {
+      display: inline-flex;
+    }
+  }
+
+  /* Mobile Toggle */
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+  }
+
+  .hamburger__line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+    transform-origin: center;
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger__line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger__line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger__line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-primary);
+    padding: var(--space-6);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  .mobile-nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .mobile-nav__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-4);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-medium);
+    color: var(--text-primary);
+    text-decoration: none;
+    background: none;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-nav__link:hover,
+  .mobile-nav__link.active {
+    color: var(--color-accent);
+    background-color: var(--bg-tertiary);
+  }
+
+  .mobile-nav__toggle[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .mobile-nav__submenu {
+    display: none;
+    padding-left: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .mobile-nav__toggle[aria-expanded="true"] + .mobile-nav__submenu {
+    display: block;
+  }
+
+  .mobile-nav__sublink {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-base);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-nav__sublink:hover {
+    color: var(--color-accent);
+    background-color: var(--bg-tertiary);
+  }
+
+  .mobile-nav__footer {
+    margin-top: var(--space-8);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .mobile-nav__contact {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+  }
+
+  .mobile-nav__contact a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  // Header scroll effect
+  function handleScroll() {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  }
+
+  // Mobile menu toggle
+  function initMobileMenu() {
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    
+    toggle?.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      menu?.classList.toggle('open');
+      menu?.setAttribute('aria-hidden', String(isOpen));
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+
+    // Submenu toggles
+    const subToggles = document.querySelectorAll('.mobile-nav__toggle');
+    subToggles.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    // Close menu on link click
+    const links = menu?.querySelectorAll('a');
+    links?.forEach((link) => {
+      link.addEventListener('click', () => {
+        toggle?.setAttribute('aria-expanded', 'false');
+        menu?.classList.remove('open');
+        menu?.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // Initialize
+  handleScroll();
+  window.addEventListener('scroll', handleScroll);
+  initMobileMenu();
+
+  // Re-initialize on view transitions
+  document.addEventListener('astro:after-swap', () => {
+    handleScroll();
+    initMobileMenu();
+  });
+</script>

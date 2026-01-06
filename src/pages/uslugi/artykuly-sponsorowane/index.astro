@@ -1,0 +1,1803 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Artykuły Sponsorowane - Pisanie i Publikacja w Mediach | Agencja Copywriterska";
+const pageDescription = "Artykuły sponsorowane z publikacją ✓ Pisanie artykułów sponsorowanych ✓ Link building ✓ 100+ portali partnerskich ✓ Budowanie wizerunku ✓ SEO i pozycjonowanie. Zamów artykuł sponsorowany!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Artykuły sponsorowane",
+      "item": "https://agencja-copywriterska.pl/uslugi/artykuly-sponsorowane"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Artykuły sponsorowane",
+  "name": "Pisanie i Publikacja Artykułów Sponsorowanych",
+  "description": "Profesjonalne pisanie artykułów sponsorowanych z publikacją w mediach. Link building, budowanie wizerunku, pozycjonowanie SEO poprzez wartościowe treści w portalach branżowych.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi artykułów sponsorowanych",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Artykuł sponsorowany z publikacją"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Link building"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Kampanie artykułów sponsorowanych"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Content marketing PR"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje artykuł sponsorowany?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cena artykułu sponsorowanego zależy od portalu publikacji i zakresu usługi. Artykuł sponsorowany z publikacją w portalu branżowym to koszt od 500 zł, w dużych portalach ogólnoinformacyjnych od 1500 zł. Cena obejmuje napisanie artykułu i publikację z linkiem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co to jest artykuł sponsorowany?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Artykuł sponsorowany to treść publikowana w zewnętrznym medium (portalu, blogu, magazynie online) na zlecenie i koszt reklamodawcy. Artykuł wygląda jak zwykły content redakcyjny, ale promuje markę, produkt lub usługę. Zawiera link do strony zleceniodawcy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jakie są korzyści z artykułów sponsorowanych?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Artykuły sponsorowane budują wizerunek eksperta, zwiększają rozpoznawalność marki, generują wartościowe linki zwrotne (link building), przyciągają nowych klientów i wzmacniają pozycję w Google. To skuteczne narzędzie content marketingu i SEO."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich portalach publikujecie artykuły sponsorowane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mamy dostęp do 100+ portali: ogólnoinformacyjne (Onet, WP, Interia), branżowe (IT, finanse, prawo, medycyna), biznesowe, lifestyle'owe i lokalne. Dobieramy medium do Twojej branży i grupy docelowej."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy artykuł sponsorowany zawiera link do mojej strony?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, standardowo artykuł sponsorowany zawiera 1-2 linki do strony klienta. Linki mogą być dofollow lub nofollow w zależności od polityki portalu. Informujemy o rodzaju linku przed publikacją."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa realizacja artykułu sponsorowanego?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Napisanie artykułu sponsorowanego zajmuje 3-5 dni roboczych. Publikacja w portalu może potrwać dodatkowe 3-14 dni w zależności od medium. Łącznie od zamówienia do publikacji to zazwyczaj 1-3 tygodnie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę wybrać portal do publikacji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak! Możesz wskazać konkretny portal lub poprosić nas o rekomendację. Doradzamy, które medium najlepiej pasuje do Twojej branży, budżetu i celów marketingowych. Mamy dostęp do szerokiej bazy portali."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy artykuł sponsorowany jest oznaczony jako reklama?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, zgodnie z prawem artykuły sponsorowane są oznaczane jako treść sponsorowana, materiał partnera lub artykuł promocyjny. Mimo oznaczenia, dobrze napisany artykuł sponsorowany dostarcza wartość czytelnikom i buduje wizerunek marki."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "500", suffix: "+", label: "opublikowanych artykułów" },
+  { value: "100", suffix: "+", label: "portali partnerskich" },
+  { value: "15", suffix: "+", label: "lat doświadczenia" },
+  { value: "98", suffix: "%", label: "zadowolonych klientów" }
+];
+
+const testimonials = [
+  {
+    quote: "Seria artykułów sponsorowanych w portalach branżowych przyniosła nam świetne efekty – wzrost ruchu o 40% i dziesiątki wartościowych leadów. Profesjonalne podejście i terminowa realizacja.",
+    author: "Marcin Kowalczyk",
+    role: "Marketing Manager",
+    company: "SoftwareTech Sp. z o.o.",
+    rating: 5
+  },
+  {
+    quote: "Współpracujemy przy kampanii link buildingowej – regularne artykuły sponsorowane w różnych mediach. Widoczność w Google znacząco wzrosła, a autorytet domeny się poprawił.",
+    author: "Karolina Wiśniewska",
+    role: "SEO Specialist",
+    company: "E-commerce Solutions",
+    rating: 5
+  },
+  {
+    quote: "Potrzebowałem szybko opublikować artykuł sponsorowany w portalu finansowym. Wszystko załatwione w tydzień – od briefu do publikacji. Świetna jakość tekstu i sprawna obsługa.",
+    author: "Piotr Adamski",
+    role: "CEO",
+    company: "FinConsulting",
+    rating: 5
+  }
+];
+
+const articleTypes = [
+  {
+    title: "Artykuł sponsorowany wizerunkowy",
+    description: "Treść budująca wizerunek eksperta i lidera branży. Przedstawia markę jako autorytet w swojej dziedzinie.",
+    features: ["Budowanie autorytetu", "Storytelling marki", "Wartość dla czytelnika", "Subtelna promocja"],
+    icon: "🏆",
+    goal: "Wizerunek i rozpoznawalność"
+  },
+  {
+    title: "Artykuł sponsorowany SEO",
+    description: "Treść zoptymalizowana pod pozycjonowanie z wartościowym linkiem zwrotnym. Link building w praktyce.",
+    features: ["Link dofollow/nofollow", "Anchor text", "Optymalizacja SEO", "Wzrost autorytetu"],
+    icon: "🔗",
+    goal: "Pozycjonowanie i linki"
+  },
+  {
+    title: "Artykuł sponsorowany produktowy",
+    description: "Prezentacja produktu lub usługi w kontekście poradnikowym lub newsowym. Soft selling w najlepszym wydaniu.",
+    features: ["Prezentacja produktu", "Case study", "Porównania", "Call to action"],
+    icon: "🛍️",
+    goal: "Promocja oferty"
+  },
+  {
+    title: "Artykuł sponsorowany newsowy",
+    description: "Informacja prasowa lub news o firmie opublikowany jako artykuł sponsorowany w mediach.",
+    features: ["Komunikat prasowy", "Premiera produktu", "Event firmowy", "Osiągnięcia"],
+    icon: "📰",
+    goal: "PR i komunikacja"
+  },
+  {
+    title: "Artykuł sponsorowany ekspercki",
+    description: "Pogłębiona analiza, opinia eksperta lub komentarz branżowy budujący pozycję thought leadera.",
+    features: ["Analiza rynku", "Opinia eksperta", "Prognozy", "Thought leadership"],
+    icon: "🎓",
+    goal: "Pozycja eksperta"
+  },
+  {
+    title: "Kampania artykułów sponsorowanych",
+    description: "Seria artykułów w różnych mediach realizująca długofalową strategię content marketingową.",
+    features: ["Strategia contentowa", "Wiele publikacji", "Spójny przekaz", "Raportowanie"],
+    icon: "📊",
+    goal: "Kompleksowa kampania"
+  }
+];
+
+const publishingOptions = [
+  {
+    title: "Portale ogólnoinformacyjne",
+    description: "Największe polskie portale z milionami użytkowników miesięcznie",
+    price: "od 1500 zł",
+    examples: "Onet, WP, Interia, Gazeta.pl, o2.pl",
+    reach: "Zasięg masowy"
+  },
+  {
+    title: "Portale biznesowe",
+    description: "Media skierowane do przedsiębiorców i kadry zarządzającej",
+    price: "od 1000 zł",
+    examples: "Business Insider, Forbes, Money.pl, Puls Biznesu",
+    reach: "Decydenci B2B"
+  },
+  {
+    title: "Portale branżowe",
+    description: "Specjalistyczne media dla konkretnych sektorów gospodarki",
+    price: "od 500 zł",
+    examples: "IT, finanse, prawo, medycyna, budownictwo",
+    reach: "Grupa docelowa"
+  },
+  {
+    title: "Portale lokalne",
+    description: "Regionalne media dla działań lokalnych i geo-targetingu",
+    price: "od 300 zł",
+    examples: "Portale miejskie, regionalne, dzielnicowe",
+    reach: "Społeczność lokalna"
+  }
+];
+
+const benefits = [
+  {
+    icon: "🔗",
+    title: "Wartościowe linki zwrotne",
+    description: "Artykuły sponsorowane to skuteczna metoda link buildingu. Zdobywasz linki z autorytatywnych źródeł, które wzmacniają pozycje w Google."
+  },
+  {
+    icon: "🏆",
+    title: "Budowanie wizerunku",
+    description: "Publikacje w znanych mediach budują wizerunek eksperta i lidera branży. Zyskujesz wiarygodność w oczach klientów."
+  },
+  {
+    icon: "👥",
+    title: "Dotarcie do odbiorców",
+    description: "Artykuł sponsorowany dociera do czytelników danego portalu – Twojej potencjalnej grupy docelowej."
+  },
+  {
+    icon: "📈",
+    title: "Wzrost ruchu na stronie",
+    description: "Link w artykule sponsorowanym generuje ruch referral. Użytkownicy klikają i trafiają na Twoją stronę."
+  },
+  {
+    icon: "🎯",
+    title: "100+ portali do wyboru",
+    description: "Mamy dostęp do szerokiej bazy mediów. Dobieramy portal idealnie dopasowany do Twojej branży i celów."
+  },
+  {
+    icon: "✍️",
+    title: "Profesjonalne treści",
+    description: "Piszemy artykuły sponsorowane, które czytelnicy chcą czytać. Wartościowy content, nie nachalna reklama."
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Brief i dobór portalu",
+    description: "Omawiamy cele, grupę docelową i budżet. Rekomendujemy portale lub akceptujemy Twój wybór."
+  },
+  {
+    number: "02",
+    title: "Wycena i warunki",
+    description: "Przedstawiamy wycenę z podziałem na koszt artykułu i publikacji. Ustalamy warunki linków."
+  },
+  {
+    number: "03",
+    title: "Pisanie artykułu",
+    description: "Tworzymy artykuł sponsorowany dopasowany do wymagań portalu i Twoich celów marketingowych."
+  },
+  {
+    number: "04",
+    title: "Akceptacja treści",
+    description: "Przedstawiamy artykuł do akceptacji. Wprowadzamy ewentualne poprawki przed publikacją."
+  },
+  {
+    number: "05",
+    title: "Publikacja w portalu",
+    description: "Artykuł sponsorowany zostaje opublikowany w wybranym medium z uzgodnionymi linkami."
+  },
+  {
+    number: "06",
+    title: "Raport z publikacji",
+    description: "Otrzymujesz link do opublikowanego artykułu i potwierdzenie realizacji zlecenia."
+  }
+];
+
+const mediaCategories = [
+  {
+    category: "Portale ogólnoinformacyjne",
+    examples: "Onet, WP, Interia, Gazeta.pl, o2.pl",
+    linkType: "dofollow / nofollow"
+  },
+  {
+    category: "Portale biznesowe",
+    examples: "Business Insider, Forbes, Money.pl, Puls Biznesu",
+    linkType: "dofollow / nofollow"
+  },
+  {
+    category: "Portale branżowe IT",
+    examples: "Computerworld, ITwiz, AntyWeb, Spider's Web",
+    linkType: "dofollow"
+  },
+  {
+    category: "Portale finansowe",
+    examples: "Bankier.pl, Stooq, Comparic, Finanse.wp.pl",
+    linkType: "dofollow / nofollow"
+  },
+  {
+    category: "Portale prawnicze",
+    examples: "Prawo.pl, LEX, Rzeczpospolita Prawo",
+    linkType: "dofollow"
+  },
+  {
+    category: "Portale medyczne",
+    examples: "Medonet, Medycyna Praktyczna, Puls Medycyny",
+    linkType: "nofollow"
+  },
+  {
+    category: "Portale lokalne",
+    examples: "Portale regionalne, miejskie, dzielnicowe",
+    linkType: "dofollow"
+  },
+  {
+    category: "Portale lifestyle",
+    examples: "Glamour, Elle, Men's Health, Runner's World",
+    linkType: "dofollow / nofollow"
+  }
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="artykuły sponsorowane, artykuł sponsorowany, pisanie artykułów sponsorowanych, tworzenie artykułów sponsorowanych, publikacja artykułów sponsorowanych, link building, content marketing, SEO"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Artykuły sponsorowane</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">Pisanie + publikacja w mediach</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Artykuły sponsorowane</strong> – pisanie i&nbsp;publikacja w&nbsp;100+ portalach
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Profesjonalne <strong>tworzenie artykułów sponsorowanych</strong> z publikacją w wybranych mediach. 
+          Link building, budowanie wizerunku, pozycjonowanie SEO. Dostęp do 100+ portali ogólnoinformacyjnych, 
+          branżowych i lokalnych.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów artykuł sponsorowany
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#portale" class="btn btn--secondary btn--lg">
+            Zobacz portale
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>100+ portali partnerskich</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Linki dofollow i nofollow</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Artykuł + publikacja w cenie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is Section -->
+  <section class="section what-is" id="o-usludze">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="O usłudze"
+            title="Co to jest <span class='accent'>artykuł sponsorowany</span>?"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              <strong>Artykuł sponsorowany</strong> to treść publikowana w zewnętrznym medium – portalu 
+              internetowym, blogu lub magazynie online – na zlecenie i koszt reklamodawcy. W odróżnieniu 
+              od klasycznej reklamy, artykuł sponsorowany wygląda jak zwykły content redakcyjny i dostarcza 
+              wartość czytelnikom.
+            </p>
+            <p>
+              <strong>Pisanie artykułów sponsorowanych</strong> to skuteczna strategia content marketingu 
+              i link buildingu. Publikacja zawiera link do strony zleceniodawcy, który wzmacnia pozycje 
+              w Google i generuje ruch referral. Jednocześnie buduje wizerunek marki jako eksperta w branży.
+            </p>
+            <p>
+              Oferujemy kompleksową usługę: <strong>tworzenie artykułów sponsorowanych</strong> przez 
+              doświadczonych copywriterów oraz ich publikację w wybranych przez Ciebie lub przez nas 
+              mediach. Mamy dostęp do ponad 100 portali o różnej tematyce i zasięgu.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">📰</div>
+            <h3>Artykuł + link + wizerunek</h3>
+            <p>Jeden artykuł sponsorowany realizuje wiele celów: SEO, PR, content marketing i lead generation.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">500+</span>
+            <span class="what-is__highlight-text">artykułów sponsorowanych opublikowanych w mediach</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Types Section -->
+  <section class="section article-types" id="rodzaje-artykulow">
+    <div class="container">
+      <SectionHeading
+        label="Rodzaje artykułów"
+        title="Jakie <span class='accent'>artykuły sponsorowane</span> piszemy?"
+        subtitle="Od wizerunkowych po SEO – dopasowujemy treść do Twoich celów"
+        align="center"
+      />
+      <div class="article-types__grid">
+        {articleTypes.map((type, index) => (
+          <article class="article-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="article-card__icon">{type.icon}</span>
+            <h3 class="article-card__title">{type.title}</h3>
+            <p class="article-card__description">{type.description}</p>
+            <div class="article-card__goal">
+              <span>Cel:</span> {type.goal}
+            </div>
+            <ul class="article-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Publishing Options Section -->
+  <section class="section publishing-options" id="opcje-publikacji">
+    <div class="publishing-options__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Gdzie publikujemy"
+        title="Opcje <span class='accent'>publikacji artykułów sponsorowanych</span>"
+        subtitle="Wybierz rodzaj medium dopasowany do Twojego budżetu i celów"
+        align="center"
+      />
+      <div class="publishing-options__grid">
+        {publishingOptions.map((option, index) => (
+          <div class="pub-option-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <h3 class="pub-option-card__title">{option.title}</h3>
+            <p class="pub-option-card__description">{option.description}</p>
+            <div class="pub-option-card__price">{option.price}</div>
+            <p class="pub-option-card__examples"><strong>Przykłady:</strong> {option.examples}</p>
+            <span class="pub-option-card__reach">{option.reach}</span>
+            <a href="/kontakt" class="pub-option-card__btn">Zapytaj o wycenę</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Media Categories Section -->
+  <section class="section media" id="portale">
+    <div class="container">
+      <SectionHeading
+        label="Baza portali"
+        title="<span class='accent'>100+ portali</span> do publikacji artykułów sponsorowanych"
+        subtitle="Dobieramy medium idealnie dopasowane do Twojej branży"
+        align="center"
+      />
+      <div class="media__grid">
+        {mediaCategories.map((media, index) => (
+          <div class="media-card animate-fade-in" style={`animation-delay: ${index * 0.05}s`}>
+            <h3 class="media-card__category">{media.category}</h3>
+            <p class="media-card__examples">{media.examples}</p>
+            <span class="media-card__link-type">Linki: {media.linkType}</span>
+          </div>
+        ))}
+      </div>
+      <p class="media__note">
+        To tylko przykłady – mamy dostęp do znacznie większej liczby portali. 
+        <a href="/kontakt">Skontaktuj się z nami</a>, a dobierzemy idealne medium dla Twojej firmy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="korzysci">
+    <div class="container">
+      <SectionHeading
+        label="Korzyści"
+        title="Dlaczego warto inwestować w <span class='accent'>artykuły sponsorowane</span>?"
+        subtitle="Link building, wizerunek, ruch – wiele korzyści z jednej publikacji"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="process__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Jak działamy"
+        title="Proces <span class='accent'>tworzenia artykułu sponsorowanego</span>"
+        subtitle="Od briefu do publikacji w 6 krokach"
+        align="center"
+      />
+      <div class="process__timeline">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="process-step__marker">
+              <span class="process-step__number">{step.number}</span>
+            </div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Zamów artykuł sponsorowany
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszych <span class='accent'>artykułach sponsorowanych</span>?"
+        subtitle="Setki zadowolonych klientów z całej Polski"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Pytania o <span class='accent'>artykuły sponsorowane</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Ile kosztuje artykuł sponsorowany?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Cena <strong>artykułu sponsorowanego</strong> zależy od portalu publikacji i zakresu usługi. 
+              Artykuł sponsorowany z publikacją w portalu branżowym to koszt od 500 zł, w dużych portalach 
+              ogólnoinformacyjnych od 1500 zł. Cena obejmuje napisanie artykułu i publikację z linkiem.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Co to jest artykuł sponsorowany?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              <strong>Artykuł sponsorowany</strong> to treść publikowana w zewnętrznym medium (portalu, 
+              blogu, magazynie online) na zlecenie i koszt reklamodawcy. Artykuł wygląda jak zwykły 
+              content redakcyjny, ale promuje markę, produkt lub usługę. Zawiera link do strony zleceniodawcy.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jakie są korzyści z artykułów sponsorowanych?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              <strong>Artykuły sponsorowane</strong> budują wizerunek eksperta, zwiększają rozpoznawalność 
+              marki, generują wartościowe linki zwrotne (link building), przyciągają nowych klientów 
+              i wzmacniają pozycję w Google. To skuteczne narzędzie content marketingu i SEO.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>W jakich portalach publikujecie artykuły sponsorowane?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Mamy dostęp do 100+ portali: ogólnoinformacyjne (Onet, WP, Interia), branżowe (IT, finanse, 
+              prawo, medycyna), biznesowe, lifestyle'owe i lokalne. Dobieramy medium do Twojej branży 
+              i grupy docelowej.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy artykuł sponsorowany zawiera link do mojej strony?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, standardowo <strong>artykuł sponsorowany</strong> zawiera 1-2 linki do strony klienta. 
+              Linki mogą być dofollow lub nofollow w zależności od polityki portalu. Informujemy o rodzaju 
+              linku przed publikacją.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długo trwa realizacja artykułu sponsorowanego?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              <strong>Pisanie artykułu sponsorowanego</strong> zajmuje 3-5 dni roboczych. Publikacja 
+              w portalu może potrwać dodatkowe 3-14 dni w zależności od medium. Łącznie od zamówienia 
+              do publikacji to zazwyczaj 1-3 tygodnie.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy mogę wybrać portal do publikacji?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak! Możesz wskazać konkretny portal lub poprosić nas o rekomendację. Doradzamy, które 
+              medium najlepiej pasuje do Twojej branży, budżetu i celów marketingowych. Mamy dostęp 
+              do szerokiej bazy portali.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy artykuł sponsorowany jest oznaczony jako reklama?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, zgodnie z prawem <strong>artykuły sponsorowane</strong> są oznaczane jako treść 
+              sponsorowana, materiał partnera lub artykuł promocyjny. Mimo oznaczenia, dobrze napisany 
+              artykuł sponsorowany dostarcza wartość czytelnikom i buduje wizerunek marki.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="artykuly-sponsorowane-info">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Artykuły sponsorowane – skuteczne narzędzie content marketingu i SEO</h2>
+        
+        <p>
+          <strong>Artykuły sponsorowane</strong> to jedno z najskuteczniejszych narzędzi współczesnego 
+          marketingu internetowego. Łączą zalety content marketingu, PR i SEO w jednym formacie. 
+          Dobrze napisany artykuł sponsorowany buduje wizerunek marki, generuje ruch na stronie 
+          i wzmacnia pozycje w wyszukiwarkach.
+        </p>
+        
+        <p>
+          Od ponad 15 lat specjalizujemy się w <strong>pisaniu artykułów sponsorowanych</strong> dla firm 
+          z różnych branż. Opublikowaliśmy ponad 500 artykułów w portalach ogólnoinformacyjnych, branżowych 
+          i lokalnych. Mamy dostęp do 100+ mediów i wiemy, jak tworzyć treści, które przynoszą efekty.
+        </p>
+
+        <h3>Czym wyróżnia się skuteczny artykuł sponsorowany?</h3>
+        
+        <p>
+          Skuteczny <strong>artykuł sponsorowany</strong> to nie nachalna reklama – to wartościowy content, 
+          który czytelnicy chcą czytać. Dostarcza informacji, rozwiązuje problemy, edukuje lub bawi. 
+          Promocja marki jest subtelna i naturalna, wpleciona w merytoryczną treść.
+        </p>
+        
+        <p>
+          Nasze <strong>tworzenie artykułów sponsorowanych</strong> opiera się na zrozumieniu odbiorcy. 
+          Analizujemy grupę docelową, badamy, jakich informacji szuka, i dostarczamy treść, która odpowiada 
+          na te potrzeby. Dzięki temu artykuł sponsorowany jest chętnie czytany i udostępniany.
+        </p>
+
+        <h3>Artykuły sponsorowane a link building</h3>
+        
+        <p>
+          Jedną z głównych korzyści <strong>artykułów sponsorowanych</strong> jest link building. 
+          Każda publikacja zawiera link do strony klienta – najczęściej dofollow, który przekazuje 
+          "moc SEO" i wzmacnia autorytet domeny.
+        </p>
+        
+        <p>
+          Linki z artykułów sponsorowanych są szczególnie wartościowe, bo pochodzą z autorytatywnych 
+          źródeł – portali z historią, ruchem i zaufaniem Google. To bezpieczna i skuteczna metoda 
+          budowania profilu linkowego, zgodna z wytycznymi wyszukiwarek.
+        </p>
+
+        <h3>Gdzie publikować artykuły sponsorowane?</h3>
+        
+        <p>
+          Wybór portalu do <strong>publikacji artykułu sponsorowanego</strong> zależy od celów 
+          i grupy docelowej. Duże portale ogólnoinformacyjne (Onet, WP, Interia) dają szeroki zasięg. 
+          Portale branżowe (IT, finanse, prawo, medycyna) docierają do specjalistycznej grupy odbiorców.
+        </p>
+        
+        <p>
+          Mamy dostęp do ponad 100 portali o różnej tematyce i zasięgu. Możesz wskazać konkretne 
+          medium lub poprosić nas o rekomendację. Dobierzemy portal idealnie dopasowany do Twojej 
+          branży, budżetu i celów marketingowych.
+        </p>
+
+        <h3>Ile kosztują artykuły sponsorowane?</h3>
+        
+        <p>
+          Cena <strong>artykułu sponsorowanego</strong> zależy od portalu publikacji. W portalach 
+          lokalnych i mniejszych branżowych koszty zaczynają się od 300-500 zł. Portale średniej 
+          wielkości to wydatek 500-1000 zł. Duże portale ogólnoinformacyjne kosztują od 1500 zł wzwyż.
+        </p>
+        
+        <p>
+          Cena obejmuje napisanie artykułu przez profesjonalnego copywritera oraz publikację 
+          z uzgodnionymi linkami. Oferujemy również pakiety dla firm planujących regularne kampanie 
+          artykułów sponsorowanych.
+        </p>
+
+        <h3>Zamów artykuł sponsorowany</h3>
+        
+        <p>
+          Jeśli szukasz profesjonalnego <strong>tworzenia artykułów sponsorowanych</strong>, 
+          skontaktuj się z nami. Omówimy Twoje cele, zaproponujemy odpowiednie portale i przygotujemy 
+          wycenę. Z nami artykuł sponsorowany to inwestycja, która się zwraca.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Zamów artykuł sponsorowany</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* Article Types Section */
+  .article-types {
+    background: var(--color-bg-secondary);
+  }
+  
+  .article-types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .article-types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .article-types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .article-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .article-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .article-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .article-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .article-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .article-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .article-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .article-card__goal {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+  }
+  
+  .article-card__goal span {
+    color: var(--color-text-tertiary);
+    font-weight: 400;
+  }
+  
+  .article-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .article-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .article-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  /* Publishing Options Section */
+  .publishing-options {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+  
+  .publishing-options__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .publishing-options .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .publishing-options :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .publishing-options :global(.section-heading__title),
+  .publishing-options :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .publishing-options :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .publishing-options__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .publishing-options__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .publishing-options__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .pub-option-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .pub-option-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+  
+  .pub-option-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-2);
+  }
+  
+  .pub-option-card__description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-3);
+    line-height: 1.5;
+  }
+  
+  .pub-option-card__price {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+  
+  .pub-option-card__examples {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: var(--space-3);
+    line-height: 1.5;
+  }
+  
+  .pub-option-card__examples strong {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .pub-option-card__reach {
+    display: inline-block;
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    background: rgba(252, 187, 66, 0.1);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+  
+  .pub-option-card__btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    transition: all 0.2s ease;
+  }
+  
+  .pub-option-card__btn:hover {
+    background: var(--color-accent-dark);
+  }
+
+  /* Media Section */
+  .media {
+    background: var(--color-bg-primary);
+  }
+  
+  .media__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+  }
+  
+  @media (min-width: 768px) {
+    .media__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .media__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .media-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    transition: all 0.3s ease;
+  }
+  
+  .media-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  .media-card__category {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .media-card__examples {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+    line-height: 1.5;
+  }
+  
+  .media-card__link-type {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+  
+  .media__note {
+    text-align: center;
+    margin-top: var(--space-8);
+    color: var(--color-text-secondary);
+  }
+  
+  .media__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-secondary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Process Section */
+  .process {
+    position: relative;
+    background: var(--color-bg-primary);
+  }
+  
+  .process__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(18, 25, 58, 0.03) 0%, transparent 40%);
+  }
+  
+  .process .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process__timeline {
+    max-width: 700px;
+    margin: var(--space-12) auto 0;
+    position: relative;
+  }
+  
+  .process__timeline::before {
+    content: "";
+    position: absolute;
+    left: 29px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+  
+  @media (min-width: 768px) {
+    .process__timeline::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .process-step {
+    position: relative;
+    display: flex;
+    gap: var(--space-6);
+    padding-bottom: var(--space-8);
+  }
+  
+  @media (min-width: 768px) {
+    .process-step {
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .process-step__marker {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process-step__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+  }
+  
+  .process-step__content {
+    flex: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .process-step__content {
+      max-width: 400px;
+    }
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .process-step__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-8);
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-secondary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-primary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-secondary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>
