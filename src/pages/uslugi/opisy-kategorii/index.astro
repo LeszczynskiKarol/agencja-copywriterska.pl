@@ -1,0 +1,1682 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import Stats from '../../../components/Stats.astro';
+import Testimonial from '../../../components/Testimonial.astro';
+
+const pageTitle = "Opisy Kategorii - Profesjonalne Opisy Kategorii do Sklepu | Agencja Copywriterska";
+const pageDescription = "Opisy kategorii do sklepu internetowego ✓ SEO dla e-commerce ✓ Pozycjonowanie kategorii ✓ Unikalne treści ✓ Zwiększenie widoczności w Google. Zamów opisy kategorii!";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://agencja-copywriterska.pl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Usługi",
+      "item": "https://agencja-copywriterska.pl/uslugi"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Opisy kategorii",
+      "item": "https://agencja-copywriterska.pl/uslugi/opisy-kategorii"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Opisy kategorii",
+  "name": "Profesjonalne Opisy Kategorii do Sklepów Internetowych",
+  "description": "Profesjonalne pisanie opisów kategorii do sklepów internetowych. SEO-friendly treści zwiększające widoczność kategorii w Google i wspierające pozycjonowanie e-commerce.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agencja Copywriterska",
+    "url": "https://agencja-copywriterska.pl",
+    "telephone": "+48509370772",
+    "email": "kontakt@agencja-copywriterska.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi opisów kategorii",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Opisy kategorii SEO"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Opisy kategorii e-commerce"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Opisy podkategorii"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Rozbudowane opisy kategorii"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje opis kategorii?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cena opisu kategorii zależy od długości i złożoności. Krótki opis (300-500 słów) to koszt od 80-120 zł, standardowy opis (500-800 słów) od 120-180 zł, a rozbudowany opis SEO (1000+ słów) od 200-350 zł. Przy większych zamówieniach oferujemy rabaty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Dlaczego opisy kategorii są ważne dla SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Opisy kategorii to kluczowy element SEO dla e-commerce. Google indeksuje strony kategorii jako ważne podstrony sklepu. Unikalna, zoptymalizowana treść pomaga kategorii rankować na frazy produktowe i zwiększa widoczność całego sklepu w wyszukiwarce."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długi powinien być opis kategorii?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Optymalny opis kategorii ma 500-1000 słów. Krótsze opisy (300-500 słów) sprawdzają się przy podkategoriach. Dla głównych kategorii rekomendujemy dłuższe opisy (800-1500 słów), które dają więcej miejsca na słowa kluczowe i wartościowy content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy opisy kategorii są unikalne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, każdy opis kategorii piszemy od podstaw. Gwarantujemy 100% unikalności – wszystkie opisy przechodzą weryfikację antyplagiatową. Unikalne treści są niezbędne dla skutecznego SEO."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gdzie umieścić opis kategorii w sklepie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Opis kategorii najlepiej umieścić nad lub pod listą produktów. Część sklepów pokazuje krótki wstęp na górze i pełny opis na dole strony. Doradzimy optymalne rozwiązanie dla Twojej platformy e-commerce."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa napisanie opisów kategorii?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Czas realizacji zależy od ilości kategorii. 10-20 opisów to 5-7 dni roboczych. 50+ opisów to 2-3 tygodnie. Przy pilnych zleceniach możemy przyspieszyć realizację."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy pomagacie w doborze słów kluczowych?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak! Przeprowadzamy research słów kluczowych dla każdej kategorii. Analizujemy frazy o najwyższym potencjale i naturalnie wplatamy je w treść opisu. To część naszej standardowej usługi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy piszecie opisy do sklepów na Allegro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, piszemy opisy kategorii i stron informacyjnych dla sklepów na Allegro (Allegro Brand Zone), a także dla innych marketplace'ów. Dostosowujemy treści do specyfiki każdej platformy."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: "2000", suffix: "+", label: "opisów kategorii" },
+  { value: "150", suffix: "+", label: "sklepów obsłużonych" },
+  { value: "45", suffix: "%", label: "średni wzrost ruchu organicznego" },
+  { value: "15", suffix: "+", label: "lat doświadczenia" }
+];
+
+const testimonials = [
+  {
+    quote: "Zleciliśmy opisy do 80 kategorii w naszym sklepie z elektroniką. Po 3 miesiącach ruch organiczny wzrósł o 60%, a kilka kategorii weszło do TOP 10 Google. Świetna inwestycja w SEO!",
+    author: "Rafał Kowalski",
+    role: "SEO Manager",
+    company: "ElektroMarket.pl",
+    rating: 5
+  },
+  {
+    quote: "Profesjonalne podejście do opisów kategorii. Widać, że znają się na SEO dla e-commerce. Opisy są nie tylko zoptymalizowane, ale też wartościowe dla klientów.",
+    author: "Magdalena Wiśniewska",
+    role: "E-commerce Director",
+    company: "ModaPolska.pl",
+    rating: 5
+  },
+  {
+    quote: "Potrzebowaliśmy szybko 40 opisów kategorii do nowego sklepu. Dostarczyli w 2 tygodnie, jakość na najwyższym poziomie. Polecam każdemu, kto chce zadbać o SEO.",
+    author: "Piotr Nowak",
+    role: "Właściciel",
+    company: "SportGear24",
+    rating: 5
+  }
+];
+
+const descriptionTypes = [
+  {
+    title: "Opis kategorii podstawowy",
+    description: "Krótki, treściwy opis wprowadzający do kategorii. Idealne do podkategorii i mniejszych działów.",
+    features: ["300-500 słów", "Główne słowa kluczowe", "Wprowadzenie do kategorii", "Szybka realizacja"],
+    price: "od 80 zł/szt.",
+    icon: "📝"
+  },
+  {
+    title: "Opis kategorii standardowy",
+    description: "Pełny opis z rozbudowanym SEO. Najczęściej wybierana opcja dla głównych kategorii sklepu.",
+    features: ["500-800 słów", "Research słów kluczowych", "Struktura H2/H3", "Linkowanie wewnętrzne"],
+    price: "od 120 zł/szt.",
+    icon: "📄"
+  },
+  {
+    title: "Opis kategorii premium",
+    description: "Rozbudowany content SEO z elementami poradnikowymi. Maksymalna optymalizacja pod wyszukiwarki.",
+    features: ["1000+ słów", "Pełny research SEO", "Elementy poradnikowe", "FAQ sekcja"],
+    price: "od 200 zł/szt.",
+    icon: "⭐"
+  },
+  {
+    title: "Opis kategorii + meta",
+    description: "Opis kategorii wraz z meta title i meta description. Komplet treści SEO dla strony kategorii.",
+    features: ["Opis kategorii", "Meta title", "Meta description", "Alt tagi sugestie"],
+    price: "od 150 zł/szt.",
+    icon: "🔍"
+  },
+  {
+    title: "Pakiet opisów kategorii",
+    description: "Kompletny pakiet opisów dla całej struktury kategorii sklepu. Spójna strategia contentowa.",
+    features: ["Główne kategorie", "Podkategorie", "Spójna strategia", "Rabat pakietowy"],
+    price: "wycena indywidualna",
+    icon: "📦"
+  },
+  {
+    title: "Audyt + opisy kategorii",
+    description: "Analiza obecnych opisów kategorii i napisanie nowych zoptymalizowanych treści.",
+    features: ["Audyt SEO kategorii", "Analiza konkurencji", "Strategia słów kluczowych", "Nowe opisy"],
+    price: "wycena indywidualna",
+    icon: "📊"
+  }
+];
+
+const seoElements = [
+  {
+    title: "Słowa kluczowe",
+    description: "Naturalne rozmieszczenie fraz głównych i long tail w treści opisu",
+    icon: "🔑"
+  },
+  {
+    title: "Struktura nagłówków",
+    description: "Hierarchia H2, H3 wspierająca indeksowanie i czytelność",
+    icon: "📑"
+  },
+  {
+    title: "Linkowanie wewnętrzne",
+    description: "Linki do produktów, podkategorii i powiązanych treści",
+    icon: "🔗"
+  },
+  {
+    title: "Meta dane",
+    description: "Optymalne meta title i meta description dla każdej kategorii",
+    icon: "📋"
+  },
+  {
+    title: "Unikalność",
+    description: "100% oryginalne treści – zero duplicate content",
+    icon: "✅"
+  },
+  {
+    title: "User Intent",
+    description: "Treści odpowiadające na intencje wyszukiwania użytkowników",
+    icon: "🎯"
+  }
+];
+
+const benefits = [
+  {
+    icon: "📈",
+    title: "Wyższe pozycje w Google",
+    description: "Zoptymalizowane opisy kategorii pomagają stronom kategorii rankować wyżej na frazy produktowe i ogólne."
+  },
+  {
+    icon: "🚀",
+    title: "Więcej ruchu organicznego",
+    description: "Nasi klienci notują średnio 45% wzrost ruchu organicznego na stronach kategorii po wdrożeniu opisów."
+  },
+  {
+    icon: "🛒",
+    title: "Lepsza konwersja",
+    description: "Wartościowe opisy kategorii edukują klientów i pomagają im znaleźć odpowiednie produkty."
+  },
+  {
+    icon: "🔍",
+    title: "Pokrycie słów kluczowych",
+    description: "Każda kategoria to szansa na pozycjonowanie dodatkowych fraz. Wykorzystujemy ten potencjał."
+  },
+  {
+    icon: "✍️",
+    title: "Profesjonalne treści",
+    description: "Opisy pisane przez doświadczonych copywriterów, którzy znają specyfikę SEO dla e-commerce."
+  },
+  {
+    icon: "⚡",
+    title: "Szybka realizacja",
+    description: "Sprawnie realizujemy nawet duże projekty. Komplet opisów dla sklepu w 2-3 tygodnie."
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Analiza struktury",
+    description: "Analizujemy strukturę kategorii Twojego sklepu i planujemy strategię opisów."
+  },
+  {
+    number: "02",
+    title: "Research słów kluczowych",
+    description: "Przeprowadzamy research fraz dla każdej kategorii – główne i long tail."
+  },
+  {
+    number: "03",
+    title: "Pisanie opisów",
+    description: "Tworzymy unikalne, zoptymalizowane opisy kategorii zgodnie z wytycznymi."
+  },
+  {
+    number: "04",
+    title: "Kontrola jakości",
+    description: "Każdy opis przechodzi weryfikację SEO i sprawdzenie unikalności."
+  },
+  {
+    number: "05",
+    title: "Dostarczenie",
+    description: "Otrzymujesz gotowe opisy w uzgodnionym formacie, gotowe do wdrożenia."
+  }
+];
+
+const platforms = [
+  "WooCommerce", "PrestaShop", "Magento", "Shopify", 
+  "IdoSell", "Shoper", "Sky-Shop", "BaseLinker",
+  "Allegro Brand Zone", "Amazon", "Empik Marketplace", "Custom CMS"
+];
+
+const industries = [
+  { name: "Elektronika", icon: "📱" },
+  { name: "Moda i odzież", icon: "👕" },
+  { name: "Dom i ogród", icon: "🏡" },
+  { name: "Sport i outdoor", icon: "⚽" },
+  { name: "Kosmetyki", icon: "💄" },
+  { name: "Zdrowie", icon: "💊" },
+  { name: "Motoryzacja", icon: "🚗" },
+  { name: "Dziecko i zabawki", icon: "🧸" }
+];
+---
+
+<BaseLayout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords="opisy kategorii, opisy kategorii do sklepu, opisy kategorii e-commerce, opisy kategorii SEO, pisanie opisów kategorii, opisy kategorii sklep internetowy"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/uslugi">Usługi</a></li>
+        <li aria-current="page">Opisy kategorii</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__pattern"></div>
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge animate-fade-in">SEO dla e-commerce</span>
+        <h1 class="hero__title animate-fade-in" style="animation-delay: 0.1s">
+          <strong>Opisy kategorii</strong> do sklepu internetowego
+        </h1>
+        <p class="hero__subtitle animate-fade-in" style="animation-delay: 0.2s">
+          Profesjonalne <strong>opisy kategorii</strong> zoptymalizowane pod SEO. Zwiększ widoczność 
+          swojego sklepu w Google, przyciągnij więcej klientów i popraw pozycje na frazy produktowe. 
+          Ponad 2000 napisanych opisów kategorii.
+        </p>
+        <div class="hero__cta animate-fade-in" style="animation-delay: 0.3s">
+          <a href="/kontakt" class="btn btn--primary btn--lg">
+            Zamów opisy kategorii
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#cennik" class="btn btn--secondary btn--lg">
+            Zobacz cennik
+          </a>
+        </div>
+        <div class="hero__trust animate-fade-in" style="animation-delay: 0.4s">
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>2000+ opisów kategorii</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>+45% ruchu organicznego</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Research słów kluczowych</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <Stats items={stats} variant="dark" />
+    </div>
+  </section>
+
+  <!-- What is Section -->
+  <section class="section what-is" id="o-usludze">
+    <div class="container">
+      <div class="what-is__grid">
+        <div class="what-is__content">
+          <SectionHeading
+            label="O usłudze"
+            title="Dlaczego <span class='accent'>opisy kategorii</span> są tak ważne dla SEO?"
+            align="left"
+          />
+          <div class="what-is__text">
+            <p>
+              <strong>Opisy kategorii</strong> to jeden z najważniejszych, a często pomijanych elementów 
+              SEO w e-commerce. Google traktuje strony kategorii jako kluczowe podstrony sklepu – to na 
+              nich użytkownicy szukają grup produktów i to one mogą rankować na ogólne frazy produktowe.
+            </p>
+            <p>
+              Wiele sklepów ma puste strony kategorii lub jedynie automatycznie wygenerowane listy produktów. 
+              To zmarnowany potencjał SEO. <strong>Profesjonalne opisy kategorii</strong> dają Google 
+              unikalną treść do indeksowania i pomagają stronom kategorii wyświetlać się wyżej w wynikach.
+            </p>
+            <p>
+              Napisaliśmy ponad 2000 <strong>opisów kategorii</strong> dla sklepów z różnych branż. 
+              Nasi klienci notują średnio 45% wzrost ruchu organicznego na stronach kategorii. To 
+              inwestycja, która zwraca się w postaci większej widoczności i sprzedaży.
+            </p>
+          </div>
+        </div>
+        <div class="what-is__visual">
+          <div class="what-is__card">
+            <div class="what-is__card-icon">📊</div>
+            <h3>Kategoria = strona do pozycjonowania</h3>
+            <p>Każda kategoria w Twoim sklepie to osobna szansa na zdobycie ruchu z Google na wartościowe frazy.</p>
+          </div>
+          <div class="what-is__highlight">
+            <span class="what-is__highlight-number">+45%</span>
+            <span class="what-is__highlight-text">średni wzrost ruchu organicznego na stronach kategorii</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Elements Section -->
+  <section class="section seo-elements" id="elementy-seo">
+    <div class="container">
+      <SectionHeading
+        label="Elementy SEO"
+        title="Co zawierają nasze <span class='accent'>opisy kategorii</span>?"
+        subtitle="Kompletna optymalizacja dla maksymalnej widoczności w Google"
+        align="center"
+      />
+      <div class="seo-elements__grid">
+        {seoElements.map((element, index) => (
+          <div class="seo-element-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="seo-element-card__icon">{element.icon}</span>
+            <h3 class="seo-element-card__title">{element.title}</h3>
+            <p class="seo-element-card__description">{element.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Description Types Section -->
+  <section class="section desc-types" id="rodzaje-opisow">
+    <div class="container">
+      <SectionHeading
+        label="Rodzaje opisów"
+        title="Jakie <span class='accent'>opisy kategorii</span> oferujemy?"
+        subtitle="Od krótkich wprowadzeń po rozbudowane treści SEO"
+        align="center"
+      />
+      <div class="desc-types__grid">
+        {descriptionTypes.map((type, index) => (
+          <article class="desc-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="desc-card__icon">{type.icon}</span>
+            <h3 class="desc-card__title">{type.title}</h3>
+            <p class="desc-card__description">{type.description}</p>
+            <div class="desc-card__price">{type.price}</div>
+            <ul class="desc-card__features">
+              {type.features.map(feature => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="section industries" id="branze">
+    <div class="industries__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Branże"
+        title="<span class='accent'>Opisy kategorii</span> dla każdej branży e-commerce"
+        subtitle="Rozumiemy specyfikę różnych segmentów rynku"
+        align="center"
+      />
+      <div class="industries__grid">
+        {industries.map((industry, index) => (
+          <div class="industry-card animate-fade-in" style={`animation-delay: ${index * 0.05}s`}>
+            <span class="industry-card__icon">{industry.icon}</span>
+            <span class="industry-card__name">{industry.name}</span>
+          </div>
+        ))}
+      </div>
+      <div class="platforms__grid">
+        {platforms.map((platform, index) => (
+          <div class="platform-tag animate-fade-in" style={`animation-delay: ${index * 0.05}s`}>
+            {platform}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits" id="korzysci">
+    <div class="container">
+      <SectionHeading
+        label="Korzyści"
+        title="Dlaczego warto zlecić nam <span class='accent'>opisy kategorii</span>?"
+        subtitle="SEO expertise + doświadczenie w e-commerce"
+        align="center"
+      />
+      <div class="benefits__grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="benefit-card__icon">{benefit.icon}</span>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="proces">
+    <div class="process__bg"></div>
+    <div class="container">
+      <SectionHeading
+        label="Jak działamy"
+        title="Proces <span class='accent'>tworzenia opisów kategorii</span>"
+        subtitle="Od analizy do gotowych treści SEO"
+        align="center"
+      />
+      <div class="process__steps">
+        {processSteps.map((step, index) => (
+          <div class="process-step animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+            <span class="process-step__number">{step.number}</span>
+            <div class="process-step__content">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="process__cta">
+        <a href="/kontakt" class="btn btn--primary btn--lg">
+          Zamów opisy kategorii
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="opinie">
+    <div class="container">
+      <SectionHeading
+        label="Opinie klientów"
+        title="Co mówią o naszych <span class='accent'>opisach kategorii</span>?"
+        subtitle="Ponad 150 obsłużonych sklepów internetowych"
+        align="center"
+      />
+      <div class="testimonials__grid">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+            company={testimonial.company}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <SectionHeading
+        label="FAQ"
+        title="Pytania o <span class='accent'>opisy kategorii</span>"
+        align="center"
+      />
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">
+            <span>Ile kosztuje opis kategorii?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Cena <strong>opisu kategorii</strong> zależy od długości i złożoności. Krótki opis 
+              (300-500 słów) to koszt od 80-120 zł, standardowy opis (500-800 słów) od 120-180 zł, 
+              a rozbudowany opis SEO (1000+ słów) od 200-350 zł. Przy większych zamówieniach oferujemy 
+              rabaty. Zobacz <a href="/cennik">pełny cennik</a>.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Dlaczego opisy kategorii są ważne dla SEO?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              <strong>Opisy kategorii</strong> to kluczowy element SEO dla e-commerce. Google indeksuje 
+              strony kategorii jako ważne podstrony sklepu. Unikalna, zoptymalizowana treść pomaga 
+              kategorii rankować na frazy produktowe i zwiększa widoczność całego sklepu w wyszukiwarce.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długi powinien być opis kategorii?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Optymalny <strong>opis kategorii</strong> ma 500-1000 słów. Krótsze opisy (300-500 słów) 
+              sprawdzają się przy podkategoriach. Dla głównych kategorii rekomendujemy dłuższe opisy 
+              (800-1500 słów), które dają więcej miejsca na słowa kluczowe i wartościowy content.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy opisy kategorii są unikalne?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, każdy <strong>opis kategorii</strong> piszemy od podstaw. Gwarantujemy 100% 
+              unikalności – wszystkie opisy przechodzą weryfikację antyplagiatową. Unikalne treści 
+              są niezbędne dla skutecznego SEO.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Gdzie umieścić opis kategorii w sklepie?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              <strong>Opis kategorii</strong> najlepiej umieścić nad lub pod listą produktów. Część 
+              sklepów pokazuje krótki wstęp na górze i pełny opis na dole strony. Doradzimy optymalne 
+              rozwiązanie dla Twojej platformy e-commerce.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Jak długo trwa napisanie opisów kategorii?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Czas realizacji zależy od ilości kategorii. 10-20 <strong>opisów kategorii</strong> to 
+              5-7 dni roboczych. 50+ opisów to 2-3 tygodnie. Przy pilnych zleceniach możemy 
+              przyspieszyć realizację.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy pomagacie w doborze słów kluczowych?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak! Przeprowadzamy research słów kluczowych dla każdej kategorii. Analizujemy frazy 
+              o najwyższym potencjale i naturalnie wplatamy je w treść <strong>opisu kategorii</strong>. 
+              To część naszej standardowej usługi.
+            </p>
+          </div>
+        </details>
+        
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>Czy piszecie opisy do sklepów na Allegro?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>
+              Tak, piszemy <strong>opisy kategorii</strong> i stron informacyjnych dla sklepów na 
+              Allegro (Allegro Brand Zone), a także dla innych marketplace'ów. Dostosowujemy treści 
+              do specyfiki każdej platformy.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="section seo-content" id="opisy-kategorii-info">
+    <div class="container">
+      <article class="seo-content__article">
+        <h2>Opisy kategorii – niedoceniany potencjał SEO w e-commerce</h2>
+        
+        <p>
+          <strong>Opisy kategorii</strong> to jeden z najczęściej pomijanych elementów optymalizacji 
+          sklepów internetowych. Wiele firm inwestuje w opisy produktów, ale zapomina o stronach 
+          kategorii. To błąd – strony kategorii mają ogromny potencjał SEO i mogą przyciągać 
+          znaczną część ruchu organicznego.
+        </p>
+        
+        <p>
+          Google traktuje strony kategorii jako ważne podstrony sklepu. Użytkownicy często wyszukują 
+          frazy ogólne jak "buty sportowe damskie" czy "laptopy do gier" – i trafiają właśnie na 
+          strony kategorii. Profesjonalne <strong>opisy kategorii</strong> pomagają tym stronom 
+          wyświetlać się wyżej w wynikach wyszukiwania.
+        </p>
+
+        <h3>Dlaczego warto inwestować w opisy kategorii?</h3>
+        
+        <p>
+          Strony kategorii z unikalną treścią rankują znacznie lepiej niż te z samą listą produktów. 
+          <strong>Opisy kategorii</strong> dają Google wartościowy content do indeksowania i pomagają 
+          zrozumieć, o czym jest dana strona. To przekłada się na wyższe pozycje i więcej ruchu.
+        </p>
+        
+        <p>
+          Nasi klienci notują średnio 45% wzrost ruchu organicznego na stronach kategorii po wdrożeniu 
+          profesjonalnych opisów. Dla sklepów z setkami kategorii to może oznaczać tysiące dodatkowych 
+          odwiedzin miesięcznie – bez płacenia za reklamę.
+        </p>
+
+        <h3>Co powinien zawierać dobry opis kategorii?</h3>
+        
+        <p>
+          Skuteczny <strong>opis kategorii</strong> łączy wartość dla użytkownika z optymalizacją SEO. 
+          Powinien zawierać naturalne rozmieszczenie słów kluczowych, strukturę nagłówków H2/H3, 
+          linkowanie wewnętrzne do produktów i podkategorii oraz unikalne treści napisane od podstaw.
+        </p>
+        
+        <p>
+          Ważna jest również długość – optymalny opis kategorii ma 500-1000 słów. Dłuższe opisy 
+          (800-1500 słów) działają świetnie dla głównych kategorii, gdzie jest więcej fraz do pokrycia. 
+          Krótsze (300-500 słów) sprawdzą się dla podkategorii.
+        </p>
+
+        <h3>Opisy kategorii dla każdej platformy e-commerce</h3>
+        
+        <p>
+          Piszemy <strong>opisy kategorii</strong> dla wszystkich platform: WooCommerce, PrestaShop, 
+          Magento, Shopify, IdoSell, Shoper, Sky-Shop i innych. Znamy specyfikę każdego systemu 
+          i wiemy, jak optymalnie umieścić treści w strukturze sklepu.
+        </p>
+        
+        <p>
+          Współpracujemy również ze sprzedawcami na Allegro (Brand Zone) i Amazon. 
+          <strong>Opisy kategorii</strong> na marketplace'ach mają swoją specyfikę – dostosowujemy 
+          treści do wymagań każdej platformy.
+        </p>
+
+        <h3>Jak zamawiać opisy kategorii?</h3>
+        
+        <p>
+          Zamówienie <strong>opisów kategorii</strong> jest proste. Wyślij nam listę kategorii 
+          i podkategorii swojego sklepu. Przygotujemy wycenę i harmonogram realizacji. Opcjonalnie 
+          wykonujemy audyt obecnych opisów i strategię słów kluczowych.
+        </p>
+        
+        <p>
+          Łączymy usługę opisów kategorii z <a href="/uslugi/opisy-produktow">opisami produktów</a> 
+          – to kompleksowe podejście do content marketingu w e-commerce. 
+          <a href="/kontakt">Skontaktuj się z nami</a> po indywidualną wycenę.
+        </p>
+
+        <div class="seo-content__contact">
+          <h3>Zamów opisy kategorii</h3>
+          <p><strong>Agencja Copywriterska</strong></p>
+          <p>📧 E-mail: <a href="mailto:kontakt@agencja-copywriterska.pl">kontakt@agencja-copywriterska.pl</a></p>
+          <p>📞 Telefon: <a href="tel:+48509370772">+48 509 370 772</a></p>
+          <p>📍 Toruń, Polska</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumbs {
+    padding: var(--space-4) 0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumbs__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    color: var(--color-text-tertiary);
+  }
+  
+  .breadcrumbs__list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumbs__list a:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumbs__list li[aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-20) 0 var(--space-16);
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+  
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(252, 187, 66, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(18, 25, 58, 0.1), transparent);
+  }
+  
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .hero__title strong {
+    color: var(--color-accent);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero__subtitle strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .hero__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+  
+  .hero__trust {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero__trust-item svg {
+    color: var(--color-success);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    margin-top: calc(var(--space-16) * -1);
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-16);
+  }
+
+  /* Section Base */
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  /* What is Section */
+  .what-is {
+    background: var(--color-bg-primary);
+  }
+  
+  .what-is__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .what-is__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+  
+  .what-is__text {
+    margin-top: var(--space-6);
+  }
+  
+  .what-is__text p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .what-is__text strong {
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .what-is__card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+  }
+  
+  .what-is__card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .what-is__card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .what-is__card p {
+    color: var(--color-text-secondary);
+  }
+  
+  .what-is__highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    color: white;
+  }
+  
+  .what-is__highlight-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+  
+  .what-is__highlight-text {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+  }
+
+  /* SEO Elements Section */
+  .seo-elements {
+    background: var(--color-bg-secondary);
+  }
+  
+  .seo-elements__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+  }
+  
+  @media (min-width: 768px) {
+    .seo-elements__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .seo-elements__grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+  
+  .seo-element-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .seo-element-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  .seo-element-card__icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+  
+  .seo-element-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+  
+  .seo-element-card__description {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  /* Description Types Section */
+  .desc-types {
+    background: var(--color-bg-primary);
+  }
+  
+  .desc-types__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .desc-types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .desc-types__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .desc-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .desc-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .desc-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .desc-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .desc-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .desc-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .desc-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+  
+  .desc-card__price {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+  
+  .desc-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .desc-card__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+  
+  .desc-card__features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  /* Industries Section */
+  .industries {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+  
+  .industries__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(252, 187, 66, 0.05) 0%, transparent 40%);
+  }
+  
+  .industries .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .industries :global(.section-heading__label) {
+    color: var(--color-accent);
+  }
+  
+  .industries :global(.section-heading__title),
+  .industries :global(.section-heading__subtitle) {
+    color: white;
+  }
+  
+  .industries :global(.section-heading__title .accent) {
+    color: var(--color-accent);
+  }
+  
+  .industries__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-10);
+  }
+  
+  @media (min-width: 768px) {
+    .industries__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .industry-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+  }
+  
+  .industry-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-accent);
+  }
+  
+  .industry-card__icon {
+    font-size: 1.5rem;
+  }
+  
+  .industry-card__name {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: white;
+  }
+  
+  .platforms__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+  }
+  
+  .platform-tag {
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: white;
+    transition: all 0.2s ease;
+  }
+  
+  .platform-tag:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--color-accent);
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background: var(--color-bg-secondary);
+  }
+  
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+  
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+  
+  .benefit-card__description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Process Section */
+  .process {
+    position: relative;
+    background: var(--color-bg-primary);
+  }
+  
+  .process__bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(252, 187, 66, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(18, 25, 58, 0.03) 0%, transparent 40%);
+  }
+  
+  .process .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .process__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  @media (min-width: 768px) {
+    .process__steps {
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-4);
+    }
+  }
+  
+  .process-step {
+    text-align: center;
+  }
+  
+  .process-step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+  
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .process-step__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+  
+  .process__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-bg-secondary);
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-bg-primary);
+  }
+  
+  .faq__list {
+    max-width: 800px;
+    margin: var(--space-12) auto 0;
+  }
+  
+  .faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq__item:hover {
+    border-color: var(--color-accent);
+  }
+  
+  .faq__item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(252, 187, 66, 0.1);
+  }
+  
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq__question:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
+  .faq__question svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+  }
+  
+  .faq__item[open] .faq__question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq__answer {
+    padding: var(--space-6);
+    background: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq__answer p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .faq__answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .faq__answer a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* SEO Content Section */
+  .seo-content {
+    background: var(--color-bg-secondary);
+  }
+  
+  .seo-content__article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .seo-content__article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__article strong {
+    color: var(--color-text-primary);
+  }
+  
+  .seo-content__article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  
+  .seo-content__article a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .seo-content__contact {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-top: var(--space-10);
+  }
+  
+  .seo-content__contact h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .seo-content__contact p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+  
+  .seo-content__contact p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Global accent class */
+  :global(.accent) {
+    color: var(--color-accent);
+  }
+</style>

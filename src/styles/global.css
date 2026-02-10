@@ -149,7 +149,8 @@ body {
   line-height: var(--lh-normal);
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  transition: background-color var(--transition-base),
+  transition:
+    background-color var(--transition-base),
     color var(--transition-base);
   overflow-x: hidden;
 }
@@ -389,7 +390,9 @@ p {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg), 0 12px 32px rgba(252, 187, 66, 0.4);
+  box-shadow:
+    var(--shadow-lg),
+    0 12px 32px rgba(252, 187, 66, 0.4);
 }
 
 .btn-primary:active {
@@ -472,6 +475,10 @@ p {
 
 .badge-accent {
   background-color: rgba(252, 187, 66, 0.15);
+  color: #b8860b;
+}
+
+[data-theme="dark"] .badge-accent {
   color: var(--color-accent);
 }
 
@@ -647,7 +654,8 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       circle at 20% 50%,
       rgba(252, 187, 66, 0.08) 0%,
       transparent 50%
@@ -661,7 +669,8 @@ p {
 }
 
 .bg-grid {
-  background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
   background-size: 60px 60px;
 }
