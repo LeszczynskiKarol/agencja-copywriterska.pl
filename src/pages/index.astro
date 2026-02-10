@@ -149,34 +149,43 @@ const services = [
 
 // Stats data
 const stats = [
-  { value: '15', suffix: '+', label: 'Lat doświadczenia' },
-  { value: '5000', suffix: '+', label: 'Napisanych tekstów' },
-  { value: '11', label: 'Wydanych publikacji' },
-  { value: '98', suffix: '%', label: 'Zadowolonych klientów' }
+  { value: '+15', label: 'Lat doświadczenia' },
+  { value: '+5000', label: 'Napisanych tekstów' },
+  { value: '+20', label: 'Wydanych publikacji' },
+  { value: '+300', label: 'Zadowolonych klientów' }
 ];
 
 // Testimonials
 const testimonials = [
   {
-    quote: 'Współpraca z Agencją Copywriterską to czysta przyjemność. Teksty na stronę były gotowe przed terminem, a jakość przeszła nasze oczekiwania. Polecam każdemu, kto szuka profesjonalnego copywritera.',
-    author: 'Anna Kowalska',
-    role: 'Marketing Manager',
-    company: 'TechStart Sp. z o.o.',
-    rating: 5
-  },
-  {
-    quote: 'Zamówiliśmy ebook jako lead magnet do naszej kampanii. Od pomysłu do gotowego PDF minęły 3 tygodnie. Efekt? Ponad 500 pobrań w pierwszym miesiącu i dziesiątki nowych leadów.',
-    author: 'Michał Nowak',
+    quote: 'Dzięki przemyślanemu, strategicznemu podejściu do content marketingu i dzięki treściom tworzonym przez Agencję Copywriterską podwoiliśmy liczbę osób odwiedzających naszą stronę, a co za tym idzie - liczbę zapytań ofetowych.',
+        author: 'Jacek Wichowski',
     role: 'CEO',
-    company: 'GrowthLab',
+    company: 'MebleSystem',
+    companyUrl: 'https://meblesystem.pl',
+    avatar: 'https://www.meblesystem.pl/wp-content/uploads/2020/02/logo-male.png',
     rating: 5
+
   },
   {
-    quote: 'Profesjonalizm na najwyższym poziomie. Zeszyt ćwiczeń do naszego kursu wygląda jak z wydawnictwa naukowego. Skład w LaTeX robi wrażenie - polecam każdemu, kto potrzebuje publikacji.',
-    author: 'dr Katarzyna Wiśniewska',
-    role: 'Wykładowca',
-    company: 'Akademia Medyczna',
+    quote: 'Katalogi i broszury produktowe stworzone przez Agencję Copywriterską doskonałe się prezentują i są skuteczne pod względem marketingowym. Doceniamy profesjonalne wykonanie projektów od A do Z.',
+        author: 'Arkadiusz Pająk',
+    role: 'Właściciel',
+    company: 'Nadamel',
+    companyUrl: 'https://nadamel.pl',
+    avatar: '/images/testimonials/nadamel.png',
     rating: 5
+
+  },
+  {
+    quote: 'Agencja Copywriterska zaplanowała, przygotowała i wdrożyła w naszym sklepie treści, które o 40% zwiększyły liczbę użytkowników, co przełożyło się wprost na większą sprzedaż.',
+    author: 'Krzysztof Leszczyński',
+    role: 'dyrektor',
+    company: 'Stojan Silniki Elektryczne',
+    companyUrl: 'https://silniki-elektryczne.com.pl',
+    avatar: '/images/testimonials/stojan.png',
+    rating: 5
+
   }
 ];
 
@@ -262,7 +271,7 @@ const benefits = [
         </h1>
         <p class="hero__subtitle lead">
           Od copywritingu po kompleksowe ebooki i podręczniki - wszystko od A do Z. 
-          15 lat doświadczenia, 5000+ tekstów, 11 wydanych publikacji książkowych.
+          15 lat doświadczenia, 5000+ tekstów, +20 wydanych publikacji książkowych.
         </p>
         <div class="hero__actions">
           <Button href="/kontakt" variant="primary" size="lg" icon>
@@ -272,9 +281,7 @@ const benefits = [
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </Button>
-          <Button href="/uslugi" variant="secondary" size="lg">
-            Zobacz usługi
-          </Button>
+          
         </div>
         <div class="hero__trust">
           <div class="hero__trust-item">
@@ -366,7 +373,7 @@ const benefits = [
           <SectionHeading 
             label="Dlaczego my"
             title="Agencja copywriterska z <span>15-letnim doświadczeniem</span>"
-            subtitle="Łączę pasję do pisania z techniczną wiedzą o składzie publikacji. To unikalne połączenie, które pozwala mi oferować usługi niedostępne gdzie indziej."
+            subtitle="Łączymy pasję do pisania z techniczną wiedzą o składzie publikacji. To unikalne połączenie, które pozwala oferować jedyne w swoim rodzaju usługi copywriterskie."
           />
           
           <div class="about-text">
