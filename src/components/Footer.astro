@@ -161,7 +161,8 @@ const footerLinks = {
           © {currentYear} Agencja-Copywriterska.pl. Wszelkie prawa zastrzeżone.
         </p>
         <nav class="footer-bottom__nav">
-          <a href="/polityka-prywatnosci">Polityka prywatności</a>          
+          <a href="/polityka-prywatnosci">Polityka prywatności</a>
+          <button type="button" onclick="openCookieSettings()" class="footer-cookie-btn">Cookies</button>
         </nav>
       </div>
     </div>
@@ -439,14 +440,21 @@ const footerLinks = {
     gap: var(--space-6);
   }
 
-  .footer-bottom__nav a {
+  .footer-bottom__nav a,
+  .footer-bottom__nav .footer-cookie-btn {
     font-size: var(--fs-sm);
     color: var(--text-tertiary);
     text-decoration: none;
     transition: color var(--transition-fast);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
   }
 
-  .footer-bottom__nav a:hover {
+  .footer-bottom__nav a:hover,
+  .footer-bottom__nav .footer-cookie-btn:hover {
     color: var(--color-accent);
   }
 </style>

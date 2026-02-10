@@ -1,0 +1,461 @@
+---
+/**
+ * CookieBanner.astro
+ * GDPR-compliant cookie consent banner with Google Consent Mode v2
+ * For agencja-copywriterska.pl
+ *
+ * GA4: G-92N4WCQ297
+ * Hardcoded light colors — immune to dark mode
+ */
+---
+
+<div
+  id="cookie-banner"
+  class="cb-overlay cb-hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-title"
+>
+  <div class="cb-backdrop"></div>
+
+  <div class="cb-container">
+    <div class="cb-card">
+      <!-- Header -->
+      <div class="cb-header">
+        <div class="cb-header__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <div>
+          <h2 id="cookie-title" class="cb-title">Szanujemy Twoją prywatność</h2>
+          <p class="cb-subtitle">Używamy plików cookies, aby zapewnić najlepsze doświadczenia na naszej stronie.</p>
+        </div>
+      </div>
+
+      <!-- Details (collapsible) -->
+      <div id="cookie-details" class="cb-details cb-hidden">
+        <!-- Necessary -->
+        <div class="cb-category">
+          <div class="cb-category__left">
+            <div class="cb-cat-icon cb-cat-icon--green">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <strong class="cb-cat-name">Niezbędne</strong>
+              <span class="cb-cat-desc">Wymagane do działania strony</span>
+            </div>
+          </div>
+          <div class="cb-toggle cb-toggle--locked">
+            <span class="cb-toggle__track cb-toggle__track--on"></span>
+            <span class="cb-toggle__thumb cb-toggle__thumb--on"></span>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="cb-category">
+          <div class="cb-category__left">
+            <div class="cb-cat-icon cb-cat-icon--blue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div>
+              <strong class="cb-cat-name">Analityczne</strong>
+              <span class="cb-cat-desc">Google Analytics, statystyki</span>
+            </div>
+          </div>
+          <label class="cb-toggle">
+            <input type="checkbox" id="cookie-analytics" />
+            <span class="cb-toggle__track"></span>
+            <span class="cb-toggle__thumb"></span>
+          </label>
+        </div>
+
+        <!-- Marketing -->
+        <div class="cb-category">
+          <div class="cb-category__left">
+            <div class="cb-cat-icon cb-cat-icon--purple">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+            </div>
+            <div>
+              <strong class="cb-cat-name">Marketingowe</strong>
+              <span class="cb-cat-desc">Remarketing, personalizacja reklam</span>
+            </div>
+          </div>
+          <label class="cb-toggle">
+            <input type="checkbox" id="cookie-marketing" />
+            <span class="cb-toggle__track"></span>
+            <span class="cb-toggle__thumb"></span>
+          </label>
+        </div>
+
+        <p class="cb-privacy-link">
+          Więcej informacji w naszej <a href="/polityka-prywatnosci">Polityce Prywatności</a>.
+        </p>
+      </div>
+
+      <!-- Actions -->
+      <div class="cb-actions">
+        <button id="cookie-toggle-details" class="cb-toggle-btn" type="button">
+          <span id="toggle-text">Dostosuj preferencje</span>
+          <svg id="toggle-icon" class="cb-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="cb-buttons">
+          <button id="cookie-reject" class="cb-btn cb-btn--secondary" type="button">Tylko niezbędne</button>
+          <button id="cookie-accept-selected" class="cb-btn cb-btn--secondary cb-hidden" type="button">Zapisz wybrane</button>
+          <button id="cookie-accept-all" class="cb-btn cb-btn--primary" type="button">Akceptuj wszystkie</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  /* ===== ALL COLORS HARDCODED — dark mode proof ===== */
+  .cb-hidden { display: none !important; }
+
+  .cb-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 99999;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .cb-backdrop {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .cb-container {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 1;
+  }
+  @media (min-width: 768px) {
+    .cb-container {
+      bottom: 1.5rem;
+      left: auto;
+      right: 1.5rem;
+      max-width: 480px;
+    }
+  }
+
+  .cb-card {
+    background: #ffffff;
+    border: 1px solid #e2e6f0;
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 -4px 40px rgba(18, 25, 58, 0.2);
+    overflow: hidden;
+    color: #12193a;
+  }
+  @media (min-width: 768px) {
+    .cb-card { border-radius: 1rem; }
+  }
+
+  .cb-header {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    padding-bottom: 1rem;
+    align-items: flex-start;
+  }
+  .cb-header__icon {
+    width: 48px; height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #12193a, #1a2248);
+    color: #fcbb42;
+    border-radius: 0.75rem;
+  }
+  .cb-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #12193a;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+  .cb-subtitle {
+    font-size: 0.875rem;
+    color: #6b7194;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .cb-details {
+    padding: 0 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    animation: cbSlideDown 0.3s ease-out;
+  }
+  @keyframes cbSlideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cb-category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #f8f9fc;
+    border: 1px solid #e2e6f0;
+    border-radius: 0.75rem;
+  }
+  .cb-category__left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .cb-cat-icon {
+    width: 32px; height: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+  }
+  .cb-cat-icon--green  { background: rgba(56,161,105,0.15); color: #2f855a; }
+  .cb-cat-icon--blue   { background: rgba(66,153,225,0.15); color: #2b6cb0; }
+  .cb-cat-icon--purple { background: rgba(159,122,234,0.15); color: #6b46c1; }
+  .cb-cat-name {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #12193a;
+  }
+  .cb-cat-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: #9ba2c2;
+  }
+
+  .cb-toggle {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 44px; height: 24px;
+    min-width: 44px;
+  }
+  .cb-toggle--locked { cursor: not-allowed; opacity: 0.7; }
+  .cb-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .cb-toggle__track {
+    display: block;
+    width: 44px; height: 24px;
+    background: #d1d5e8;
+    border-radius: 12px;
+    transition: background 0.2s;
+  }
+  .cb-toggle__track--on,
+  .cb-toggle input:checked + .cb-toggle__track {
+    background: #38a169;
+  }
+  .cb-toggle__thumb {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 20px; height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .cb-toggle__thumb--on,
+  .cb-toggle input:checked ~ .cb-toggle__thumb {
+    transform: translateX(20px);
+  }
+
+  .cb-privacy-link {
+    font-size: 0.75rem;
+    color: #9ba2c2;
+    margin-top: 0.5rem;
+  }
+  .cb-privacy-link a {
+    color: #d4960e;
+    text-decoration: underline;
+  }
+
+  .cb-actions { padding: 0.5rem 1.5rem 1.5rem; }
+
+  .cb-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    color: #6b7194;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.2s;
+  }
+  .cb-toggle-btn:hover { color: #12193a; }
+  .cb-toggle-icon { transition: transform 0.2s; }
+
+  .cb-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  @media (min-width: 480px) {
+    .cb-buttons { flex-direction: row; }
+  }
+
+  .cb-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: 'Fraunces', Georgia, serif;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .cb-btn--secondary {
+    background: #f0f1f6;
+    color: #12193a;
+    border: 1px solid #e2e6f0;
+  }
+  .cb-btn--secondary:hover { background: #e2e6f0; }
+  .cb-btn--primary {
+    background: linear-gradient(135deg, #12193a, #1a2248);
+    color: #fcbb42;
+  }
+  .cb-btn--primary:hover { opacity: 0.9; }
+</style>
+
+<script is:inline>
+(function() {
+  var COOKIE_NAME = 'agencja_copywriterska_consent';
+  var GA_ID = 'G-92N4WCQ297';
+
+  var banner = document.getElementById('cookie-banner');
+  var details = document.getElementById('cookie-details');
+  var toggleBtn = document.getElementById('cookie-toggle-details');
+  var toggleText = document.getElementById('toggle-text');
+  var toggleIcon = document.getElementById('toggle-icon');
+  var acceptAllBtn = document.getElementById('cookie-accept-all');
+  var acceptSelectedBtn = document.getElementById('cookie-accept-selected');
+  var rejectBtn = document.getElementById('cookie-reject');
+  var analyticsCheckbox = document.getElementById('cookie-analytics');
+  var marketingCheckbox = document.getElementById('cookie-marketing');
+  var detailsVisible = false;
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'personalization_storage': 'denied',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  gtag('set', 'url_passthrough', true);
+  gtag('set', 'ads_data_redaction', true);
+
+  function getConsent() {
+    try { var c = localStorage.getItem(COOKIE_NAME); return c ? JSON.parse(c) : null; }
+    catch(e) { return null; }
+  }
+
+  function setConsent(consent) {
+    localStorage.setItem(COOKIE_NAME, JSON.stringify({
+      necessary: consent.necessary, analytics: consent.analytics, marketing: consent.marketing,
+      timestamp: new Date().toISOString(), version: '2.0'
+    }));
+  }
+
+  function updateGoogleConsent(consent) {
+    var a = consent.analytics ? 'granted' : 'denied';
+    var m = consent.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', {
+      'ad_storage': m, 'ad_user_data': m, 'ad_personalization': m,
+      'analytics_storage': a, 'personalization_storage': m
+    });
+    dataLayer.push({ 'event': 'consent_update', 'consent_analytics': consent.analytics, 'consent_marketing': consent.marketing });
+  }
+
+  function loadGA(consent) {
+    if (consent.analytics && !document.getElementById('ga4-script')) {
+      var s = document.createElement('script');
+      s.id = 'ga4-script'; s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', GA_ID, { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+      };
+    }
+  }
+
+  function showBanner() {
+    if (banner) { banner.classList.remove('cb-hidden'); document.body.style.overflow = 'hidden'; }
+  }
+  function hideBanner() {
+    if (banner) { banner.classList.add('cb-hidden'); document.body.style.overflow = ''; }
+  }
+
+  function toggleDetails() {
+    detailsVisible = !detailsVisible;
+    if (details) details.classList.toggle('cb-hidden', !detailsVisible);
+    if (toggleIcon) toggleIcon.style.transform = detailsVisible ? 'rotate(180deg)' : '';
+    if (toggleText) toggleText.textContent = detailsVisible ? 'Ukryj opcje' : 'Dostosuj preferencje';
+    if (acceptSelectedBtn) acceptSelectedBtn.classList.toggle('cb-hidden', !detailsVisible);
+  }
+
+  function handleAcceptAll() {
+    var c = { necessary: true, analytics: true, marketing: true };
+    setConsent(c); updateGoogleConsent(c); loadGA(c); hideBanner();
+  }
+  function handleAcceptSelected() {
+    var c = { necessary: true, analytics: analyticsCheckbox ? analyticsCheckbox.checked : false, marketing: marketingCheckbox ? marketingCheckbox.checked : false };
+    setConsent(c); updateGoogleConsent(c); loadGA(c); hideBanner();
+  }
+  function handleReject() {
+    var c = { necessary: true, analytics: false, marketing: false };
+    setConsent(c); updateGoogleConsent(c); loadGA(c); hideBanner();
+  }
+
+  window.openCookieSettings = function() {
+    var consent = getConsent();
+    if (consent) {
+      if (analyticsCheckbox) analyticsCheckbox.checked = consent.analytics;
+      if (marketingCheckbox) marketingCheckbox.checked = consent.marketing;
+    }
+    if (!detailsVisible) toggleDetails();
+    showBanner();
+  };
+
+  function init() {
+    var consent = getConsent();
+    if (consent) { updateGoogleConsent(consent); loadGA(consent); }
+    else { showBanner(); }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleDetails);
+    if (acceptAllBtn) acceptAllBtn.addEventListener('click', handleAcceptAll);
+    if (acceptSelectedBtn) acceptSelectedBtn.addEventListener('click', handleAcceptSelected);
+    if (rejectBtn) rejectBtn.addEventListener('click', handleReject);
+  }
+
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+})();
+</script>
