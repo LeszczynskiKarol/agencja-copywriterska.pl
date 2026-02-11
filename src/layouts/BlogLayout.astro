@@ -32,26 +32,26 @@ const articleSchema = {
   "@type": "Article",
   "headline": title,
   "description": description,
-  "image": image ? `https://agencja-copywriterska.pl${image}` : undefined,
+  "image": image ? `https://www.agencja-copywriterska.pl${image}` : undefined,
   "datePublished": publishDate.toISOString(),
   "dateModified": updateDate ? updateDate.toISOString() : publishDate.toISOString(),
   "author": {
     "@type": "Organization",
     "name": author,
-    "url": "https://agencja-copywriterska.pl"
+    "url": "https://www.agencja-copywriterska.pl"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Agencja Copywriterska",
-    "url": "https://agencja-copywriterska.pl",
+    "url": "https://www.agencja-copywriterska.pl",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://agencja-copywriterska.pl/logo.png"
+      "url": "https://www.agencja-copywriterska.pl/logo.png"
     }
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://agencja-copywriterska.pl/blog/${post.slug}`
+    "@id": `https://www.agencja-copywriterska.pl/blog/${post.slug}`
   }
 };
 
@@ -63,19 +63,19 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Strona główna",
-      "item": "https://agencja-copywriterska.pl"
+      "item": "https://www.agencja-copywriterska.pl"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Blog",
-      "item": "https://agencja-copywriterska.pl/blog"
+      "item": "https://www.agencja-copywriterska.pl/blog"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": title,
-      "item": `https://agencja-copywriterska.pl/blog/${post.slug}`
+      "item": `https://www.agencja-copywriterska.pl/blog/${post.slug}`
     }
   ]
 };

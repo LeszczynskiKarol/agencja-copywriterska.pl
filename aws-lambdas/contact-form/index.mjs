@@ -17,7 +17,7 @@ const FROM_EMAIL = "formularz@agencja-copywriterska.pl";
 const FROM_NAME = "Agencja Copywriterska";
 
 const headers = {
-  "Access-Control-Allow-Origin": "https://agencja-copywriterska.pl",
+  "Access-Control-Allow-Origin": "https://www.agencja-copywriterska.pl",
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Content-Type": "application/json",

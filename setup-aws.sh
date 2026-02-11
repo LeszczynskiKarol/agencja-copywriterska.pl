@@ -42,7 +42,7 @@ aws s3api create-bucket \
 
 aws s3api put-bucket-cors \
   --bucket "$BUCKET_NAME" \
-  --cors-configuration '{"CORSRules":[{"AllowedOrigins":["https://agencja-copywriterska.pl","http://localhost:4321"],"AllowedMethods":["PUT","GET"],"AllowedHeaders":["*"],"MaxAgeSeconds":3600}]}'
+  --cors-configuration '{"CORSRules":[{"AllowedOrigins":["https://www.agencja-copywriterska.pl","https://agencja-copywriterska.pl","http://localhost:4321"],"AllowedMethods":["PUT","GET"],"AllowedHeaders":["*"],"MaxAgeSeconds":3600}]}'
 echo "    CORS OK"
 
 aws s3api put-bucket-lifecycle-configuration \

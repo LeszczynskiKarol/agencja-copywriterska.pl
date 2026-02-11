@@ -11,12 +11,20 @@ const BUCKET = process.env.BUCKET_NAME || "agencja-copywriterska-attachments";
 
 const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
 const ALLOWED_EXTENSIONS = [
-  ".pdf", ".doc", ".docx", ".jpg", ".jpeg", ".png",
-  ".zip", ".rar", ".xlsx", ".txt"
+  ".pdf",
+  ".doc",
+  ".docx",
+  ".jpg",
+  ".jpeg",
+  ".png",
+  ".zip",
+  ".rar",
+  ".xlsx",
+  ".txt",
 ];
 
 const headers = {
-  "Access-Control-Allow-Origin": "https://agencja-copywriterska.pl",
+  "Access-Control-Allow-Origin": "https://www.agencja-copywriterska.pl",
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Content-Type": "application/json",
@@ -55,7 +63,9 @@ export const handler = async (event) => {
         statusCode: 400,
         headers,
         body: JSON.stringify({
-          error: "Niedozwolony format pliku. Dozwolone: " + ALLOWED_EXTENSIONS.join(", "),
+          error:
+            "Niedozwolony format pliku. Dozwolone: " +
+            ALLOWED_EXTENSIONS.join(", "),
         }),
       };
     }
