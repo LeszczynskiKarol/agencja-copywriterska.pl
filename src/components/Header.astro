@@ -9,23 +9,23 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Start', href: '/' },
-  { 
-    label: 'Usługi', 
-    href: '#',
+  {
+    label: 'Usługi',
+    href: '/uslugi/',
     children: [
-      { label: 'Copywriting', href: '/uslugi/copywriting' },
-      { label: 'Pisanie tekstów', href: '/uslugi/pisanie-tekstow' },
-      { label: 'Pisanie artykułów', href: '/uslugi/pisanie-artykulow' },
-      { label: 'Tworzenie ebooków', href: '/uslugi/tworzenie-ebookow' },
-      { label: 'Skład tekstu LaTeX', href: '/uslugi/sklad-tekstu' },
-      { label: 'Artykuły sponsorowane', href: '/uslugi/artykuly-sponsorowane' },
-      { label: 'Opisy produktów', href: '/uslugi/opisy-produktow' },
-      { label: 'Opisy kategorii', href: '/uslugi/opisy-kategorii' },
-      { label: 'Naming', href: '/uslugi/naming' },
+      { label: 'Copywriting', href: '/uslugi/copywriting/' },
+      { label: 'Pisanie tekstów', href: '/uslugi/pisanie-tekstow/' },
+      { label: 'Pisanie artykułów', href: '/uslugi/pisanie-artykulow/' },
+      { label: 'Tworzenie ebooków', href: '/uslugi/tworzenie-ebookow/' },
+      { label: 'Skład tekstu LaTeX', href: '/uslugi/sklad-tekstu/' },
+      { label: 'Artykuły sponsorowane', href: '/uslugi/artykuly-sponsorowane/' },
+      { label: 'Opisy produktów', href: '/uslugi/opisy-produktow/' },
+      { label: 'Opisy kategorii', href: '/uslugi/opisy-kategorii/' },
+      { label: 'Naming', href: '/uslugi/naming/' },
     ]
-  },  
-  { label: 'Blog', href: '/blog' },
-  { label: 'Kontakt', href: '/kontakt' },
+  },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Kontakt', href: '/kontakt/' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -80,7 +80,7 @@ const currentPath = Astro.url.pathname;
     <!-- Header Actions -->
     <div class="header__actions">
       <ThemeToggle />
-      <a href="/kontakt" class="btn btn-primary header__cta">
+      <a href="/kontakt/" class="btn btn-primary header__cta">
         Darmowa wycena
       </a>
       
@@ -144,7 +144,7 @@ const currentPath = Astro.url.pathname;
         ))}
       </ul>
       <div class="mobile-nav__footer">
-        <a href="/kontakt" class="btn btn-primary btn-lg">Darmowa wycena</a>
+        <a href="/kontakt/" class="btn btn-primary btn-lg">Darmowa wycena</a>
         <p class="mobile-nav__contact">
           <a href="tel:+48509370772">+48 509 370 772</a>
         </p>

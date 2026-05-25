@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.agencja-copywriterska.pl/sitemap-index.xml

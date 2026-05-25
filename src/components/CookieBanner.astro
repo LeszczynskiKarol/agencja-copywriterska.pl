@@ -89,7 +89,7 @@
         </div>
 
         <p class="cb-privacy-link">
-          Więcej informacji w naszej <a href="/polityka-prywatnosci">Polityce Prywatności</a>.
+          Więcej informacji w naszej <a href="/polityka-prywatnosci/">Polityce Prywatności</a>.
         </p>
       </div>
 
@@ -394,17 +394,16 @@
     dataLayer.push({ 'event': 'consent_update', 'consent_analytics': consent.analytics, 'consent_marketing': consent.marketing });
   }
 
-  function loadGA(consent) {
-    if (consent.analytics && !document.getElementById('ga4-script')) {
-      var s = document.createElement('script');
-      s.id = 'ga4-script'; s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-      document.head.appendChild(s);
-      s.onload = function() {
-        gtag('js', new Date());
-        gtag('config', GA_ID, { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
-      };
-    }
+  function loadGoogleScript() {
+    if (document.getElementById('ga4-script')) return;
+    var s = document.createElement('script');
+    s.id = 'ga4-script'; s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    s.onload = function() {
+      gtag('js', new Date());
+      gtag('config', GA_ID, { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+    };
   }
 
   function showBanner() {
@@ -424,15 +423,15 @@
 
   function handleAcceptAll() {
     var c = { necessary: true, analytics: true, marketing: true };
-    setConsent(c); updateGoogleConsent(c); loadGA(c); hideBanner();
+    setConsent(c); updateGoogleConsent(c); hideBanner();
   }
   function handleAcceptSelected() {
     var c = { necessary: true, analytics: analyticsCheckbox ? analyticsCheckbox.checked : false, marketing: marketingCheckbox ? marketingCheckbox.checked : false };
-    setConsent(c); updateGoogleConsent(c); loadGA(c); hideBanner();
+    setConsent(c); updateGoogleConsent(c); hideBanner();
   }
   function handleReject() {
     var c = { necessary: true, analytics: false, marketing: false };
-    setConsent(c); updateGoogleConsent(c); loadGA(c); hideBanner();
+    setConsent(c); updateGoogleConsent(c); hideBanner();
   }
 
   window.openCookieSettings = function() {
@@ -446,9 +445,10 @@
   };
 
   function init() {
+    loadGoogleScript();
     var consent = getConsent();
-    if (consent) { updateGoogleConsent(consent); loadGA(consent); }
-    else { showBanner(); }
+    if (consent) updateGoogleConsent(consent);
+    else showBanner();
     if (toggleBtn) toggleBtn.addEventListener('click', toggleDetails);
     if (acceptAllBtn) acceptAllBtn.addEventListener('click', handleAcceptAll);
     if (acceptSelectedBtn) acceptSelectedBtn.addEventListener('click', handleAcceptSelected);

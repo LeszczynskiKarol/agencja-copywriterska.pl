@@ -1,0 +1,23 @@
+{
+  "Name": "agencja-copywriterska-security-headers",
+  "Comment": "HSTS + security headers for agencja-copywriterska.pl",
+  "SecurityHeadersConfig": {
+    "StrictTransportSecurity": {
+      "Override": true,
+      "AccessControlMaxAgeSec": 63072000,
+      "IncludeSubdomains": true,
+      "Preload": true
+    },
+    "ContentTypeOptions": {
+      "Override": true
+    },
+    "ReferrerPolicy": {
+      "Override": true,
+      "ReferrerPolicy": "strict-origin-when-cross-origin"
+    },
+    "FrameOptions": {
+      "Override": true,
+      "FrameOption": "SAMEORIGIN"
+    }
+  }
+}

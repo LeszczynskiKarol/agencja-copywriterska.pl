@@ -1,0 +1,19 @@
+{
+  "name": "Agencja Copywriterska",
+  "short_name": "Agencja Copywriterska",
+  "description": "Profesjonalna agencja copywriterska — copywriting, ebooki, skład w LaTeX, naming.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#12193a",
+  "lang": "pl-PL",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

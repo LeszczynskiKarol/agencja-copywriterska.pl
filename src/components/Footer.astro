@@ -3,17 +3,17 @@ const currentYear = new Date().getFullYear();
 
 const footerLinks = {
   uslugi: [
-    { label: 'Copywriting', href: '/uslugi/copywriting' },
-    { label: 'Pisanie tekstów', href: '/uslugi/pisanie-tekstow' },
-    { label: 'Pisanie artykułów', href: '/uslugi/pisanie-artykulow' },
-    { label: 'Tworzenie ebooków', href: '/uslugi/tworzenie-ebookow' },
-    { label: 'Skład tekstu LaTeX', href: '/uslugi/sklad-tekstu' },
-    { label: 'Artykuły sponsorowane', href: '/uslugi/artykuly-sponsorowane' },
+    { label: 'Copywriting', href: '/uslugi/copywriting/' },
+    { label: 'Pisanie tekstów', href: '/uslugi/pisanie-tekstow/' },
+    { label: 'Pisanie artykułów', href: '/uslugi/pisanie-artykulow/' },
+    { label: 'Tworzenie ebooków', href: '/uslugi/tworzenie-ebookow/' },
+    { label: 'Skład tekstu LaTeX', href: '/uslugi/sklad-tekstu/' },
+    { label: 'Artykuły sponsorowane', href: '/uslugi/artykuly-sponsorowane/' },
   ],
-  firma: [        
-    { label: 'Blog', href: '/blog' },
-    { label: 'Kontakt', href: '/kontakt' },
-    { label: 'Polityka prywatności', href: '/polityka-prywatnosci' },
+  firma: [
+    { label: 'Blog', href: '/blog/' },
+    { label: 'Kontakt', href: '/kontakt/' },
+    { label: 'Polityka prywatności', href: '/polityka-prywatnosci/' },
   ],
 };
 ---
@@ -31,7 +31,7 @@ const footerLinks = {
           </p>
         </div>
         <div class="footer-cta__actions">
-          <a href="/kontakt" class="btn btn-primary btn-lg">
+          <a href="/kontakt/" class="btn btn-primary btn-lg">
             Wyślij zapytanie
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -161,7 +161,7 @@ const footerLinks = {
           © {currentYear} Agencja-Copywriterska.pl. Wszelkie prawa zastrzeżone.
         </p>
         <nav class="footer-bottom__nav">
-          <a href="/polityka-prywatnosci">Polityka prywatności</a>
+          <a href="/polityka-prywatnosci/">Polityka prywatności</a>
           <button type="button" onclick="openCookieSettings()" class="footer-cookie-btn">Cookies</button>
         </nav>
       </div>

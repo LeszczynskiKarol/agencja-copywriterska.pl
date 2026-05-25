@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="Strona nie znaleziona (404) | Agencja Copywriterska"
+  description="Strona, której szukasz, nie istnieje lub została przeniesiona. Wróć na stronę główną lub zobacz naszą ofertę usług copywriterskich."
+  canonical="https://www.agencja-copywriterska.pl/404"
+  noindex={true}
+>
+  <section class="error-page">
+    <div class="container container-narrow">
+      <div class="error-page__inner">
+        <span class="error-page__code">404</span>
+        <h1 class="error-page__title">Nie znaleziono strony</h1>
+        <p class="error-page__text">
+          Strona, której szukasz, nie istnieje lub została przeniesiona. Możliwe, że link, który kliknąłeś,
+          jest nieaktualny. Skorzystaj z poniższych skrótów lub wróć na stronę główną.
+        </p>
+
+        <div class="error-page__actions">
+          <Button href="/" variant="primary" size="lg">Strona główna</Button>
+          <Button href="/uslugi/" variant="secondary" size="lg">Zobacz usługi</Button>
+        </div>
+
+        <div class="error-page__links">
+          <h2>Popularne strony</h2>
+          <ul>
+            <li><a href="/uslugi/copywriting/">Copywriting</a></li>
+            <li><a href="/uslugi/pisanie-artykulow/">Pisanie artykułów</a></li>
+            <li><a href="/uslugi/tworzenie-ebookow/">Tworzenie ebooków</a></li>
+            <li><a href="/uslugi/sklad-tekstu/">Skład tekstu LaTeX</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/kontakt/">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page {
+    padding: var(--space-20) 0;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+  }
+  .error-page__inner {
+    text-align: center;
+  }
+  .error-page__code {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 18vw, 10rem);
+    font-weight: var(--fw-extrabold);
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--space-4);
+  }
+  .error-page__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-6);
+  }
+  .error-page__text {
+    max-width: 560px;
+    margin: 0 auto var(--space-8);
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+  .error-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-bottom: var(--space-12);
+  }
+  .error-page__links {
+    margin-top: var(--space-8);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-color);
+  }
+  .error-page__links h2 {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-4);
+  }
+  .error-page__links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  .error-page__links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2px;
+    transition: all var(--transition-fast);
+  }
+  .error-page__links a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+</style>

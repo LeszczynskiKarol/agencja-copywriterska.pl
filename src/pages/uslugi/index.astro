@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Button from '../../components/Button.astro';
+
+const services = [
+  {
+    title: 'Copywriting',
+    description: 'Teksty sprzedażowe, które przekonują i konwertują. Od landing page po kampanie reklamowe.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>`,
+    href: '/uslugi/copywriting/',
+    features: ['Teksty sprzedażowe', 'Landing pages', 'Mailingi'],
+  },
+  {
+    title: 'Pisanie tekstów',
+    description: 'Profesjonalne treści dla Twojej firmy. Unikalne, angażujące i zoptymalizowane pod SEO.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>`,
+    href: '/uslugi/pisanie-tekstow/',
+    features: ['Treści na strony', 'Teksty firmowe', 'SEO content'],
+  },
+  {
+    title: 'Pisanie artykułów',
+    description: 'Eksperckie artykuły blogowe i branżowe, które budują autorytet i przyciągają klientów.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
+    href: '/uslugi/pisanie-artykulow/',
+    features: ['Artykuły blogowe', 'Treści eksperckie', 'Content marketing'],
+  },
+  {
+    title: 'Tworzenie ebooków',
+    description: 'Kompleksowe ebooki i lead magnety od A do Z - treść, projekt, skład i gotowy PDF.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>`,
+    href: '/uslugi/tworzenie-ebookow/',
+    features: ['Lead magnety', 'Poradniki', 'Publikacje PDF'],
+  },
+  {
+    title: 'Skład tekstu LaTeX',
+    description: 'Profesjonalny skład publikacji w LaTeX - podręczniki, zeszyty ćwiczeń, prace naukowe.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>`,
+    href: '/uslugi/sklad-tekstu/',
+    features: ['Podręczniki', 'Publikacje naukowe', 'Print-ready PDF'],
+  },
+  {
+    title: 'Artykuły sponsorowane',
+    description: 'Skuteczne artykuły sponsorowane i PR, które budują wizerunek i zdobywają linki.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>`,
+    href: '/uslugi/artykuly-sponsorowane/',
+    features: ['Link building', 'PR & wizerunkowe', 'Publikacje zewnętrzne'],
+  },
+  {
+    title: 'Opisy produktów',
+    description: 'Unikalne opisy produktów dla e-commerce, które sprzedają i pozycjonują.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>`,
+    href: '/uslugi/opisy-produktow/',
+    features: ['E-commerce', 'Katalogi', 'SEO-optimized'],
+  },
+  {
+    title: 'Opisy kategorii',
+    description: 'SEO-friendly opisy kategorii dla sklepów internetowych i katalogów.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>`,
+    href: '/uslugi/opisy-kategorii/',
+    features: ['Sklepy online', 'Optymalizacja SEO', 'Unikalne treści'],
+  },
+  {
+    title: 'Naming',
+    description: 'Kreatywne nazwy dla firm, produktów i marek. Branding, który zostaje w pamięci.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+    href: '/uslugi/naming/',
+    features: ['Nazwy firm', 'Nazwy produktów', 'Slogany'],
+  },
+];
+
+const uslugiSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  'name': 'Usługi copywriterskie - kompleksowa oferta agencji',
+  'url': 'https://www.agencja-copywriterska.pl/uslugi/',
+  'description': 'Pełna oferta usług agencji copywriterskiej: copywriting, pisanie artykułów, tworzenie ebooków, skład w LaTeX, opisy produktów, naming i artykuły sponsorowane.',
+  'breadcrumb': {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Strona główna', 'item': 'https://www.agencja-copywriterska.pl/' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Usługi', 'item': 'https://www.agencja-copywriterska.pl/uslugi/' },
+    ],
+  },
+  'mainEntity': {
+    '@type': 'ItemList',
+    'itemListElement': services.map((s, i) => ({
+      '@type': 'ListItem',
+      'position': i + 1,
+      'name': s.title,
+      'url': `https://www.agencja-copywriterska.pl${s.href}`,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Usługi copywriterskie - kompleksowa oferta agencji | Agencja Copywriterska"
+  description="Pełna oferta usług agencji copywriterskiej: copywriting, pisanie artykułów, ebooki, skład w LaTeX, naming, opisy produktów. 15 lat doświadczenia, bezpłatna wycena w 24 godz."
+  canonical="https://www.agencja-copywriterska.pl/uslugi/"
+  keywords="usługi copywriterskie, oferta agencji copywriterskiej, copywriting, pisanie tekstów, tworzenie ebooków, skład LaTeX, naming"
+  schema={uslugiSchema}
+>
+  <section class="uslugi-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/">Strona główna</a>
+        <span class="breadcrumbs__sep">/</span>
+        <span class="breadcrumbs__current">Usługi</span>
+      </nav>
+
+      <SectionHeading
+        label="Oferta"
+        title="Kompleksowe <span>usługi copywriterskie</span>"
+        subtitle="Od krótkich tekstów reklamowych po rozbudowane publikacje książkowe. 9 obszarów specjalizacji - wszystko w jednym miejscu, od jednego wykonawcy."
+        align="center"
+      />
+    </div>
+  </section>
+
+  <section class="section section-lg uslugi-grid-section">
+    <div class="container">
+      <div class="uslugi-grid">
+        {services.map((service) => <ServiceCard {...service} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-lg uslugi-content">
+    <div class="container container-narrow">
+      <article>
+        <h2>Pełna oferta usług naszej agencji copywriterskiej</h2>
+        <p>
+          Jesteśmy <strong>agencją copywriterską</strong>, która oferuje wszystkie rodzaje usług związanych
+          z tworzeniem treści tekstowych dla firm. Naszą specjalizacją jest <strong>kompleksowe podejście</strong>:
+          od koncepcji, przez pisanie, redakcję, korektę, aż po profesjonalny skład publikacji w LaTeX.
+          Dzięki temu otrzymujesz gotowy produkt - tekst, ebook, podręcznik lub publikację - w jednym miejscu.
+        </p>
+
+        <h3>Copywriting sprzedażowy i content marketingowy</h3>
+        <p>
+          W ramach <a href="/uslugi/copywriting/">usługi copywritingu</a> tworzymy teksty sprzedażowe -
+          landing pages, mailingi, hasła reklamowe, treści produktowe. To teksty, których celem jest konkretna
+          konwersja: zakup, zapis na newsletter, pobranie ebooka, wypełnienie formularza.
+        </p>
+        <p>
+          Dla działań content marketingowych oferujemy <a href="/uslugi/pisanie-artykulow/">pisanie artykułów blogowych</a>
+          oraz <a href="/uslugi/pisanie-tekstow/">teksty na strony internetowe</a> - eksperckie, dopracowane
+          merytorycznie, zoptymalizowane pod SEO. Każdy tekst powstaje od zera, pod konkretną grupę docelową
+          i konkretne słowa kluczowe.
+        </p>
+
+        <h3>Publikacje, ebooki i skład LaTeX</h3>
+        <p>
+          <a href="/uslugi/tworzenie-ebookow/">Tworzymy ebooki</a> jako lead magnety i pełnoprawne publikacje
+          edukacyjne. Pracujemy od briefu, przez research, pisanie i redakcję, aż do gotowego pliku PDF.
+          Jeśli potrzebujesz <strong>profesjonalnego składu</strong> - oferujemy
+          <a href="/uslugi/sklad-tekstu/">skład w LaTeX</a>, czyli standard używany w wydawnictwach naukowych.
+          Przygotowaliśmy ponad 20 publikacji książkowych.
+        </p>
+
+        <h3>E-commerce: opisy produktów, kategorii, naming</h3>
+        <p>
+          Dla sklepów internetowych piszemy <a href="/uslugi/opisy-produktow/">opisy produktów</a> oraz
+          <a href="/uslugi/opisy-kategorii/">opisy kategorii</a> - unikalne, zoptymalizowane pod wyszukiwarki,
+          dopasowane do tonu marki. Pracujemy też z producentami nad <a href="/uslugi/naming/">namingiem</a> -
+          tworzeniem nazw firm, produktów, usług i sloganów reklamowych.
+        </p>
+
+        <h3>PR i link building</h3>
+        <p>
+          <a href="/uslugi/artykuly-sponsorowane/">Artykuły sponsorowane</a> piszemy z myślą o dwóch celach
+          jednocześnie: budowanie wizerunku marki oraz pozyskiwanie linków zwrotnych. Tworzymy treści, które
+          chcą publikować portale branżowe i które realnie wpływają na pozycje w wyszukiwarce.
+        </p>
+
+        <h3>Jak rozpocząć współpracę?</h3>
+        <p>
+          Wszystkie nasze usługi rozpoczynamy od <strong>bezpłatnej konsultacji</strong>. Opisz nam projekt -
+          a w ciągu 24 godzin otrzymasz indywidualną wycenę. Zadzwoń pod +48 509 370 772 lub napisz na
+          kontakt@agencja-copywriterska.pl.
+        </p>
+
+        <div class="uslugi-cta">
+          <Button href="/kontakt/" variant="primary" size="lg" icon>
+            Zamów bezpłatną wycenę
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Button>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .uslugi-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--bg-secondary);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+  }
+  .breadcrumbs a {
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+  .breadcrumbs a:hover {
+    color: var(--color-accent);
+  }
+  .breadcrumbs__sep {
+    color: var(--text-tertiary);
+  }
+  .breadcrumbs__current {
+    color: var(--text-primary);
+    font-weight: var(--fw-medium);
+  }
+
+  .uslugi-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+  @media (min-width: 768px) {
+    .uslugi-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .uslugi-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .uslugi-content {
+    background-color: var(--bg-secondary);
+  }
+  .uslugi-content article {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+  }
+  .uslugi-content h2 {
+    font-size: var(--fs-3xl);
+    margin-bottom: var(--space-6);
+  }
+  .uslugi-content h3 {
+    font-size: var(--fs-xl);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+  }
+  .uslugi-content p {
+    margin-bottom: var(--space-4);
+    color: var(--text-secondary);
+  }
+  .uslugi-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+  [data-theme="dark"] .uslugi-content a {
+    color: var(--color-accent);
+  }
+  .uslugi-content a:hover {
+    color: var(--color-accent);
+  }
+  .uslugi-content strong {
+    color: var(--text-primary);
+  }
+  .uslugi-cta {
+    margin-top: var(--space-10);
+    text-align: center;
+  }
+</style>

@@ -113,7 +113,7 @@ const breadcrumbSchema = {
     <div class="container">
       <ol class="breadcrumbs__list">
         <li><a href="/">Strona główna</a></li>
-        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li aria-current="page">{categoryName}</li>
       </ol>
     </div>
@@ -137,7 +137,7 @@ const breadcrumbSchema = {
   <section class="blog-categories">
     <div class="container">
       <div class="blog-categories__list">
-        <a href="/blog" class="blog-categories__item">
+        <a href="/blog/" class="blog-categories__item">
           Wszystkie ({allPosts.length})
         </a>
         {Object.entries(allCategories).map(([category, count]) => (
@@ -160,7 +160,7 @@ const breadcrumbSchema = {
           <div class="blog-posts__empty-icon">📝</div>
           <h3>Brak artykułów</h3>
           <p>Artykuły w tej kategorii pojawią się wkrótce.</p>
-          <a href="/blog" class="blog-posts__back">
+          <a href="/blog/" class="blog-posts__back">
             ← Wróć do wszystkich artykułów
           </a>
         </div>
@@ -201,7 +201,7 @@ const breadcrumbSchema = {
       
       <!-- Back to Blog -->
       <div class="blog-posts__nav">
-        <a href="/blog" class="blog-posts__back-link">
+        <a href="/blog/" class="blog-posts__back-link">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
           Wszystkie artykuły
         </a>
@@ -215,7 +215,7 @@ const breadcrumbSchema = {
       <div class="blog-cta__card">
         <h2>Potrzebujesz profesjonalnych tekstów?</h2>
         <p>Skontaktuj się z nami i zamów treści, które przyciągną klientów i zwiększą sprzedaż.</p>
-        <a href="/kontakt" class="btn btn--primary btn--lg">
+        <a href="/kontakt/" class="btn btn--primary btn--lg">
           Zamów bezpłatną wycenę
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
